@@ -156,7 +156,7 @@
         }
         .abstract-text {
             font-size: 1.1em;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             text-align: justify;
         }
 
@@ -198,6 +198,19 @@
         .metadata-block strong {
             font-weight: 600;
         }
+        .code-block {
+            background-color: #eef;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+        .code-block pre {
+            margin: 0;
+            font-family: monospace;
+            font-size: 0.9em;
+            white-space: pre;
+        }
 
         /* Responsive Design */
         @media (max-width: 1000px) {
@@ -210,6 +223,9 @@
                 padding: 20px;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             }
+            .sidebar-section h4 {
+                display: none;
+            }
             .sidebar-list {
                 display: flex;
                 flex-wrap: wrap;
@@ -217,6 +233,7 @@
             }
             .sidebar-list a {
                 padding: 5px 10px;
+                border: 1px solid #ddd;
             }
             .content {
                 padding: 30px 20px;
@@ -245,20 +262,13 @@
             <div class="sidebar-section">
                 <h4>NAVIGATION</h4>
                 <div class="sidebar-list">
-                    <a href="#about"><strong>About This Work</strong></a>
-                    <a href="#abstract">Abstract</a>
-                    <a href="#contributions">Contributions</a>
-                    <a href="ref.bib">Citations</a>
+                    <a href="#abstract"><strong>Abstract</strong></a>
+                    <a href="#method">Method Overview</a>
+                    <a href="#results">Results</a>
+                    <a href="#install">Installation</a>
+                    <a href="#ack">Acknowledgments</a>
                     <a href="#bibtex">BibTeX</a>
                     <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">Code Repository</a>
-                </div>
-            </div>
-
-            <div class="sidebar-section">
-                <h4>RELATED</h4>
-                <div class="sidebar-list">
-                    <a href="#">Causal Learning Overview</a>
-                    <a href="#">Out-of-Distribution Generalization</a>
                 </div>
             </div>
 
@@ -267,10 +277,9 @@
                 <div class="sidebar-list">
                     <a href="#">1. Introduction</a>
                     <a href="#">2. Problem Formulation</a>
-                    <a href="#">3. Anti-Causal Invariant Abstractions (ACIA)</a>
+                    <a href="#">3. ACIA Framework</a>
                     <a href="#">4. Experiments</a>
                     <a href="#">5. Conclusion</a>
-                    <a href="#">Appendix</a>
                 </div>
             </div>
         </div>
@@ -278,20 +287,9 @@
         <div class="content">
             <h1>Measure-Theoretic Anti-Causal Representation Learning</h1>
             <p class="authors-info">
-                Arman Behnam, Binghui Wang <br>
-                Department of Computer Science, Illinois Institute of Technology, Chicago, Illinois, USA.
+                [cite_start]Arman Behnam [cite: 8][cite_start], Binghui Wang [cite: 8] <br>
+                [cite_start]Department of Computer Science, Illinois Institute of Technology, Chicago, Illinois, USA[cite: 8].
             </p>
-
-            <div class="bibtex-block" id="bibtex">
-                <p>
-                    @inproceedings{behnam2025anticausal,<br>
-                    &nbsp;&nbsp;&nbsp;title={Measure-Theoretic Anti-Causal Representation Learning},<br>
-                    &nbsp;&nbsp;&nbsp;author={Behnam, Arman and Wang, Binghui},<br>
-                    &nbsp;&nbsp;&nbsp;booktitle={Advances in Neural Information Processing Systems},<br>
-                    &nbsp;&nbsp;&nbsp;year={2025}<br>
-                    }
-                </p>
-            </div>
 
             <div class="action-buttons">
                 <a href="#" class="btn btn-blue"><i class="fas fa-file-pdf"></i> Read the Paper (PDF)</a>
@@ -301,38 +299,121 @@
 
             <div class="figure-and-meta">
                 <div class="main-figure">
-                    <img src="../images/overview.jpg" alt="Conceptual Diagram of ACIA Framework">
+                    <img src="../images/overview.jpg" alt="Conceptual Diagram of ACIA Framework" title="Overview of the Method">
                 </div>
                 <div class="metadata-block">
                     <h4>Version 1.0</h4>
-                    <p><strong>Last Updated:</strong> October 16, 2025</p>
                     <p><strong>Status:</strong> Accepted to NeurIPS 2025</p>
                     <p><strong>Code:</strong> <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">https://github.com/ArmanBehnam/ACIA</a></p>
                 </div>
             </div>
 
-
             <h2 class="section-header" id="abstract">Abstract</h2>
             <div class="abstract-text">
-                [cite_start]Causal representation learning in the anti-causal setting—labels cause features rather than the reverse—presents unique challenges requiring specialized approaches[cite: 1]. [cite_start]We propose **Anti-Causal Invariant Abstractions (ACIA)**, a novel measure-theoretic framework for anti-causal representation learning[cite: 2]. [cite_start]ACIA employs a **two-level design**: low-level representations capture how labels generate observations, while high-level representations learn stable causal patterns across environment-specific variations[cite: 3]. [cite_start]ACIA addresses key limitations of existing approaches by: (1) accommodating perfect and imperfect interventions through **interventional kernels**, (2) eliminating dependency on explicit **causal structures**, (3) handling **high-dimensional data** effectively, and (4) providing **theoretical guarantees** for out-of-distribution generalization[cite: 4]. [cite_start]Experiments on synthetic and real-world medical datasets demonstrate that ACIA consistently outperforms state-of-the-art methods in both accuracy and invariance metrics[cite: 5]. [cite_start]Furthermore, our theoretical results establish tight bounds on performance gaps between training and unseen environments, confirming the efficacy of our approach for robust anti-causal learning[cite: 6].
+                [cite_start]Causal representation learning in the anti-causal setting—labels cause features rather than the reverse—presents unique challenges requiring specialized approaches[cite: 1]. [cite_start]We propose **Anti-Causal Invariant Abstractions (ACIA)**, a novel measure-theoretic framework for anti-causal representation learning[cite: 2]. [cite_start]ACIA employs a **two-level design**: low-level representations capture how labels generate observations, while high-level representations learn stable causal patterns across environment-specific variations[cite: 3]. [cite_start]ACIA addresses key limitations of existing approaches by: (1) accommodating perfect and imperfect interventions through **interventional kernels**, (2) eliminating dependency on explicit causal structures, (3) handling high-dimensional data effectively, and (4) providing **theoretical guarantees** for out-of-distribution generalization[cite: 4]. [cite_start]Experiments on synthetic and real-world medical datasets demonstrate that ACIA consistently outperforms state-of-the-art methods in both accuracy and invariance metrics[cite: 5].
             </div>
 
-            <h2 class="section-header" id="contributions">Key Contributions</h2>
+            ---
+
+            <h2 class="section-header" id="method">ACIA Framework Overview</h2>
             <div class="abstract-text">
-                The ACIA framework provides a robust solution for the anti-causal problem by achieving several critical advances:
+                Our approach introduces a novel measure-theoretic framework for learning in anti-causal domains ($Y \rightarrow X \leftarrow E$). The method consists of three key algorithms: **Causal Dynamics Algorithm**, **Causal Abstraction Algorithm**, and **OOD Optimization Algorithm**. The framework decomposes the problem into two key representation spaces:
                 <ul>
-                    [cite_start]<li>It introduces a novel **measure-theoretic framework** designed specifically for the anti-causal setting[cite: 2].</li>
-                    [cite_start]<li>It uses a **two-level representation** (low-level for generative process, high-level for invariant patterns) to separate variable dependencies[cite: 3].</li>
-                    [cite_start]<li>It is flexible enough to handle both **perfect and imperfect interventions** using interventional kernels[cite: 4].</li>
-                    [cite_start]<li>It **does not require explicit causal structures** as input, simplifying its application to complex, high-dimensional data[cite: 4].</li>
-                    [cite_start]<li>It comes with **strong theoretical guarantees** for out-of-distribution (OOD) generalization, including tight performance bounds[cite: 4, 6].</li>
+                    <li>**Low-Level Representation ($\mathcal{Z}_L$):** Captures the causal latent dynamics of how the label $Y$ generates the features $X$ (as per **Theorem 3** in the paper).</li>
+                    <li>**High-Level Representation ($\mathcal{Z}_H$):** Learns the causal invariant abstraction (as per **Theorem 4**), ensuring the final prediction is independent of environment factors.</li>
                 </ul>
+                This two-level approach enables **OOD generalization** by learning from both perfect and imperfect interventions.
+            </div>
+
+            ---
+
+            <h2 class="section-header" id="results">Results and Performance</h2>
+
+            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Classification Performance</h3>
+            <p>ACIA achieves state-of-the-art performance on CMNIST (97.7% accuracy) with perfect environment independence.</p>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <thead>
+                    <tr style="background-color: #ddd;">
+                        <th style="padding: 10px; text-align: left;">Method</th>
+                        <th style="padding: 10px; text-align: left;">Accuracy</th>
+                        <th style="padding: 10px; text-align: left;">ENV-Independence</th>
+                        <th style="padding: 10px; text-align: left;">Low-level Invariance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">Baseline</td>
+                        <td style="padding: 10px;">85.2%</td>
+                        <td style="padding: 10px;">0.45</td>
+                        <td style="padding: 10px;">0.38</td>
+                    </tr>
+                    <tr style="background-color: #eef; font-weight: 600;">
+                        <td style="padding: 10px;">Ours (ACIA)</td>
+                        <td style="padding: 10px;">92.7%</td>
+                        <td style="padding: 10px;">0.92</td>
+                        <td style="padding: 10px;">0.85</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            ---
+
+            <h2 class="section-header" id="install">Installation & Usage (ACIA Library)</h2>
+            <p>The Anti-Causal Invariant Abstractions (ACIA) framework is available as a Python package authored by Arman Behnam for easy use, requiring Python >=3.7.
+            </p>
+
+            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Installation</h3>
+            <p>The simplest way to install and set up the environment is via `pip`:</p>
+            <div class="code-block">
+                <pre><code># Install the package in editable mode
+pip install -e .
+
+# Install all necessary dependencies
+pip install -r requirements.txt</code></pre>
+            </div>
+
+            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Running Training</h3>
+            <p>After installing dependencies, you can run the main training script:</p>
+            <div class="code-block">
+                <pre><code>python main.py</code></pre>
+            </div>
+
+            ---
+
+            <h2 class="section-header" id="ack">Acknowledgments</h2>
+            <div class="abstract-text">
+                <p>We thank the anonymous reviewers for their valuable and constructive feedback. This work was supported in part by the Cisco Research Award and by the National Science Foundation under Grant Nos. ECCS-2216926, CCF-2331302, CNS-2241713, and CNS-2339686.</p>
+            </div>
+
+            ---
+
+            <h2 class="section-header" id="bibtex">Citation</h2>
+            <div class="bibtex-block">
+                @inproceedings{behnam2025anticausal,<br>
+                &nbsp;&nbsp;&nbsp;title={Measure-Theoretic Anti-Causal Representation Learning},<br>
+                &nbsp;&nbsp;&nbsp;author={Behnam, Arman and Wang, Binghui},<br>
+                &nbsp;&nbsp;&nbsp;booktitle={Advances in Neural Information Processing Systems},<br>
+                &nbsp;&nbsp;&nbsp;year={2025}<br>
+                }
             </div>
 
             <div style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.8em; color: #888;">
-                <p>Website adapted for <a href="https://github.com/ArmanBehnam/anticausal-neurips2025" target="_blank">ArmanBehnam/anticausal-neurips2025</a>. [cite_start]Code is available at <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">https://github.com/ArmanBehnam/ACIA</a>[cite: 7].</p>
+                [cite_start]<p>Website adapted for <a href="https://github.com/ArmanBehnam/anticausal-neurips2025" target="_blank">ArmanBehnam/anticausal-neurips2025</a>. Code is available at <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">https://github.com/ArmanBehnam/ACIA</a>[cite: 7].</p>
             </div>
         </div>
     </div>
+
+    <script>
+        // Ensure smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
