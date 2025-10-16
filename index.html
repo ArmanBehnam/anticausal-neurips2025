@@ -97,9 +97,12 @@
             color: #555;
             margin-bottom: 40px;
             line-height: 1.5;
+            display: flex; /* Display blocks side-by-side */
+            gap: 40px;
+            flex-wrap: wrap;
         }
         .author-block {
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
         .author-block p {
             margin: 0;
@@ -241,6 +244,10 @@
 
         /* Responsive Design */
         @media (max-width: 1000px) {
+            .authors-info {
+                flex-direction: column;
+                gap: 15px;
+            }
             .layout {
                 flex-direction: column;
             }
@@ -248,7 +255,7 @@
                 width: 100%;
                 min-height: auto;
                 padding: 20px;
-                box-shadow: 0 2px 5px rgba=rgba(0,0,0,0.05);
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             }
             .sidebar-section h4 {
                 display: none;
@@ -294,7 +301,7 @@
                     <a href="#results">Results</a>
                     <a href="#install">Installation</a>
                     <a href="#ack">Acknowledgments</a>
-                    <<a href="#bibtex">BibTeX</a>
+                    <a href="#bibtex">BibTeX</a>
                     <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">Code Repository</a>
                 </div>
             </div>
@@ -318,23 +325,21 @@
 
         <div class="content">
             <h1>Measure-Theoretic Anti-Causal Representation Learning</h1>
+
             <div class="authors-info">
                 <div class="author-block">
-                    <p class="name">Arman Behnam</p>
+                    <p class="name"><a href="https://armanbehnam.github.io/" target="_blank">Arman Behnam</a></p>
                     <p>Department of Computer Science</p>
                     <p>Illinois Institute of Technology</p>
                     <p>Chicago, Illinois, USA</p>
-                    <p class="email">abehnam@hawk.illinoistech.edu</p>
                 </div>
                 <div class="author-block">
-                    <p class="name">Binghui Wang</p>
+                    <p class="name"><a href="https://wangbinghui.net/" target="_blank">Binghui Wang</a></p>
                     <p>Department of Computer Science</p>
                     <p>Illinois Institute of Technology</p>
                     <p>Chicago, Illinois, USA</p>
-                    <p class="email">bwang70@illinoistech.edu</p>
                 </div>
             </div>
-
             <div class="action-buttons">
                 <a href="#" class="btn btn-blue"><i class="fas fa-file-pdf"></i> Read the Paper (PDF)</a>
                 <a href="https://github.com/ArmanBehnam/ACIA" class="btn btn-blue" target="_blank"><i class="fab fa-github"></i> Code Repository</a>
@@ -343,8 +348,8 @@
 
             <div class="figure-and-meta">
                 <div class="main-figure">
-                    Here is the overview figure you requested:
-                    <p class="figure-caption" id="fig:acia_overview">Figure 1. ACIA: Anti-Causal Invariant Abstraction Framework. The diagram illustrates the framework's four main steps: Input (Raw Data), Causal Dynamics (Low-Level Representation), Causal Abstraction (High-Level Representation), and Two-Level Optimization (Output).</p>
+                    <img src="acia_framework_conceptual_diagram.png" alt="Conceptual Diagram of ACIA Framework" title="ACIA: Anti-Causal Invariant Abstraction Framework">
+                    <p class="figure-caption" id="fig:acia_overview">Figure 1. ACIA: Anti-Causal Invariant Abstraction Framework. The diagram illustrates the four main steps: Input (Raw Data), Causal Dynamics (Low-Level Representation), Causal Abstraction (High-Level Representation), and Two-Level Optimization (Output), and their associated mathematical representations ($\mathcal{Z}_L, \mathcal{Z}_H, \mathcal{L}$).</p>
                 </div>
                 <div class="metadata-block">
                     <h4>Version 1.0</h4>
@@ -355,7 +360,7 @@
 
             <h2 class="section-header" id="abstract">Abstract</h2>
             <div class="abstract-text">
-                Causal representation learning in the anti-causal setting—labels cause features rather than the reverse—presents unique challenges requiring specialized approaches. We propose Anti-Causal Invariant Abstractions (ACIA), a novel measure-theoretic framework for anti-causal representation learning. ACIA employs a two-level design: low-level representations capture how labels generate observations, while high-level representations learn stable causal patterns across environment-specific variations. ACIA addresses key limitations of existing approaches by: (1) accommodating perfect and imperfect interventions through interventional kernels, (2) eliminating dependency on explicit causal structures, (3) handling high-dimensional data effectively, and (4) providing theoretical guarantees for out-of-distribution generalization. Experiments on synthetic and real-world medical datasets demonstrate that ACIA consistently outperforms state-of-the-art methods in both accuracy and invariance metrics. Furthermore, our theoretical results establish tight bounds on performance gaps between training and unseen environments, confirming the efficacy of our approach for robust anti-causal learning. Code is available at <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">https://github.com/ArmanBehnam/ACIA</a>.
+                Causal representation learning in the anti-causal setting—labels cause features rather than the reverse—presents unique challenges requiring specialized approaches. We propose **Anti-Causal Invariant Abstractions (ACIA)**, a novel measure-theoretic framework for anti-causal representation learning. ACIA employs a **two-level design**: low-level representations capture how labels generate observations, while high-level representations learn stable causal patterns across environment-specific variations. ACIA addresses key limitations of existing approaches by: (1) accommodating perfect and imperfect interventions through **interventional kernels**, (2) eliminating dependency on explicit causal structures, (3) handling high-dimensional data effectively, and (4) providing **theoretical guarantees** for out-of-distribution generalization. Experiments on synthetic and real-world medical datasets demonstrate that ACIA consistently outperforms state-of-the-art methods in both accuracy and invariance metrics. Furthermore, our theoretical results establish tight bounds on performance gaps between training and unseen environments, confirming the efficacy of our approach for robust anti-causal learning. Code is available at <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">https://github.com/ArmanBehnam/ACIA</a>.
             </div>
 
             ---
