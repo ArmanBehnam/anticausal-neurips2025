@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anti-Causal Invariant Abstractions | NeurIPS 2025</title>
+    <title>Measure-Theoretic Anti-Causal Representation Learning | NeurIPS 2025</title>
     <meta name="description" content="A Measure-Theoretic Framework for OOD Generalization">
-    <meta property="og:title" content="Anti-Causal Invariant Abstractions">
+    <meta property="og:title" content="Measure-Theoretic Anti-Causal Representation Learning">
     <meta property="og:description" content="NeurIPS 2025 - A Measure-Theoretic Framework for OOD Generalization">
-    <meta property="og:image" content="https://yourusername.github.io/project-name/images/overview.jpg">
+    <meta property="og:image" content="images/overview.jpg">
     <meta property="twitter:card" content="summary_large_image">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
@@ -27,13 +27,13 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         .main-content {
             background: white;
             border-radius: 20px;
@@ -41,7 +41,7 @@
             margin-top: 40px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
-        
+
         .badge {
             display: inline-block;
             background: linear-gradient(135deg, #667eea, #764ba2);
@@ -53,12 +53,12 @@
             margin-bottom: 20px;
             animation: pulse 2s infinite;
         }
-        
+
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
-        
+
         h1 {
             font-size: 2.8em;
             font-weight: 700;
@@ -69,13 +69,13 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .subtitle {
             font-size: 1.3em;
             color: #666;
             margin-bottom: 40px;
         }
-        
+
         .authors {
             display: flex;
             gap: 30px;
@@ -83,27 +83,27 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        
+
         .author {
             text-align: center;
         }
-        
+
         .author-name {
             font-weight: 600;
             color: #333;
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         .author-name:hover {
             color: #667eea;
         }
-        
+
         .affiliation {
             font-size: 0.9em;
             color: #888;
         }
-        
+
         .buttons {
             display: flex;
             gap: 15px;
@@ -111,7 +111,7 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -125,18 +125,18 @@
             transition: all 0.3s;
             border: 2px solid transparent;
         }
-        
+
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             border-color: #667eea;
         }
-        
+
         .btn-primary {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
         }
-        
+
         .hero-image {
             width: 100%;
             max-width: 700px;
@@ -145,11 +145,11 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        
+
         .section {
             margin-bottom: 60px;
         }
-        
+
         .section h2 {
             font-size: 2em;
             margin-bottom: 20px;
@@ -158,14 +158,14 @@
             padding-bottom: 10px;
             display: inline-block;
         }
-        
+
         .highlights {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             margin: 30px 0;
         }
-        
+
         .highlight-card {
             text-align: center;
             padding: 30px;
@@ -173,11 +173,11 @@
             border-radius: 15px;
             transition: transform 0.3s;
         }
-        
+
         .highlight-card:hover {
             transform: translateY(-5px);
         }
-        
+
         .highlight-number {
             font-size: 3em;
             font-weight: 700;
@@ -186,18 +186,18 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .highlight-label {
             font-size: 1.1em;
             color: #666;
             margin-top: 10px;
         }
-        
+
         .contributions {
             list-style: none;
             padding-left: 0;
         }
-        
+
         .contributions li {
             padding: 20px;
             margin-bottom: 15px;
@@ -207,7 +207,7 @@
             position: relative;
             padding-left: 50px;
         }
-        
+
         .contributions li::before {
             content: "✓";
             position: absolute;
@@ -216,7 +216,7 @@
             color: #667eea;
             font-weight: bold;
         }
-        
+
         .results-table {
             width: 100%;
             border-collapse: collapse;
@@ -225,23 +225,23 @@
             border-radius: 10px;
             overflow: hidden;
         }
-        
+
         .results-table th {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             padding: 15px;
             text-align: left;
         }
-        
+
         .results-table td {
             padding: 15px;
             border-bottom: 1px solid #eee;
         }
-        
+
         .results-table tr:hover {
             background: #f8f9fa;
         }
-        
+
         .bibtex-container {
             background: #f4f4f4;
             border-radius: 10px;
@@ -249,14 +249,14 @@
             position: relative;
             margin-top: 20px;
         }
-        
+
         .bibtex-code {
             font-family: 'Courier New', monospace;
             font-size: 14px;
             white-space: pre-wrap;
             word-break: break-all;
         }
-        
+
         .copy-btn {
             position: absolute;
             top: 10px;
@@ -270,11 +270,11 @@
             font-size: 14px;
             transition: background 0.3s;
         }
-        
+
         .copy-btn:hover {
             background: #764ba2;
         }
-        
+
         .video-container {
             position: relative;
             width: 100%;
@@ -284,7 +284,7 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        
+
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -292,16 +292,16 @@
             width: 100%;
             height: 100%;
         }
-        
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
             }
-            
+
             .main-content {
                 padding: 30px 20px;
             }
-            
+
             .highlights {
                 grid-template-columns: 1fr;
             }
@@ -311,36 +311,29 @@
 <body>
     <div class="container">
         <div class="main-content">
-            <!-- Header -->
             <div style="text-align: center;">
                 <span class="badge">NeurIPS 2025 Accepted Paper</span>
-                <h1>Anti-Causal Invariant Abstractions</h1>
+                <h1>Measure-Theoretic Anti-Causal Representation Learning</h1>
                 <p class="subtitle">A Measure-Theoretic Framework for OOD Generalization</p>
             </div>
-            
-            <!-- Authors -->
+
             <div class="authors">
                 <div class="author">
-                    <a href="#" class="author-name">Author Name 1</a>
-                    <div class="affiliation">Institution 1</div>
+                    <a href="#" class="author-name">Arman Behnam <span style="font-size: 0.8em;">&#x1f91d;</span></a>
+                    <div class="affiliation">Department of Computer Science, Illinois Institute of Technology</div>
                 </div>
                 <div class="author">
-                    <a href="#" class="author-name">Author Name 2</a>
-                    <div class="affiliation">Institution 2</div>
-                </div>
-                <div class="author">
-                    <a href="#" class="author-name">Author Name 3</a>
-                    <div class="affiliation">Institution 3</div>
+                    <a href="#" class="author-name">Binghui Wang <span style="font-size: 0.8em;">&#x1f91d;</span></a>
+                    <div class="affiliation">Department of Computer Science, Illinois Institute of Technology</div>
                 </div>
             </div>
-            
-            <!-- Buttons -->
+
             <div class="buttons">
                 <a href="#" class="btn btn-primary">
-                    <i class="fas fa-file-pdf"></i> Paper
+                    <i class="fas fa-file-pdf"></i> Paper (PDF)
                 </a>
-                <a href="#" class="btn">
-                    <i class="fab fa-github"></i> Code
+                <a href="https://github.com/ArmanBehnam/ACIA" class="btn" target="_blank">
+                    <i class="fab fa-github"></i> Code (ACIA)
                 </a>
                 <a href="#" class="btn">
                     <i class="fas fa-file-alt"></i> arXiv
@@ -352,11 +345,9 @@
                     <i class="fas fa-quote-left"></i> BibTeX
                 </a>
             </div>
-            
-            <!-- Hero Image -->
+
             <img src="images/overview.jpg" alt="Method Overview" class="hero-image">
-            
-            <!-- Key Results -->
+
             <section class="section">
                 <h2>Key Results</h2>
                 <div class="highlights">
@@ -374,39 +365,32 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Abstract -->
+
             <section class="section">
                 <h2>Abstract</h2>
                 <p style="font-size: 1.1em; line-height: 1.8; text-align: justify;">
-                    We introduce a novel measure-theoretic framework for learning causal invariants in anti-causal domains. 
-                    Our approach identifies causal invariants through direct measurement of product causal spaces, addressing 
-                    covariate shift robustness through intervention-based causal abstraction. By decomposing representations 
-                    into causal latent dynamics (Z_L) and causal latent abstraction (Z_H), we achieve state-of-the-art 
-                    performance on challenging benchmarks while maintaining perfect environment independence.
+                    [cite_start]Causal representation learning in the anti-causal setting—labels cause features rather than the reverse—presents unique challenges requiring specialized approaches[cite: 2]. [cite_start]We propose Anti-Causal Invariant Abstractions (ACIA), a novel measure-theoretic framework for anti-causal representation learning[cite: 3]. [cite_start]ACIA employs a two-level design: low-level representations capture how labels generate observations, while high-level representations learn stable causal patterns across environment-specific variations[cite: 4]. [cite_start]ACIA addresses key limitations of existing approaches by: (1) accommodating prefect and imperfect interventions through interventional kernels, (2) eliminating dependency on explicit causal structures, (3) handling high-dimensional data effectively, and (4) providing theoretical guarantees for out-of-distribution generalization[cite: 5]. [cite_start]Experiments on synthetic and real-world medical datasets demonstrate that ACIA consistently outperforms state-of-the-art methods in both accuracy and invariance metrics[cite: 6]. [cite_start]Furthermore, our theoretical results establish tight bounds on performance gaps between training and unseen environments, confirming the efficacy of our approach for robust anti-causal learning[cite: 7].
                 </p>
             </section>
-            
-            <!-- Video -->
+
             <section class="section">
                 <h2>Video Overview</h2>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
                 </div>
             </section>
-            
-            <!-- Contributions -->
+
             <section class="section">
                 <h2>Main Contributions</h2>
                 <ul class="contributions">
-                    <li>First measure-theoretic framework for anti-causal representation learning that handles both perfect and imperfect interventions</li>
-                    <li>Two-level representation learning approach decomposing into causal latent dynamics and abstraction</li>
-                    <li>Theoretical guarantees for kernel independence and optimization convergence</li>
-                    <li>State-of-the-art performance on CMNIST with perfect environment independence</li>
+                    [cite_start]<li>A novel **measure-theoretic framework** for anti-causal representation learning called **Anti-Causal Invariant Abstractions (ACIA)**[cite: 3].</li>
+                    [cite_start]<li>A **two-level design** where low-level representations capture label generation of observations, and high-level representations learn stable causal patterns across environments[cite: 4].</li>
+                    [cite_start]<li>The framework accommodates **perfect and imperfect interventions** using interventional kernels and **eliminates dependency on explicit causal structures**[cite: 5].</li>
+                    [cite_start]<li>Provides **theoretical guarantees** for out-of-distribution generalization, establishing tight bounds on performance gaps between environments[cite: 5, 7].</li>
+                    [cite_start]<li>Achieves **state-of-the-art performance** on synthetic and real-world medical datasets in both accuracy and invariance[cite: 6].</li>
                 </ul>
             </section>
-            
-            <!-- Results Table -->
+
             <section class="section">
                 <h2>Quantitative Results</h2>
                 <table class="results-table">
@@ -438,7 +422,7 @@
                             <td>0.54</td>
                         </tr>
                         <tr style="background: #f0f8ff; font-weight: 600;">
-                            <td>Ours</td>
+                            <td>ACIA (Ours)</td>
                             <td>97.7%</td>
                             <td>0.92</td>
                             <td>0.85</td>
@@ -446,44 +430,42 @@
                     </tbody>
                 </table>
             </section>
-            
-            <!-- Citation -->
+
             <section class="section" id="bibtex">
                 <h2>Citation</h2>
                 <div class="bibtex-container">
                     <button class="copy-btn" onclick="copyBibtex()">Copy</button>
-                    <pre class="bibtex-code">@inproceedings{author2025anticausal,
-  title={Anti-Causal Invariant Abstractions: A Measure-Theoretic Framework for OOD Generalization},
-  author={Author, First and Author, Second and Author, Third},
+                    <pre class="bibtex-code">@inproceedings{behnam2025anticausal,
+  title={Measure-Theoretic Anti-Causal Representation Learning},
+  author={Behnam, Arman and Wang, Binghui},
   booktitle={Advances in Neural Information Processing Systems},
   year={2025}
 }</pre>
                 </div>
             </section>
-            
-            <!-- Footer -->
+
             <div style="text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid #eee;">
-                <p style="color: #888;">© 2025 NeurIPS. Project page template available on <a href="#" style="color: #667eea;">GitHub</a></p>
+                <p style="color: #888;">© 2025 NeurIPS. Code is available at <a href="https://github.com/ArmanBehnam/ACIA" target="_blank" style="color: #667eea;">https://github.com/ArmanBehnam/ACIA</a></p>
             </div>
         </div>
     </div>
-    
+
     <script>
         function copyBibtex() {
             const bibtex = document.querySelector('.bibtex-code').textContent;
             navigator.clipboard.writeText(bibtex);
-            
+
             const btn = document.querySelector('.copy-btn');
             const originalText = btn.textContent;
             btn.textContent = 'Copied!';
             btn.style.background = '#4caf50';
-            
+
             setTimeout(() => {
                 btn.textContent = originalText;
                 btn.style.background = '#667eea';
             }, 2000);
         }
-        
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
