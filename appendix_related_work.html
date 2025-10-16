@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. More Related Work | ACIA Framework</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; line-height: 1.6; }
+        .page-container { max-width: 900px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { font-size: 2em; color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        h3 { font-size: 1.5em; color: #333; margin-top: 30px; margin-bottom: 15px; }
+        h4 { font-size: 1.2em; color: #555; margin-top: 25px; margin-bottom: 10px; }
+        p { margin-bottom: 1.5em; font-size: 1.1em; text-align: justify; }
+        ul, ol { margin-bottom: 1.5em; padding-left: 25px; font-size: 1.1em; }
+        .table-container { margin: 25px 0; overflow-x: auto; }
+        .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.85em; text-align: center; }
+        .comparison-table th, .comparison-table td { border: 1px solid #ddd; padding: 8px; }
+        .comparison-table th { background-color: #f2f2f2; color: #1a73e8; }
+        .comparison-table .method { text-align: left; }
+        .caption { text-align: center; font-style: italic; margin-bottom: 10px; font-size: 1em; }
+        .note-list { list-style-type: disc; padding-left: 25px; }
+    </style>
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <div class="page-container">
+        <p><a href="index.html">← Back to Main Page</a></p>
+
+        <h2>10. More Related Work</h2>
+
+        <div class="table-container">
+            <p class="caption">Table 1: Summarizing Causal and Non-Causal Invariant Representation Learning Methods</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Anti-causal Structure</th>
+                        <th>SCM Requirements</th>
+                        <th>Imperfect Interventions</th>
+                        <th>Intervention Inference</th>
+                        <th>Nonparametric</th>
+                        <th>High-dim Data</th>
+                        <th>OOD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="8" style="font-weight: bold; background-color: #f7f7f7;">Distribution/Domain-invariant Learning</td></tr>
+                    <tr><td class="method">(C-)ADA</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>❌</td></tr>
+                    <tr><td class="method">Domain adaptation</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">DDAIG</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">L2A-OT</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">ERM</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>❌</td></tr>
+                    <tr><td class="method">DOMAINBED</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">StableNet</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">SagNets</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">SWAD</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>❌</td></tr>
+                    <tr><td class="method">FACT</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">Evaluation Protocol</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">Ratatouille</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">XRM</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>❌</td></tr>
+                    <tr><td class="method">FeAT</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">AIA</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">IRM</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>❌</td></tr>
+                    <tr><td class="method">Rex</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">CI to Spurious</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">Information Bottleneck</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">CausalDA</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">Transportable Rep</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+
+                    <tr><td colspan="8" style="font-weight: bold; background-color: #f7f7f7;">Structure-based Causal Representation Learning</td></tr>
+                    <tr><td class="method">DISRL</td><td>❌</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">Causal Disentanglement</td><td>❌</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">ICP</td><td>❌</td><td>✅</td><td>❌</td><td>❌</td><td>✅</td><td>❌</td><td>❌</td></tr>
+                    <tr><td class="method">ICP for nonlinear</td><td>❌</td><td>✅</td><td>❌</td><td>❌</td><td>✅</td><td>❌</td><td>✅</td></tr>
+                    <tr><td class="method">Active ICP</td><td>❌</td><td>✅</td><td>❌</td><td>❌</td><td>✅</td><td>❌</td><td>✅</td></tr>
+                    <tr><td class="method">CSG</td><td>❌</td><td>✅</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">LECI</td><td>❌</td><td>✅</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">KCDC</td><td>❌</td><td>✅</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">Separation & Risk</td><td>❌</td><td>✅</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+
+                    <tr><td colspan="8" style="font-weight: bold; background-color: #f7f7f7;">Intervention-based Causal Learning</td></tr>
+                    <tr><td class="method">Nonparametric ICR</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">General Nonlinear Mixing</td><td>❌</td><td>✅</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">Weakly supervised</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">iCaRL</td><td>❌</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">CIRL</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">ICRL</td><td>❌</td><td>✅</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">LCA</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">ICA</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td></tr>
+                    <tr><td class="method">AIT</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td></tr>
+
+                    <tr><td class="method" style="font-weight: bold;">ACIA</td><td>✅</td><td>❌</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <section>
+            <h3>More Related Work</h3>
+            <p>In Table 1, we broadly summarize causal and non-causal invariant representation learning methods.</p>
+
+            <h4>Distribution/Domain-invariant Learning</h4>
+            <p>Early non-causal methods like (C-)ADA and DDAIG focused on domain adaptation strategies, while more recent works such as FeAT and AIA have developed sophisticated objective functions for distribution shift robustness. Domain adaptation methods, L2A-OT, ERM, DOMAINBED, Adversarial and Pre-training, StableNet, SagNets, SWAD, Theoretical Framework, FACT, Evaluation Protocol, Ratatouille, XRM, IRM, Rex, CI to Spurious, Information Bottleneck, CausalDA, and Transportable Rep also fall under this category as they aim to learn representations invariant across different distributions or domains.</p>
+
+            <h4>Intervention-based Causal Learning</h4>
+            <p>Foundational works in the causal domain include Nonparametric ICR which jointly learns encoders and intervention targets with SCM-based structures and General Nonlinear Mixing which addresses non-linear relationships in latent spaces, which model causal effects through interventions. Weakly supervised methods, iCaRL, CIRL, and LCA also leverage interventions for learning causal representations. ICRL also falls under this category. Weak distributional invariances considers perfect interventions for single-node, and addresses multi-node imperfect interventions by identifying latent variables whose distributional properties remain stable. Independent Component Analysis (ICA) focus on unsupervised identification of latent causal variables through component analysis, and operate the disentanglement through taxonomic distance measures and graph-based analysis. AIT builds on SCMs with explicit DAG assumptions, and primarily focuses on standard causal direction.</p>
+
+            <h4>Structure-based Causal Representation Learning</h4>
+            <p>Methods like DISRL and Causal Disentanglement explicitly model causal structures. Foundational works like ICP and its nonlinear extension, as well as CSG and LECI which focuses on identifying causal subgraphs while removing spurious correlations, also incorporate causal structure but often require explicit Directed Acyclic Graphs (DAGs) or focus on identifying causal subgraphs. KCDC employs kernel methods primarily for causal discovery and orientation, and focuses on statistical independence tests through kernel measures. Anti-causal separation and risk invariance inputs are generated as functions of target labels and protected attributes. They use conventional causal modeling with DAGs and do-calculus.</p>
+        </section>
+
+        <div class="table-container">
+            <p class="caption">Table 2: Key Notations in Anti-Causal Representation Learning Framework</p>
+            <table class="comparison-table" style="font-size: 0.9em; text-align: left;">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Name</th>
+                        <th style="width: 25%;">Symbol</th>
+                        <th style="width: 25%;">Name</th>
+                        <th style="width: 25%;">Symbol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Environment</td><td>\(e_i\)</td><td>Product sample space</td><td>\(\Omega = \Omega_{e_i} \times \Omega_{e_j}\)</td></tr>
+                    <tr><td>Set of environments</td><td>\(\mathcal{E}\)</td><td>Product \(\sigma\)-algebra</td><td>\(\mathscr{H} = \mathscr{H}_{e_i} \otimes \mathscr{H}_{e_j}\)</td></tr>
+                    <tr><td>Environment sample space</td><td>\(\Omega_{e_i}\)</td><td>Product probability measure</td><td>\(\mathbb{P} = \mathbb{P}_{e_i} \otimes {P}_{e_j}\)</td></tr>
+                    <tr><td>\(\sigma\)-algebra on \(\Omega_{e_i}\)</td><td>\(\mathscr{H}_{e_i}\)</td><td>Product causal kernel family</td><td>\(\mathbb{K} = \{K_S : S \in \mathscr{P}(T)\}\)</td></tr>
+                    <tr><td>Probability measure</td><td>\(\mathbb{P}_{e_i}\)</td><td>Input space</td><td>\(\mathcal{X}\)</td></tr>
+                    <tr><td>Causal kernel</td><td>\(K_{e_i}\)</td><td>Low-level latent space domain</td><td>\(\mathcal{D}_{\mathbb{Z}_L}\)</td></tr>
+                    <tr><td>Environment causal space</td><td>\((\Omega_{e_i}, \mathscr{H}_{e_i}, \mathbb{P}_{e_i}, K_{e_i})\)</td><td>High-level latent space</td><td>\(\mathcal{D}_{Z_H}\)</td></tr>
+                    <tr><td>Causal product space</td><td>\((\Omega, \mathscr{H}, \mathbb{P}, \mathbb{K})\)</td><td>Label space</td><td>\(\mathcal{Y}\)</td></tr>
+                    <tr><td>Sub-\(\sigma\)-algebra</td><td>\(\mathscr{H}_S\)</td><td>Low-level representation</td><td>\(\phi_L: \mathcal{X} \rightarrow \mathcal{D}_{\mathbb{Z}_L}\)</td></tr>
+                    <tr><td>Index set</td><td>\(T = T_{e_i} \cup T_{e_j}\)</td><td>High-level representation</td><td>\(\phi_H: \mathcal{D}_{\mathbb{Z}_L} \rightarrow \mathcal{D}_{Z_H}\)</td></tr>
+                    <tr><td>Interventional kernel</td><td>\(K_S^{do(\mathcal{X}, \mathbb{Q})}(\omega, A)\)</td><td>Predictor</td><td>\(\mathcal{C}: \mathcal{D}_{Z_H} \rightarrow \mathcal{Y}\)</td></tr>
+                    <tr><td>Intervention measure</td><td>\(\mathbb{Q}(\cdot|\cdot)\)</td><td>Full predictive model</td><td>\(f = \mathcal{C} \circ \phi_H \circ \phi_L\)</td></tr>
+                    <tr><td>Marginal measure on \(\mathcal{Y}\)</td><td>\(\mu_Y\)</td><td>Loss function</td><td>\(\ell: \mathcal{Y} \times \mathcal{Y} \rightarrow \mathbb{R}_+\)</td></tr>
+                    <tr><td>Causal dynamic</td><td>\(\mathcal{Z}_L = \langle \mathcal{X}, \mathbb{Q}, \mathbb{K}_L\rangle\)</td><td>Environment independence reg.</td><td>\(R_1\)</td></tr>
+                    <tr><td>Causal abstraction</td><td>\(\mathcal{Z}_H = \langle \mathbf{V}_H, \mathbb{K}_H \rangle\)</td><td>Causal structure alignment reg.</td><td>\(R_2\)</td></tr>
+                    <tr><td>Set of low-level kernels</td><td>\(\mathbb{K}_L = \{K_S^{\mathbb{Z}_{L}}(\omega, A)\}\)</td><td>Regularization parameters</td><td>\(\lambda_1, \lambda_2\)</td></tr>
+                    <tr><td>Set of high-level kernels</td><td>\(\mathbb{K}_H = \{K_S^{\mathbb{Z}_{H}}(\omega, A)\}\)</td><td>Conditional mutual information</td><td>\(I(X; E=e \mid Y)\)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <section>
+            <h4>Comparison of Prior Information Requirements</h4>
+            <p>Table 3 compares the prior knowledge requirements across state-of-the-art causal representation learning methods. Our results demonstrate that despite requiring less prior information, ACIA outperforms these methods.</p>
+            <ul class="note-list">
+                <li>"Variable roles only" refers to knowing which variable is the target (\(Y\)), observations (\(X\)), and environmental factors (\(E\)).</li>
+                <li>"Variable types" means knowing the data type of each variable, such as whether it is binary, categorical, or drawn from a specific noise distribution.</li>
+                <li>"Variable relationship" refers to knowing the causal structure (i.e., the directionality in the causal DAG) among the variables.</li>
+            </ul>
+
+            <div class="table-container">
+                <p class="caption">Table 3: Comparison of prior information requirements across causal representation learning methods</p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Causal Structure</th>
+                            <th>SCM Knowledge</th>
+                            <th>Intervention Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="method">ACTIR</td><td>Anti-causal \(Y \rightarrow X \leftarrow E\)</td><td>Variable roles only</td><td>Perfect only</td></tr>
+                        <tr><td class="method">CausalDA</td><td>DAG structure</td><td>Variable types</td><td>Perfect only</td></tr>
+                        <tr><td class="method">LECI</td><td>Partial connectivity</td><td>Variable relationships</td><td>Perfect only</td></tr>
+                        <tr><td class="method" style="font-weight: bold;">ACIA</td><td>\(\mathbf{Anti-causal\ Y \rightarrow X \leftarrow E}\)</td><td>\(\mathbf{Variable\ roles\ only}\)</td><td>\(\mathbf{Both\ perfect\ and\ imperfect}\)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
