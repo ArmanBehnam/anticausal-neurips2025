@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction | ACIA Framework</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; line-height: 1.6; }
+        .page-container { max-width: 900px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { font-size: 2em; color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        p, ul { margin-bottom: 1.5em; font-size: 1.1em; text-align: justify; }
+        figure { margin: 20px 0; display: flex; flex-direction: column; align-items: center; }
+        img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        figcaption { text-align: center; font-style: italic; font-size: 0.9em; color: #555; margin-top: 10px; }
+        a { color: #1a73e8; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <p><a href="index.html">← Back to Main Page</a></p>
+
+        <h2>1. Introduction</h2>
+
+        <p>Causal representation learning discovers causal relationships underlying data rather than statistical associations [cite: scholkopf2021toward]. At its core, causal representation learning seeks to identify **high-level causal variables** from low-level observations, bridging the gap between statistical pattern recognition and causal reasoning. Learning these causal variables offers transformative potential for artificial intelligence systems that can reason about cause and effect.</p>
+
+        <figure>
+            <!-- Placeholder for the Anti-Causal Diagram image (You need to generate or use the image from your TikZ code) -->
+            <img src="./images/anti_causal_diagram.png" alt="Anti-Causal Diagram">
+            <figcaption>Figure 1.1: Anti-Causal Diagram, where orange arrows represent causal dependencies ($Y \to X$) and blue/dashed arrows represent spurious or confounding dependencies ($E \to X$).</figcaption>
+        </figure>
+
+        <p>A particularly challenging yet promising domain is learning representations in the **anti-causal** setting, where the causal direction is reversed from traditional prediction tasks. Consider a disease diagnosis from chest X-rays across different hospitals [cite: castro2020causality]. A disease ($Y$) causes observable symptoms ($X$), forming $Y \rightarrow X$. Environmental factors ($E$, e.g., hospital protocols) introduce spurious correlations, forming the anti-causal structure $Y \rightarrow X \leftarrow E$. This structure requires specialized methods to disentangle causal mechanisms from environmental artifacts.</p>
+
+        <p>However, existing methods face several critical limitations:</p>
+        <ul>
+            <li>**Perfect Interventions:** Many intervention-based approaches assume perfect interventions, a restrictive condition rarely satisfied in the real world.</li>
+            <li>**Explicit SCM:** Structure-based methods rely on explicit Structural Causal Models (SCM), posing hurdles when the underlying SCM is unknown.</li>
+            <li>**Single-Level Representations:** Single-level representations learned by these methods struggle to simultaneously capture the causal mechanism ($Y \to X$) and filter spurious correlations ($E \to X$) [cite: arjovsky2019invariant].</li>
+        </ul>
+
+        <p>We develop **Anti-Causal Invariant Abstraction (ACIA)**, a two-level framework, to address these limitations. ACIA involves:</p>
+        <ul>
+            <li>**Causal Dynamics** to learn low-level representations that capture the anti-causal structure by encoding how labels generate observable features, supporting both perfect and imperfect interventions.</li>
+            <li>**Causal Abstraction** to learn high-level, environment-invariant representations that distill causal features by discarding spurious environmental correlations.</li>
+            <li>**Theoretical Guarantees** establishing convergence rates and OOD generalization bounds.</li>
+        </ul>
+
+        <p>We extensively evaluate ACIA on synthetic (CMNIST, RMNIST) and real-world medical (Camelyon17) datasets. Our results demonstrate ACIA achieves almost perfect accuracy (e.g., 99%) on CMNIST/RMNIST and achieves **84.40% accuracy** on Camelyon17—a 19% improvement over the best baseline—validating its ability to learn robust anti-causal representations.</p>
+
+    </div>
+</body>
+</html>

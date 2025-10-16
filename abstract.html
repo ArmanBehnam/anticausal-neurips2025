@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract | ACIA Framework</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; line-height: 1.6; }
+        .page-container { max-width: 900px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { font-size: 2em; color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        p, ul { margin-bottom: 1.5em; font-size: 1.1em; text-align: justify; }
+        a { color: #1a73e8; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <p><a href="index.html">← Back to Main Page</a></p>
+
+        <h2>Abstract</h2>
+
+        <p>Causal representation learning in the anti-causal setting—labels cause features rather than the reverse—presents unique challenges requiring specialized approaches. We propose **Anti-Causal Invariant Abstractions (ACIA)**, a novel measure-theoretic framework for anti-causal representation learning. ACIA employs a two-level design: low-level representations capture how labels generate observations, while high-level representations learn stable causal patterns across environment-specific variations.</p>
+
+        <p>ACIA addresses key limitations of existing approaches by:</p>
+        <ul>
+            <li>Accommodating perfect and imperfect interventions through **interventional kernels**.</li>
+            <li>Eliminating dependency on explicit causal structures.</li>
+            <li>Handling high-dimensional data effectively.</li>
+            <li>Providing **theoretical guarantees** for out-of-distribution generalization.</li>
+        </ul>
+
+        <p>Experiments on synthetic and real-world medical datasets demonstrate that ACIA consistently outperforms state-of-the-art methods in both accuracy and invariance metrics. Furthermore, our theoretical results establish tight bounds on performance gaps between training and unseen environments, confirming the efficacy of our approach for robust anti-causal learning. (Code is available at <a href="https://github.com/ArmanBehnam/ACIA">https://github.com/ArmanBehnam/ACIA</a>).</p>
+    </div>
+</body>
+</html>
