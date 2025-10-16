@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimental Results | ACIA Framework</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; line-height: 1.6; }
+        .page-container { max-width: 900px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { font-size: 2em; color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        h3 { font-size: 1.5em; color: #333; margin-top: 30px; margin-bottom: 15px; }
+        h4 { font-size: 1.2em; color: #555; margin-top: 25px; margin-bottom: 10px; }
+        p { margin-bottom: 1.5em; font-size: 1.1em; text-align: justify; }
+        ul, ol { margin-bottom: 1.5em; padding-left: 25px; font-size: 1.1em; }
+        .table-container { margin: 25px 0; overflow-x: auto; }
+        .result-table { width: 100%; border-collapse: collapse; font-size: 0.9em; text-align: center; }
+        .result-table th, .result-table td { border: 1px solid #ddd; padding: 8px; }
+        .result-table th { background-color: #f2f2f2; color: #1a73e8; }
+        .result-table .method { text-align: left; font-weight: bold; }
+        .caption { text-align: center; font-style: italic; margin-bottom: 10px; font-size: 1em; }
+        .figure-placeholder { border: 1px solid #ccc; padding: 15px; margin: 20px 0; background-color: #fafafa; border-radius: 5px; text-align: center; }
+        .figure-placeholder p { margin: 0; font-size: 1em; }
+    </style>
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <div class="page-container">
+        <p><a href="index.html">← Back to Main Page</a></p>
+
+        <h2>7. Experimental Results</h2>
+
+        <div class="table-container">
+            <p class="caption">Table 1: Comparisons with baselines across four datasets and metrics.</p>
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Method</th>
+                        <th colspan="4">CMNIST</th>
+                        <th colspan="4">RMNIST</th>
+                        <th colspan="4">Ball Agent</th>
+                        <th colspan="4">Camelyon17</th>
+                    </tr>
+                    <tr>
+                        <th>Acc\(\uparrow\)</th>
+                        <th>EI\(\downarrow\)</th>
+                        <th>LLI\(\downarrow\)</th>
+                        <th>IR\(\downarrow\)</th>
+                        <th>Acc\(\uparrow\)</th>
+                        <th>EI\(\downarrow\)</th>
+                        <th>LLI\(\downarrow\)</th>
+                        <th>IR\(\downarrow\)</th>
+                        <th>Acc\(\uparrow\)</th>
+                        <th>EI\(\downarrow\)</th>
+                        <th>LLI\(\downarrow\)</th>
+                        <th>IR\(\downarrow\)</th>
+                        <th>Acc\(\uparrow\)</th>
+                        <th>EI\(\downarrow\)</th>
+                        <th>LLI\(\downarrow\)</th>
+                        <th>IR\(\downarrow\)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="method">GDRO</td><td>92.00</td><td>1.85</td><td>0.80</td><td>0.91</td><td>63.00</td><td>16.03</td><td>4.10</td><td>1.53</td><td>66.00</td><td>1.04</td><td>0.69</td><td>0.75</td><td>58.00</td><td>1.32</td><td>0.87</td><td>0.83</td></tr>
+                    [cite_start]<tr><td class="method">MMD</td><td>94.00</td><td>1.22</td><td>1.73</td><td>1.13</td><td>92.00 [cite: 180]</td><td>6.88</td><td>15.62</td><td>0.69</td><td>68.50</td><td>1.13</td><td>0.87</td><td>1.82</td><td>60.00</td><td>4.43</td><td>2.16</td><td>1.12</td></tr>
+                    <tr><td class="method">CORAL</td><td>89.00</td><td>1.48</td><td>2.06</td><td>1.30</td><td>91.00</td><td>4.02</td><td>9.56</td><td>0.31</td><td>70.50</td><td>1.23</td><td>1.92</td><td>1.84</td><td>41.00</td><td>1.62</td><td>2.45</td><td>1.01</td></tr>
+                    <tr><td class="method">DANN</td><td>45.00</td><td>0.03</td><td>0.86</td><td>0.20</td><td>38.50</td><td>12.82</td><td>3.85</td><td>1.47</td><td>61.00</td><td>1.35</td><td>0.96</td><td>0.89</td><td>39.00</td><td>0.68</td><td>1.40</td><td>1.95</td></tr>
+                    [cite_start]<tr><td class="method">IRM [cite: 181]</td><td>85.00</td><td>1.43</td><td>0.83</td><td>1.08</td><td>85.50</td><td>19.03</td><td>6.64</td><td>3.17</td><td>56.00</td><td>0.89</td><td>0.67</td><td>1.71</td><td>52.00</td><td>1.95</td><td>1.76</td><td>2.45</td></tr>
+                    <tr><td class="method">Rex</td><td>73.00</td><td>0.69</td><td>1.41</td><td>1.80</td><td>80.50</td><td>0.69</td><td>10.69</td><td>0.96</td><td>54.50</td><td>1.05</td><td>0.11</td><td>7.65</td><td>39.00</td><td>0.68</td><td>1.40</td><td>1.95</td></tr>
+                    [cite_start]<tr><td class="method">VREx</td><td>95.50</td><td>1.71</td><td>1.09</td><td>0.77</td><td>93.50</td><td>2.41</td><td>2.77</td><td>1.03</td><td>74.00 [cite: 182]</td><td>0.93</td><td>0.78</td><td>0.73</td><td>54.50</td><td>1.98</td><td>1.78</td><td>1.02</td></tr>
+                    <tr><td class="method">ACTIR</td><td>78.50</td><td>0.64</td><td>0.97</td><td>1.80</td><td>72.00</td><td>0.23</td><td>18.79</td><td>0.19</td><td>69.00</td><td>0.88</td><td>0.02</td><td>0.58</td><td>60.50</td><td>0.60</td><td>0.63</td><td>0.80</td></tr>
+                    <tr><td class="method">CausalDA</td><td>83.50</td><td>0.41</td><td>0.85</td><td>12.23</td><td>87.50</td><td>0.62</td><td>0.91</td><td>16.44</td><td>45.50</td><td>1.20</td><td>0.85</td><td>1.22</td><td>55.50</td><td>0.55</td><td>1.60</td><td>10.55</td></tr>
+                    [cite_start]<tr><td class="method">LECI [cite: 183]</td><td>70.00</td><td>0.83</td><td>0.40</td><td>0.67</td><td>82.00</td><td>0.29</td><td>2.91</td><td>0.04</td><td>71.20</td><td><strong>0.46</strong></td><td>0.39</td><td>0.05</td><td>65.50</td><td><strong>0.23</strong></td><td>0.50</td><td>0.45</td></tr>
+                    <tr><td class="method"><strong>ACIA</strong></td><td><strong>99.20</strong></td><td><strong>0.00</strong></td><td><strong>0.01</strong></td><td><strong>0.02</strong></td><td><strong>99.10</strong></td><td><strong>0.00</strong></td><td><strong>0.03</strong></td><td><strong>0.01</strong></td><td><strong>99.98</strong></td><td>0.52</td><td><strong>0.03</strong></td><td><strong>0.03</strong></td><td><strong>84.40</strong></td><td>0.28</td><td><strong>0.42</strong></td><td><strong>0.43</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Results under Perfect Intervention</h3>
+        [cite_start]<p>Table 1 comprehensively presents the comparison results of ACIA with existing baselines[cite: 184]. [cite_start]These results validate our measure-theoretic framework's ability to capture and exploit anti-causal structures in synthetic and real-world settings[cite: 184, 185]. In particular, the results highlight several key findings:</p>
+        <ol>
+            [cite_start]<li><strong>Our ACIA performs the best and significantly outperforms baselines.</strong> For instance, on CMNIST and RMNIST, ACIA achieves an accuracy of 99.00%+, perfect environment independence (\(0.00\)), almost perfect interventional robustness (\(0.02\) and \(0.01\)), and low-level invariance (\(0.01\) and \(0.03\)), significantly surpassing others baseline[cite: 185]. [cite_start]On Ball Agent, our ACIA achieves \(99.72\%\) accuracy, and almost perfect low-level invariance and interventional robustness[cite: 186]. [cite_start]On the real-world Camelyon17, ACIA achieves the best test accuracy \(87.00\%\) and retains the underlying causal properties[cite: 187].</li>
+            [cite_start]<li><strong>Causal dynamic construction (Theorem \(\ref{thm:causal_dynamics}\)) is confirmed</strong> by the low-level invariance in our results[cite: 188]. [cite_start]This matches the theoretical expectation of environment-independent feature learning[cite: 189].</li>
+            [cite_start]<li><strong>Interventional kernel invariance (Corollary \(\ref{cor:iic}\)) is empirically validated</strong> via the intervention robustness score, implying the distinction between observational and interventional distributions[cite: 190].</li>
+            [cite_start]<li><strong>Anti-Causal OOD generalization bound (Theorem \(\ref{cor:acogb}\) in Appendix) is substantiated</strong> by the test accuracy improvements over the compared baselines across all datasets[cite: 190, 191].</li>
+        </ol>
+
+        <h3>Results under Imperfect Intervention</h3>
+        [cite_start]<p><strong>Perfect/Hard intervention</strong> completely disconnects intervened variables from their causes, while <strong>imperfect/soft intervention</strong> modifies causal mechanisms and maintains partial original dependencies[cite: 191, 192]. [cite_start]This experiment aims to validate the effectiveness of our ACIA against imperfect intervention on the studied datasets, with details of constructing imperfect intervention discussed in Appendix \(\ref{app:perimper}\)[cite: 192]. Table 2 shows the results. [cite_start]We can see that imperfect intervention achieves similar results on the four datasets and metrics as perfect intervention[cite: 193]. [cite_start]This supports our theoretical claim that ACIA can effectively handle both perfect and imperfect interventions via its interventional kernel formulation[cite: 194].</p>
+
+        <div class="table-container">
+            <p class="caption">Table 2: ACIA performance under imperfect intervention.</p>
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Dataset</th>
+                        <th colspan="4">CMNIST</th>
+                        <th colspan="4">RMNIST</th>
+                        <th colspan="4">Ball Agent</th>
+                        <th colspan="4">Camelyon17</th>
+                    </tr>
+                    <tr>
+                        <th>Acc</th>
+                        <th>EI</th>
+                        <th>LLI</th>
+                        <th>IR</th>
+                        <th>Acc</th>
+                        <th>EI</th>
+                        <th>LLI</th>
+                        <th>IR</th>
+                        <th>Acc</th>
+                        <th>EI</th>
+                        <th>LLI</th>
+                        <th>IR</th>
+                        <th>Acc</th>
+                        <th>EI</th>
+                        <th>LLI</th>
+                        <th>IR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="method"><strong>Value</strong></td>
+                        <td>99.4</td>
+                        <td>0.00</td>
+                        <td>0.01</td>
+                        <td>0.03</td>
+                        <td>99.0</td>
+                        <td>0.01</td>
+                        <td>0.03</td>
+                        <td>0.01</td>
+                        <td>99.7</td>
+                        <td>0.44</td>
+                        <td>0.06</td>
+                        <td>0.06</td>
+                        <td>84.4</td>
+                        <td>0.30</td>
+                        <td>0.44</td>
+                        <td>0.45</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Visualizing Learnt Representations</h3>
+
+        <h4 id="cm-results">Results on CMNIST</h4>
+        <div class="figure-placeholder">
+            <p><strong>Figure 3: t-SNE visualization of ACIA representations on CMNIST.</strong></p>
+            <p>[Image Placeholder for Figure 3: t-SNE visualization of ACIA representations on CMNIST]</p>
+            <p>From left to right: (1) Low-level representations show initial digit clustering with color influence; (2) High-level representations show improved digit separation; (3) Environment visualization demonstrates removal of environment-specific information; (4) [cite_start]Parity analysis reveals clear separation between even and odd digits[cite: 196, 197, 198].</p>
+        </div>
+        [cite_start]<p>Figure 3 demonstrates ACIA's ability to learn representations that perfectly capture the anti-causal structure and predict the test data[cite: 199]. (1) [cite_start]<strong>Low-level representations</strong> show clear digit-based clustering while retaining certain environment information[cite: 200]; (2) [cite_start]<strong>High-level representations</strong> improve digit cluster separation[cite: 201]; (3) [cite_start]<strong>The environment visualization</strong> confirms the removal of environment-specific information by showing colored images from different environments are mixed [cite: 202][cite_start]; and (4) <strong>The parity visualization</strong> confirms ACIA preserves meaningful numerical relationships (alternating pattern between even/odd digits) while eliminating spurious color correlations[cite: 203]. This organization aligns with findings showing that neural networks capture abstract number properties beyond visual features.</p>
+
+        <h4 id="rm-results">Results on RMNIST</h4>
+        <div class="figure-placeholder">
+            <p><strong>Figure 4: t-SNE visualization of ACIA representations on RMNIST.</strong></p>
+            <p>[Image Placeholder for Figure 4: t-SNE visualization of ACIA representations on RMNIST]</p>
+            <p>From left to right: (1) Low-level representations show digit clustering but with rotation influence; (2) High-level representations with better digit boundaries; (3) Rotation angle visualization shows uniform distribution across the representation space; (4) [cite_start]Digit complexity reveals semantic organization by structural properties[cite: 204, 205, 206].</p>
+        </div>
+        [cite_start]<p>Similarly, (1) <strong>Low-level representations</strong> show clear digit-based clustering but keep certain rotation information[cite: 207, 208]; (2) [cite_start]<strong>High-level representations</strong> show more distinct boundaries[cite: 208]; (3) [cite_start]<strong>The rotation angle visualization</strong> confirms successful abstraction of rotation-specific information by displaying uniform coloring across the entire representation space [cite: 209][cite_start]; and (4) <strong>The digit complexity visualization</strong> reveals semantic organization where digits with similar structural properties cluster together[cite: 209]. This organization groups digits into: <em>Simple (0,1,7)</em>, <em>Medium (2,3,5)</em>, and <em>Complex (4,6,8,9)</em>, based on structural properties like stroke count and topological complexity.</p>
+
+        <h4 id="ball-results">Results on Ball Agent</h4>
+        <div class="figure-placeholder">
+            <p><strong>Figure 5: t-SNE visualization of ACIA representations on Ball Agent.</strong></p>
+            <p>[Image Placeholder for Figure 5: t-SNE visualization of ACIA representations on Ball Agent]</p>
+            <p>From left to right: (1) Low-level representations display position-based organization with environmental mixing, (2) High-level representations show more pronounced position clustering; (3) [cite_start]Intervention visualization categorized by intervention patterns, and (4) Prediction error shows areas of high accuracy (green) versus areas requiring improvement (red)[cite: 213, 214].</p>
+        </div>
+        [cite_start]<p>(1) <strong>Low-level representations</strong> display position-based organization with considerable mixing between position values[cite: 215, 216]; (2) [cite_start]<strong>High-level representations</strong> show more pronounced position-based clustering, demonstrating improved abstraction of spatial information[cite: 216]; (3) [cite_start]<strong>The intervention visualization</strong> displays a categorical distribution of intervention patterns (None, Single, Double, Multiple; <em>details in Appendix \(\ref{app:ballagent}\)</em>) [cite: 217][cite_start]; and (4) <strong>The prediction error visualization</strong> confirms that position-relevant information is preserved while achieving partial invariance to interventions[cite: 218].</p>
+
+        <h4 id="cam-results">Results on Camelyon17</h4>
+        <div class="figure-placeholder">
+            <p><strong>Figure 6: t-SNE visualization of ACIA representations on Camelyon17.</strong></p>
+            <p>[Image Placeholder for Figure 6: t-SNE visualization of ACIA representations on Camelyon17]</p>
+            [cite_start]<p>From left to right: (1) Low-level representations show partial tumor/normal tissue separation, (2) High-level representations with improved class boundaries, (3) Hospital visualization demonstrates mixing of environment-specific features, and (4) Uncertainty analysis highlights regions of high confidence (green/yellow) versus regions requiring more evidence (red)[cite: 219].</p>
+        </div>
+        [cite_start]<p>(1) <strong>Low-level representations</strong> show separation between tumor and normal tissue samples, but with certain mixing[cite: 220]; (2) [cite_start]<strong>High-level representations</strong> demonstrate more pronounced clustering with clearer boundaries between tissue types[cite: 221]; (3) [cite_start]<strong>The hospital visualization</strong> confirms reduction of environment-specific information by displaying significant mixing between hospital sources despite their different staining protocols [cite: 222][cite_start]; and (4) <strong>The uncertainty visualization</strong> highlights regions where the model maintains high confidence versus areas requiring more evidence[cite: 223]. [cite_start]<em>More details are in Appendix \(\ref{app:camelyon}\)</em>[cite: 223].</p>
+    </div>
+</body>
+</html>

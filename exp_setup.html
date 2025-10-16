@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimental Setup | ACIA Framework</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; line-height: 1.6; }
+        .page-container { max-width: 900px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { font-size: 2em; color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        h3 { font-size: 1.5em; color: #333; margin-top: 30px; margin-bottom: 15px; }
+        p { margin-bottom: 1.5em; font-size: 1.1em; text-align: justify; }
+        ul, ol { margin-bottom: 1.5em; padding-left: 25px; font-size: 1.1em; }
+        .metric-list li { margin-bottom: 10px; }
+        .section-header { margin-top: 40px; padding-top: 10px; border-top: 1px dashed #ccc; }
+    </style>
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <div class="page-container">
+        <p><a href="index.html">← Back to Main Page</a></p>
+
+        <h2>6. Experimental Setup</h2>
+
+        <h3>Datasets and Models</h3>
+        <p>We test four datasets in anti-causal settings: <strong>Colored MNIST (CMNIST)</strong>, <strong>Rotated MNIST (RMNIST)</strong>, <strong>Ball Agent</strong>, and <strong>Camelyon17</strong>.</p>
+        <ul>
+            [cite_start]<li>In <strong>CMNIST</strong> and <strong>RMNIST</strong>, digit labels cause specific image features: colors and rotations (environment), respectively[cite: 161].</li>
+            [cite_start]<li><strong>Ball Agent</strong> is a physical simulation environment where ball positions (continuous labels) cause pixel observations, with controlled interventions affecting object dynamics[cite: 162].</li>
+            [cite_start]<li><strong>Camelyon17</strong> is a real medical dataset where tumor presence (label) causes tissue patterns in pathology images, with hospital-specific staining protocols creating environmental variations[cite: 163].</li>
+        </ul>
+        [cite_start]<p>These datasets test various aspects of ACIA: discrete vs. continuous labels and perfect vs. imperfect interventions[cite: 164]. <em>Details of (building) these datasets are in Appendix \(\ref{app:datasets}\). [cite_start]The model architecture and hyperparameter settings of ACIA are in Appendix \(\ref{app:hs}\)</em>[cite: 165].</p>
+
+        <h3>Evaluation Metrics</h3>
+        [cite_start]<p>We use four metrics to measure predictive performance and causal properties[cite: 166].</p>
+        <ol class="metric-list">
+            <li>
+                [cite_start]<p><strong>Test Accuracy:</strong> Fraction of test samples correctly predicted by our predictor[cite: 167].</p>
+            </li>
+            <li>
+                [cite_start]<p><strong>Environment Independence (EI):</strong> It measures the degree to which high-level representations remain independent of environment-specific information while preserving label-relevant information[cite: 168]. [cite_start]Specifically, we compute mutual information between high-level representations and environment labels, conditioned on class labels[cite: 169]. [cite_start]Lower values indicate better environment independence[cite: 170].</p>
+            </li>
+            <li>
+                [cite_start]<p><strong>Low-level Invariance (LLI or \(R_1\)):</strong> It quantifies stability of low-level representations across environments[cite: 171]. [cite_start]We measure the variance of representations across different environments[cite: 172]. [cite_start]Lower values indicate greater invariance[cite: 173].</p>
+            </li>
+            <li>
+                [cite_start]<p><strong>Intervention Robustness (IR or \(R_2\)):</strong> It evaluates model robustness under interventions by comparing the difference between observational and interventional distributions[cite: 173]. [cite_start]Specifically, we first obtain probability confidence scores for original and intervened samples, and then calculate KL divergence between these distributions[cite: 174]. [cite_start]Lower values indicate higher robustness[cite: 175].</p>
+            </li>
+        </ol>
+
+        <h3>Baselines</h3>
+        <p>We compare ACIA against 10 baseline methods spanning three main categories:</p>
+        <ol>
+            <li>
+                [cite_start]<p><strong>Robust optimization methods:</strong> <strong>GDRO</strong> optimizes the worst-group performance under distribution shifts[cite: 175].</p>
+            </li>
+            <li>
+                [cite_start]<p><strong>Distribution/Domain-invariant learning:</strong> <strong>MMD</strong> minimizes distributional distances, <strong>CORAL</strong> aligns feature correlations, <strong>DANN</strong> uses adversarial training, <strong>IRM</strong> enforces invariant predictors, <strong>Rex</strong> and <strong>VREx</strong> use risk extrapolation with different variance penalties[cite: 176].</p>
+            </li>
+            <li>
+                [cite_start]<p><strong>Causal representation learning methods:</strong> <strong>CausalDA</strong> incorporates causal structure discovery for invariant representation learning[cite: 177]. [cite_start]<strong>ACTIR</strong> specifically targets anti-causal settings, and <strong>LECI</strong> learns environment-wise causal independence through graph decomposition[cite: 178].</p>
+            </li>
+        </ol>
+
+    </div>
+</body>
+</html>
