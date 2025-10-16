@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background on Measure Theory and Causality</title>
+    <script type="text/javascript" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+
+<section id="background">
+    <h1>Background on Measure Theory and Causality</h1>
+    <p>A measurable space $(\Omega, \mathscr{F}, \mu)$ consists of a sample space $\Omega$, a $\sigma$-algebra $\mathscr{F}$ of measurable sets, and a probability measure $\mu$. Within the causal context, $\Omega$ represents possible states of the world, $\mathscr{F}$ represents events we can measure, and $\mu$ assigns probabilities to these events. The important notations in this paper are summarized in Table $\ref{tab:notations}$ in Appendix.</p>
+
+    <h2>Measure Theory</h2>
+
+    <h3>Definition 1: Environment Measurable Space</h3>
+    <p>Given a finite set of environments $\mathcal{E}$, each $e \in \mathcal{E}$ is associated with a measurable input space $(\mathcal{X}_e, \mathscr{F}_{\mathcal{X}_e})$, a measurable output space $(\mathcal{Y}_e, \mathscr{F}_{\mathcal{Y}_e})$, and a probability measure $P_e$ on the product space $(\mathcal{X}_e \times \mathcal{Y}_e, \mathscr{F}_{\mathcal{X}_e} \otimes \mathscr{F}_{\mathcal{Y}_e})$.</p>
+
+    <h3>Definition 2: Data Space</h3>
+    <p>For each environment $e \in \mathcal{E}$, the data space is a tuple $(D_{e}, \mathscr{F}_{D_{e}}, p_e)$ where $D_{e} = \{(x^{e}_j, y^{e}_j)\}_{j=1}^{|D_{e}|}$ is a finite collection of input-output pairs from environment $e$, $x^{e}_j$ are elements of the input space $\mathcal{X}_{e}$, $y^{e}_j$ are elements of the output space $\mathcal{Y}_{e}$, $T_{e}$ is the index set that defines the component-wise sample space structure for environment $e$. Specifically, it indexes the components of the product space such that $\Omega_{e} = \times_{t \in T_{e}} E_t$, where each $E_t$ represents a measurable component space at index $t$, and $p_{e}$ is a probability measure on $D_{e}$ defining the distribution of $(x^{e}_j, y^{e}_j)$.</p>
+
+    <h3>Definition 3: Representation</h3>
+    <p>A representation is a measurable function $\phi: \mathcal{X} \rightarrow \mathcal{R}$ mapping inputs to a latent space $\mathcal{R}$, where $(\mathcal{R}, \mathscr{F}_{\mathcal{R}})$ is a measurable space. A representation is causal if it captures the underlying causal mechanisms generating the data.</p>
+
+    <h3>Definition 4: Kernel</h3>
+    <p>A kernel $K$ is a function $K: \Omega \times \mathscr{F} \rightarrow [0,1]$ such that:</p>
+    <ol>
+        <li>For each fixed $\omega \in \Omega$, the mapping $A \mapsto K(\omega, A)$ is a probability measure on $(\Omega, \mathscr{F})$;</li>
+        <li>For each fixed $A \in \mathscr{F}$, the mapping $\omega \mapsto K(\omega, A)$ is $\mathscr{F}$-measurable.</li>
+    </ol>
+    <p>Intuitively, $K(\omega, A)$ represents the probability of $A$ conditioned on the information encoded in $\omega$. Properties of kernels being used in this work are discussed in Appendix $\ref{app:kp}$.</p>
+
+    <h2>Causality</h2>
+    <p>In the measure-theoretic framework, interventions modify kernels rather than structural equations, enabling unified treatment of both perfect and imperfect interventions.</p>
+
+    <h3>Definition 5: Intervention</h3>
+    <p>An intervention is a measurable mapping $\mathbb{Q}(\cdot|\cdot): \mathscr{H} \times \Omega \rightarrow [0,1]$ that modifies causal kernels by modifying the underlying probability structure. There are two types of intervention in causal representation learning:</p>
+    <ol>
+        <li>A <b>hard (or perfect) intervention</b> sets $\mathbb{Q}(A|\omega) = \mathbb{Q}(A)$, <b>independent</b> of $\omega$;</li>
+        <li>A <b>soft (or imperfect) intervention</b> allows $\mathbb{Q}(A|\omega)$ to <b>depend</b> on $\omega$.</li>
+    </ol>
+
+    <p>The basis of this work is on understanding the meaning of causal dependence and causal spaces.</p>
+
+    <h3>Definition 6: Causal Independence</h3>
+    <p>Variables $X$ and $Y$ are causally independent given $Z$, denoted $X \perp\!\!\!\perp_c Y | Z$, if $P(Y|\text{do}(X=x), Z) = P(Y|Z)$ for all $x$ in the support of $X$, and $P(X|\text{do}(Y=y), Z) = P(X|Z)$ for all $y$ in the support of $Y$. The do-operator $\text{do}(X=x)$ represents an intervention that sets variable $X$ to value $x$, i.e., breaking all cause factors to $X$ (which differs from $P(Y|X=x)$, which observes $X=x$ while preserving causal relationships).</p>
+
+    <h3>Definition 7: Causal Space</h3>
+    <p>For an environment $e$, a causal space is a tuple $(\Omega_{e}, \mathscr{H}_{e}, P_{e}, K_{e})$, where $\Omega_{e} = \times_{t \in T_{e}} E_t$ is the sample space, $P_e$ is the probability measure on $(\Omega_{e}, \mathscr{H}_{e})$, and $K_{e}$ is a kernel function for environment $e$. For each $t \in T_e$, $\mathscr{A}_t$ is the $\sigma$-algebra on component space $E_t$, and the overall $\sigma$-algebra $\mathscr{H}_e = \otimes_{t \in T_e} \mathscr{A}_t$ is the tensor product of these component $\sigma$-algebras. This definition is the backbone of measure-theoretic causality in this paper, inspired from $\cite{park2023measure}$.</p>
+
+</section>
+
+</body>
+</html>
