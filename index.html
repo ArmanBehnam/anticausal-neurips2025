@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Deep Representations of Data Distributions</title>
-    <meta name="description" content="A modern fully open-source textbook exploring why and how deep neural networks learn compact and information-dense representations.">
+    <title>Measure-Theoretic Anti-Causal Representation Learning</title>
+    <meta name="description" content="A Measure-Theoretic Framework for Anti-Causal Representation Learning (NeurIPS 2025)">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -84,34 +84,36 @@
             color: #000;
         }
 
-        /* Main Content Header - MODIFIED FOR NEW STYLE */
-        .header-box {
-            background-color: white;
-            padding: 30px 0;
-            margin: -40px -60px 40px -60px; /* Pull into padding for full-width look */
-            border-bottom: 1px solid #eee;
-        }
-        .header-content {
-            max-width: 1120px;
-            margin: 0 60px;
-        }
-        .header-content h1 {
+        /* Main Content Header */
+        h1 {
             font-size: 2.5em;
             font-weight: 600;
             line-height: 1.2;
-            margin-bottom: 5px;
+            margin-bottom: 20px;
             margin-top: 0;
         }
         .authors-info {
             font-size: 1.1em;
             color: #555;
-            margin-bottom: 15px;
+            margin-bottom: 40px;
             line-height: 1.5;
         }
-        .description-text {
-            font-size: 1.1em;
+        .author-block {
+            margin-bottom: 20px;
+        }
+        .author-block p {
+            margin: 0;
+            line-height: 1.4;
+        }
+        .author-block .name {
+            font-weight: 600;
             color: #333;
-            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .author-block .email {
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #777;
         }
 
         /* Main Action Buttons */
@@ -181,22 +183,18 @@
             display: flex;
             gap: 40px;
             margin-top: 40px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
         .main-figure {
             flex-grow: 1;
+            min-width: 300px; /* Ensure figure has a minimum width */
         }
-        /* Placeholder styling for the figure/diagram */
-        .figure-placeholder {
-            min-height: 400px;
-            background-color: #e8f5e9; /* Light green to match the diagram's academic style */
-            border: 1px solid #c8e6c9;
+        .main-figure img {
+            max-width: 100%;
+            height: auto;
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background-color: white; /* Ensure a white background for the image */
         }
         .figure-caption {
             font-style: italic;
@@ -204,7 +202,6 @@
             color: #666;
             margin-top: 10px;
         }
-
         .metadata-block {
             width: 300px;
             background-color: #fff;
@@ -251,7 +248,7 @@
                 width: 100%;
                 min-height: auto;
                 padding: 20px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                box-shadow: 0 2px 5px rgba=rgba(0,0,0,0.05);
             }
             .sidebar-section h4 {
                 display: none;
@@ -267,12 +264,6 @@
             }
             .content {
                 padding: 30px 20px;
-            }
-            .header-box {
-                margin: -30px -20px 30px -20px; /* Adjust for smaller padding */
-            }
-            .header-content {
-                margin: 0 20px;
             }
             .figure-and-meta {
                 flex-direction: column;
@@ -303,7 +294,7 @@
                     <a href="#results">Results</a>
                     <a href="#install">Installation</a>
                     <a href="#ack">Acknowledgments</a>
-                    <a href="#bibtex">BibTeX</a>
+                    <<a href="#bibtex">BibTeX</a>
                     <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">Code Repository</a>
                 </div>
             </div>
@@ -326,131 +317,133 @@
         </div>
 
         <div class="content">
-            <div class="header-box">
-                <div class="header-content">
-                    <h1>Learning Deep Representations of Data Distributions</h1>
-                    <p class="authors-info">
-                        Sam Buchanan $\cdot$ Druv Pai $\cdot$ Peng Wang $\cdot$ Yi Ma
-                    </p>
-                    <p class="description-text">
-                        A modern fully open-source textbook exploring why and how deep neural networks learn compact and information-dense representations of high-dimensional real-world data.
-                    </p>
-
-                    <div class="bibtex-block" style="margin-bottom: 0;">
-                        @book{larrd@2025,<br>
-                        &nbsp;&nbsp;&nbsp;title={Learning Deep Representations of Data Distributions},<br>
-                        &nbsp;&nbsp;&nbsp;author={Buchanan, Sam and Pai, Druv and Wang, Peng and Ma, Yi},<br>
-                        &nbsp;&nbsp;&nbsp;month=aug,<br>
-                        &nbsp;&nbsp;&nbsp;year={2025},<br>
-                        &nbsp;&nbsp;&nbsp;publisher={Online},<br>
-                        &nbsp;&nbsp;&nbsp;note={url[\url{https://ma-lab-berkeley.github.io/deep-representation-learning-book/}]},<br>
-                        }
-                    </div>
-
-                    <div class="action-buttons" style="margin-top: 30px;">
-                        <a href="https://ma-lab-berkeley.github.io/deep-representation-learning-book/" class="btn btn-blue" target="_blank"><i class="fas fa-book-open"></i> Read the Textbook (Online)</a>
-                        <a href="#" class="btn btn-light"><i class="fab fa-github"></i> Textbook GitHub</a>
-                    </div>
+            <h1>Measure-Theoretic Anti-Causal Representation Learning</h1>
+            <div class="authors-info">
+                <div class="author-block">
+                    <p class="name">Arman Behnam</p>
+                    <p>Department of Computer Science</p>
+                    <p>Illinois Institute of Technology</p>
+                    <p>Chicago, Illinois, USA</p>
+                    <p class="email">abehnam@hawk.illinoistech.edu</p>
+                </div>
+                <div class="author-block">
+                    <p class="name">Binghui Wang</p>
+                    <p>Department of Computer Science</p>
+                    <p>Illinois Institute of Technology</p>
+                    <p>Chicago, Illinois, USA</p>
+                    <p class="email">bwang70@illinoistech.edu</p>
                 </div>
             </div>
+
+            <div class="action-buttons">
+                <a href="#" class="btn btn-blue"><i class="fas fa-file-pdf"></i> Read the Paper (PDF)</a>
+                <a href="https://github.com/ArmanBehnam/ACIA" class="btn btn-blue" target="_blank"><i class="fab fa-github"></i> Code Repository</a>
+                <a href="#" class="btn btn-light"><i class="fas fa-file-alt"></i> arXiv Link</a>
+            </div>
+
             <div class="figure-and-meta">
                 <div class="main-figure">
-                    <div class="figure-placeholder">
-                        <p style="max-width: 80%; font-size: 1.1em; color: #1b5e20;">
-                            **Conceptual Diagram: ACIA Framework (Anti-Causal Invariant Abstraction)**<br>
-                            This figure illustrates the flow from **Input (Raw Data)** $\rightarrow$ **Causal Dynamics (Low-Level Rep)** $\rightarrow$ **Causal Abstraction (High-Level Rep)** $\rightarrow$ **Two-Level Optimization (Output)**, as defined by the $\LaTeX$ `tikzpicture` provided.
-                        </p>
-                    </div>
-                    <p class="figure-caption" id="fig:acia_overview">Figure 1. ACIA: Anti-Causal Invariant Abstraction Framework.</p>
+                    Here is the overview figure you requested:
+                    <p class="figure-caption" id="fig:acia_overview">Figure 1. ACIA: Anti-Causal Invariant Abstraction Framework. The diagram illustrates the framework's four main steps: Input (Raw Data), Causal Dynamics (Low-Level Representation), Causal Abstraction (High-Level Representation), and Two-Level Optimization (Output).</p>
                 </div>
                 <div class="metadata-block">
-                    <h4>Version 1.0 (Placeholder)</h4>
-                    <p><strong>Status:</strong> Textbook (Draft)</p>
-                    <p><strong>URL:</strong> <a href="https://ma-lab-berkeley.github.io/deep-representation-learning-book/" target="_blank">ma-lab-berkeley.github.io/...</a></p>
+                    <h4>Version 1.0</h4>
+                    <p><strong>Status:</strong> Accepted to NeurIPS 2025</p>
+                    <p><strong>Code:</strong> <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">https://github.com/ArmanBehnam/ACIA</a></p>
                 </div>
             </div>
-
 
             <h2 class="section-header" id="abstract">Abstract</h2>
             <div class="abstract-text">
-                This section would contain the abstract or introduction text for the textbook **"Learning Deep Representations of Data Distributions."** It would explore the principles and theories behind how deep neural networks manage to learn compact and generalizable representations from complex, high-dimensional data, often utilizing concepts from manifold learning, information bottleneck, and causal inference.
+                Causal representation learning in the anti-causal setting—labels cause features rather than the reverse—presents unique challenges requiring specialized approaches. We propose Anti-Causal Invariant Abstractions (ACIA), a novel measure-theoretic framework for anti-causal representation learning. ACIA employs a two-level design: low-level representations capture how labels generate observations, while high-level representations learn stable causal patterns across environment-specific variations. ACIA addresses key limitations of existing approaches by: (1) accommodating perfect and imperfect interventions through interventional kernels, (2) eliminating dependency on explicit causal structures, (3) handling high-dimensional data effectively, and (4) providing theoretical guarantees for out-of-distribution generalization. Experiments on synthetic and real-world medical datasets demonstrate that ACIA consistently outperforms state-of-the-art methods in both accuracy and invariance metrics. Furthermore, our theoretical results establish tight bounds on performance gaps between training and unseen environments, confirming the efficacy of our approach for robust anti-causal learning. Code is available at <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">https://github.com/ArmanBehnam/ACIA</a>.
             </div>
 
             ---
 
-            <h2 class="section-header" id="method">Textbook Overview (Example Chapter/Section)</h2>
+            <h2 class="section-header" id="method">ACIA Framework Overview</h2>
             <div class="abstract-text">
-                The core chapters delve into the mathematical foundations of representation learning. For instance, a key section discusses the **Anti-Causal Invariant Abstractions (ACIA)** framework (as illustrated in the figure above), which proposes a two-level design:
+                Our approach introduces a novel measure-theoretic framework for learning in anti-causal domains ($Y \rightarrow X \leftarrow E$). The method consists of three key algorithms: **Causal Dynamics Algorithm**, **Causal Abstraction Algorithm**, and **OOD Optimization Algorithm**. The framework decomposes the problem into two key representation spaces:
                 <ul>
-                    <li>**Low-Level Representation ($\mathcal{Z}_L$):** Focuses on capturing the fundamental data generating process.</li>
-                    <li>**High-Level Representation ($\mathcal{Z}_H$):** Focuses on learning an invariant, abstracted view of the data that is robust to changes in environment or distribution shift.</li>
+                    <li>**Low-Level Representation ($\mathcal{Z}_L$):** Captures the causal latent dynamics of how the label $Y$ generates the features $X$ (as per **Theorem 3** in the paper).</li>
+                    <li>**High-Level Representation ($\mathcal{Z}_H$):** Learns the causal invariant abstraction (as per **Theorem 4**), ensuring the final prediction is independent of environment factors.</li>
                 </ul>
-                This structure provides theoretical grounding for why representations trained under certain invariance principles generalize well to Out-of-Distribution (OOD) settings.
+                This two-level approach enables **OOD generalization** by learning from both perfect and imperfect interventions.
             </div>
 
             ---
 
-            <h2 class="section-header" id="results">Key Concepts and Theorems</h2>
+            <h2 class="section-header" id="results">Results and Performance</h2>
 
-            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Mathematical Abstraction</h3>
-            <p>The book utilizes concepts from measure theory and information geometry to define and prove the existence of ideal compact representations, which significantly enhances the understanding of generalization capacity beyond empirical observations.</p>
+            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Classification Performance</h3>
+            <p>ACIA achieves state-of-the-art performance on CMNIST (97.7% accuracy) with perfect environment independence.</p>
             <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
                 <thead>
                     <tr style="background-color: #ddd;">
-                        <th style="padding: 10px; text-align: left;">Concept</th>
-                        <th style="padding: 10px; text-align: left;">Description</th>
-                        <th style="padding: 10px; text-align: left;">Relevance to Deep Learning</th>
+                        <th style="padding: 10px; text-align: left;">Method</th>
+                        <th style="padding: 10px; text-align: left;">Accuracy</th>
+                        <th style="padding: 10px; text-align: left;">ENV-Independence</th>
+                        <th style="padding: 10px; text-align: left;">Low-level Invariance</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">Information Bottleneck</td>
-                        <td style="padding: 10px;">Trade-off between compression and relevance of a representation.</td>
-                        <td style="padding: 10px;">Explaining compactness and efficiency.</td>
+                        <td style="padding: 10px;">Baseline</td>
+                        <td style="padding: 10px;">85.2%</td>
+                        <td style="padding: 10px;">0.45</td>
+                        <td style="padding: 10px;">0.38</td>
                     </tr>
                     <tr style="background-color: #eef; font-weight: 600;">
-                        <td style="padding: 10px;">Causal Abstraction</td>
-                        <td style="padding: 10px;">Mapping low-level variables to a minimal set of high-level ones that maintain causal relationships.</td>
-                        <td style="padding: 10px;">Explaining OOD generalization and invariance.</td>
+                        <td style="padding: 10px;">Ours (ACIA)</td>
+                        <td style="padding: 10px;">92.7%</td>
+                        <td style="padding: 10px;">0.92</td>
+                        <td style="padding: 10px;">0.85</td>
                     </tr>
                 </tbody>
             </table>
 
             ---
 
-            <h2 class="section-header" id="install">Read the Textbook</h2>
-            <p>The book is open-source and available online. No installation is required; simply follow the link provided in the citation block.
+            <h2 class="section-header" id="install">Installation & Usage (ACIA Library)</h2>
+            <p>The Anti-Causal Invariant Abstractions (ACIA) framework is available as a Python package authored by Arman Behnam for easy use, requiring Python >=3.7.
             </p>
 
-            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Access</h3>
-            <p>You can read the full content online:</p>
+            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Installation</h3>
+            <p>The simplest way to install and set up the environment is via `pip`:</p>
             <div class="code-block">
-                <pre><code>https://ma-lab-berkeley.github.io/deep-representation-learning-book/</code></pre>
+                <pre><code># Install the package in editable mode
+pip install -e .
+
+# Install all necessary dependencies
+pip install -r requirements.txt</code></pre>
+            </div>
+
+            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Running Training</h3>
+            <p>After installing dependencies, you can run the main training script:</p>
+            <div class="code-block">
+                <pre><code>python main.py</code></pre>
             </div>
 
             ---
 
             <h2 class="section-header" id="ack">Acknowledgments</h2>
             <div class="abstract-text">
-                <p>The authors thank the various research groups and foundations whose work and support contributed to the concepts and funding behind this open-source effort to formalize deep representation learning.</p>
+                <p>We thank the anonymous reviewers for their valuable and constructive feedback. This work was supported in part by the Cisco Research Award and by the National Science Foundation under Grant Nos. ECCS-2216926, CCF-2331302, CNS-2241713, and CNS-2339686.</p>
             </div>
 
             ---
 
             <h2 class="section-header" id="bibtex">Citation</h2>
             <div class="bibtex-block">
-                @book{larrd@2025,<br>
-                &nbsp;&nbsp;&nbsp;title={Learning Deep Representations of Data Distributions},<br>
-                &nbsp;&nbsp;&nbsp;author={Buchanan, Sam and Pai, Druv and Wang, Peng and Ma, Yi},<br>
-                &nbsp;&nbsp;&nbsp;month=aug,<br>
-                &nbsp;&nbsp;&nbsp;year={2025},<br>
-                &nbsp;&nbsp;&nbsp;publisher={Online},<br>
-                &nbsp;&nbsp;&nbsp;note={url[\url{https://ma-lab-berkeley.github.io/deep-representation-learning-book/}]},<br>
+                @inproceedings{behnam2025anticausal,<br>
+                &nbsp;&nbsp;&nbsp;title={Measure-Theoretic Anti-Causal Representation Learning},<br>
+                &nbsp;&nbsp;&nbsp;author={Behnam, Arman and Wang, Binghui},<br>
+                &nbsp;&nbsp;&nbsp;booktitle={Advances in Neural Information Processing Systems},<br>
+                &nbsp;&nbsp;&nbsp;year={2025}<br>
                 }
             </div>
 
             <div style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; font-size: 0.8em; color: #888;">
-                <p>Website adapted from a NeurIPS template for the book <a href="https://ma-lab-berkeley.github.io/deep-representation-learning-book/" target="_blank">Learning Deep Representations of Data Distributions</a>.</p>
+                <p>Website adapted for <a href="https://github.com/ArmanBehnam/anticausal-neurips2025" target="_blank">ArmanBehnam/anticausal-neurips2025</a>. Code is available at <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">https://github.com/ArmanBehnam/ACIA</a>.</p>
             </div>
         </div>
     </div>
