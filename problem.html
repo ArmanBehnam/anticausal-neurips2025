@@ -14,13 +14,21 @@
         .definition-box { margin-bottom: 1.5em; padding: 15px; border-left: 5px solid #1a73e8; background-color: #f0f8ff; border-radius: 4px; }
         .definition-box strong { display: block; margin-bottom: 8px; font-size: 1.2em; color: #004d99; }
     </style>
-    <script type="text/javascript" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
     </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <div class="page-container">
-        <p><a href="index.html">← Back to Main Page</a></p>
+        <p><a href="index.html">← Back to Main Page</a> ... <a href="theoretical.html">Go to Next Page (Theoretical Framework)</a></p>
+
 
         <h2>Background on Measure Theory and Causality</h2>
 
