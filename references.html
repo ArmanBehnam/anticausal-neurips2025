@@ -3,230 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experimental Results | ACIA Framework</title>
+    <title>References | ACIA Framework</title>
     <style>
         body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; line-height: 1.6; }
-        .page-container { max-width: 1100px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        h2 { font-size: 2em; color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
-        h3 { font-size: 1.5em; color: #333; margin-top: 35px; margin-bottom: 15px; }
-        h4 { font-size: 1.2em; color: #555; margin-top: 25px; margin-bottom: 12px; }
-        p { margin-bottom: 1.5em; font-size: 1.05em; text-align: justify; }
-        ul, ol { margin-bottom: 1.5em; padding-left: 25px; font-size: 1.05em; }
-
-        .finding-box {
-            margin-bottom: 1.2em;
-            padding: 15px;
-            border-left: 4px solid #4caf50;
-            background-color: #f1f8f4;
-            border-radius: 4px;
-        }
-        .finding-box strong {
-            color: #2e7d32;
-        }
-
-        .figure-container {
-            margin: 30px 0;
-            padding: 20px;
-            background-color: #fafafa;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-        }
-        .figure-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-        .figure-caption {
-            font-size: 0.95em;
-            color: #666;
-            line-height: 1.5;
-            margin-top: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.9em;
-        }
-        table th {
-            background-color: #e3f2fd;
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #ccc;
-            font-weight: 600;
-        }
-        table td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #eee;
-        }
-        table tbody tr:hover {
-            background-color: #f5f5f5;
-        }
+        .page-container { max-width: 1000px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { font-size: 2em; color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 30px; }
+        .reference { margin-bottom: 20px; padding: 15px; background-color: #fafafa; border-left: 3px solid #1a73e8; border-radius: 4px; }
+        .reference .authors { font-weight: 500; color: #333; }
+        .reference .title { font-style: italic; color: #555; margin: 5px 0; }
+        .reference .venue { color: #666; font-size: 0.95em; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #1a73e8; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
     </style>
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        }
-      };
-    </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <div class="page-container">
-        <p><a href="index.html">← Back to Main Page</a> ... <a href="appendix_related_work.html">Go to Next Page (More Related work)</a></p>
+    <p><a href="index.html">← Back to Main Page</a> ... <a href="appendix_related_work.html">Go to Next Page (More Related work)</a></p>
 
-        <h2>Experimental Results</h2>
+        <h2>References</h2>
 
-        <h3>Results under Perfect Intervention</h3>
-
-        <p>The comprehensive comparison results validate our measure-theoretic framework's ability to capture and exploit anti-causal structures in synthetic and real-world settings. The results highlight several key findings:</p>
-
-        <div class="finding-box">
-            <strong>1. ACIA significantly outperforms all baselines</strong>
-            <p>On CMNIST and RMNIST, ACIA achieves accuracy of 99.00%+, perfect environment independence (0.00), almost perfect interventional robustness (0.02 and 0.01) and low-level invariance (0.01 and 0.03), significantly surpassing other baselines. On Ball Agent, ACIA achieves 99.98% accuracy with almost perfect low-level invariance and interventional robustness. On the real-world Camelyon17, ACIA achieves the best test accuracy 84.40% while retaining the underlying causal properties.</p>
+        <div class="reference">
+            <div class="authors">Ahuja, K., Mahajan, D., Wang, Y., & Bengio, Y.</div>
+            <div class="title">Interventional causal representation learning</div>
+            <div class="venue">International Conference on Machine Learning, 2023</div>
         </div>
 
-        <div class="finding-box">
-            <strong>2. Causal dynamic construction (Theorem 3) is confirmed</strong>
-            <p>The low-level invariance in our results matches the theoretical expectation of environment-independent feature learning.</p>
+        <div class="reference">
+            <div class="authors">Ahuja, K., Mansouri, A., & Wang, Y.</div>
+            <div class="title">Multi-domain causal representation learning via weak distributional invariances</div>
+            <div class="venue">Artificial Intelligence and Statistics, 2024</div>
         </div>
 
-        <div class="finding-box">
-            <strong>3. Interventional kernel invariance (Corollary) is empirically validated</strong>
-            <p>The intervention robustness score validates the distinction between observational and interventional distributions.</p>
+        <div class="reference">
+            <div class="authors">Arjovsky, M., Bottou, L., Gulrajani, I., & Lopez-Paz, D.</div>
+            <div class="title">Invariant risk minimization</div>
+            <div class="venue">arXiv preprint arXiv:1907.02893, 2019</div>
         </div>
 
-        <div class="finding-box">
-            <strong>4. Anti-Causal OOD generalization bound (Theorem) is substantiated</strong>
-            <p>Test accuracy improvements over baselines across all datasets confirm our theoretical guarantees.</p>
+        <div class="reference">
+            <div class="authors">Arevalo, C. A., Noorbakhsh, S. L., Dong, Y., Hong, Y., & Wang, B.</div>
+            <div class="title">Task-agnostic privacy-preserving representation learning for federated learning against attribute inference attacks</div>
+            <div class="venue">AAAI Conference on Artificial Intelligence, 2024</div>
         </div>
 
-        <h3>Results under Imperfect Intervention</h3>
-
-        <p>Perfect/hard intervention completely disconnects intervened variables from their causes, while imperfect/soft intervention modifies causal mechanisms and maintains partial original dependencies. This experiment validates the effectiveness of ACIA against imperfect intervention on the studied datasets.</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th rowspan="2">Dataset</th>
-                    <th colspan="4">CMNIST</th>
-                    <th colspan="4">RMNIST</th>
-                    <th colspan="4">Ball Agent</th>
-                    <th colspan="4">Camelyon17</th>
-                </tr>
-                <tr>
-                    <th>Acc</th><th>EI</th><th>LLI</th><th>IR</th>
-                    <th>Acc</th><th>EI</th><th>LLI</th><th>IR</th>
-                    <th>Acc</th><th>EI</th><th>LLI</th><th>IR</th>
-                    <th>Acc</th><th>EI</th><th>LLI</th><th>IR</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="text-align: left; font-weight: 600;">ACIA (Imperfect)</td>
-                    <td>99.4</td><td>0.00</td><td>0.01</td><td>0.03</td>
-                    <td>99.0</td><td>0.01</td><td>0.03</td><td>0.01</td>
-                    <td>99.7</td><td>0.44</td><td>0.06</td><td>0.06</td>
-                    <td>84.4</td><td>0.30</td><td>0.44</td><td>0.45</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p>Imperfect intervention achieves similar results on the four datasets and metrics as perfect intervention. This supports our theoretical claim that ACIA can effectively handle both perfect and imperfect interventions via its interventional kernel formulation.</p>
-
-        <h3>Visualizing Learnt Representations</h3>
-
-        <h4>Results on CMNIST</h4>
-
-        <div class="figure-container">
-            <img src="fig/rescmnist.png" alt="CMNIST Visualization" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; padding: 40px; text-align: center; background: #f0f0f0; border-radius: 5px;">
-                <p style="margin: 0; color: #888;">Figure: t-SNE visualization of ACIA representations on CMNIST</p>
-            </div>
-            <div class="figure-caption">
-                <strong>Figure:</strong> t-SNE visualization of ACIA representations on CMNIST. From left to right: (1) Low-level representations show initial digit clustering with color influence; (2) High-level representations show improved digit separation; (3) Environment visualization demonstrates removal of environment-specific information; (4) Parity analysis reveals clear separation between even and odd digits.
-            </div>
+        <div class="reference">
+            <div class="authors">Beckers, S., & Halpern, J. Y.</div>
+            <div class="title">Abstracting causal models</div>
+            <div class="venue">Proceedings of the AAAI Conference on Artificial Intelligence, pp. 2678-2685, 2019</div>
         </div>
 
-        <p>Figure demonstrates ACIA's ability to learn representations that perfectly capture the anti-causal structure and predict test data:</p>
-        <ul>
-            <li><strong>Panel 1:</strong> Low-level representations show clear digit-based clustering while retaining certain environment information (note that some colored images are mapped to digit clusters they don't belong to).</li>
-            <li><strong>Panel 2:</strong> High-level representations improve digit cluster separation with clearer boundaries.</li>
-            <li><strong>Panel 3:</strong> Environment visualization displays colored images from different environments mixed, confirming removal of environment-specific information.</li>
-            <li><strong>Panel 4:</strong> Parity visualization reveals how ACIA organizes digits based on their mathematical properties—the alternating pattern between even digits (orange) and odd digits (blue) confirms ACIA preserves meaningful numerical relationships while eliminating spurious color correlations.</li>
-        </ul>
-
-        <h4>Results on RMNIST</h4>
-
-        <div class="figure-container">
-            <img src="fig/resrmnist.png" alt="RMNIST Visualization" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; padding: 40px; text-align: center; background: #f0f0f0; border-radius: 5px;">
-                <p style="margin: 0; color: #888;">Figure: t-SNE visualization of ACIA representations on RMNIST</p>
-            </div>
-            <div class="figure-caption">
-                <strong>Figure:</strong> t-SNE visualization of ACIA representations on RMNIST. From left to right: (1) Low-level representations show digit clustering but with rotation influence; (2) High-level representations with better digit boundaries; (3) Rotation angle visualization shows uniform distribution across the representation space; (4) Digit complexity reveals semantic organization by structural properties.
-            </div>
+        <div class="reference">
+            <div class="authors">Bentkus, V.</div>
+            <div class="title">On Hoeffding's inequalities</div>
+            <div class="venue">The Annals of Probability, 2004</div>
         </div>
 
-        <p>Similar patterns emerge in RMNIST:</p>
-        <ul>
-            <li><strong>Panel 1:</strong> Low-level representations show clear digit-based clustering but retain certain rotation information.</li>
-            <li><strong>Panel 2:</strong> High-level representations with more distinct boundaries.</li>
-            <li><strong>Panel 3:</strong> Rotation angle visualization displays uniform coloring across the entire representation space, confirming successful abstraction of rotation-specific information.</li>
-            <li><strong>Panel 4:</strong> Digit complexity visualization reveals semantic organization where digits with similar structural properties cluster together:
-                <ul>
-                    <li><em>Simple (0,1,7):</em> minimal stroke count (typically 1-2), more rotation-invariant features, lower topological complexity</li>
-                    <li><em>Medium (2,3,5):</em> moderate stroke count (typically 2-3), mixed curves/lines, intermediate visual density</li>
-                    <li><em>Complex (4,6,8,9):</em> most stroke count (3+), multiple curves/intersections, higher topological complexity</li>
-                </ul>
-            </li>
-        </ul>
-
-        <h4>Results on Ball Agent</h4>
-
-        <div class="figure-container">
-            <img src="fig/resball.png" alt="Ball Agent Visualization" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; padding: 40px; text-align: center; background: #f0f0f0; border-radius: 5px;">
-                <p style="margin: 0; color: #888;">Figure: t-SNE visualization of ACIA representations on Ball Agent</p>
-            </div>
-            <div class="figure-caption">
-                <strong>Figure:</strong> t-SNE visualization of ACIA representations on Ball Agent. From left to right: (1) Low-level representations display position-based organization with environmental mixing; (2) High-level representations show more pronounced position clustering; (3) Intervention visualization categorized by intervention patterns; (4) Prediction error shows areas of high accuracy (green) versus areas requiring improvement (red).
-            </div>
+        <div class="reference">
+            <div class="authors">Brehmer, J., De Haan, P., Lippe, P., & Cohen, T. S.</div>
+            <div class="title">Weakly supervised causal representation learning</div>
+            <div class="venue">Advances in Neural Information Processing Systems, 2022</div>
         </div>
 
-        <p>Ball Agent results demonstrate ACIA's handling of continuous labels and interventions:</p>
-        <ul>
-            <li><strong>Panel 1:</strong> Low-level representations display position-based organization with considerable mixing between position values.</li>
-            <li><strong>Panel 2:</strong> High-level representations show more pronounced position-based clustering with clearer boundaries, demonstrating improved abstraction of spatial information.</li>
-            <li><strong>Panel 3:</strong> Intervention visualization displays categorical distribution of intervention patterns (None, Single, Double, Multiple), revealing how different intervention types affect the latent space structure.</li>
-            <li><strong>Panel 4:</strong> Prediction error visualization shows areas of high accuracy (green) versus areas requiring improvement (red), confirming that position-relevant information is preserved while achieving partial invariance to interventions.</li>
-        </ul>
-
-        <h4>Results on Camelyon17</h4>
-
-        <div class="figure-container">
-            <img src="fig/rescam.png" alt="Camelyon17 Visualization" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div style="display:none; padding: 40px; text-align: center; background: #f0f0f0; border-radius: 5px;">
-                <p style="margin: 0; color: #888;">Figure: t-SNE visualization of ACIA representations on Camelyon17</p>
-            </div>
-            <div class="figure-caption">
-                <strong>Figure:</strong> t-SNE visualization of ACIA representations on Camelyon17. From left to right: (1) Low-level representations show partial tumor/normal tissue separation; (2) High-level representations with improved class boundaries; (3) Hospital visualization demonstrates mixing of environment-specific features; (4) Uncertainty analysis highlights regions of high confidence (green/yellow) versus regions requiring more evidence (red).
-            </div>
+        <div class="reference">
+            <div class="authors">Cha, J., Chun, S., Lee, K., Cho, H.-C., Park, S., Lee, Y., & Park, S.</div>
+            <div class="title">SWAD: Domain generalization by seeking flat minima</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 34, pp. 22405-22418, 2021</div>
         </div>
 
-        <p>Real-world medical data confirms ACIA's practical applicability:</p>
-        <ul>
-            <li><strong>Panel 1:</strong> Low-level representations show separation between tumor and normal tissue samples, but with certain mixing.</li>
-            <li><strong>Panel 2:</strong> High-level representations demonstrate more pronounced clustering with clearer boundaries between tissue types, particularly visible in the left-right separation.</li>
-            <li><strong>Panel 3:</strong> Hospital visualization displays significant mixing between hospital sources despite their different staining protocols, confirming reduction of environment-specific information.</li>
-            <li><strong>Panel 4:</strong> Uncertainty visualization highlights regions where the model maintains high confidence (green/yellow) versus areas requiring more evidence (red).</li>
-        </ul>
+        <div class="reference">
+            <div class="authors">Chen, Y., Huang, W., Zhou, K., Bian, Y., Han, B., & Cheng, J.</div>
+            <div class="title">Understanding and improving feature learning for out-of-distribution generalization</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 36, 2024</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Gal, Y., & Ghahramani, Z.</div>
+            <div class="title">Dropout as a Bayesian approximation: Representing model uncertainty in deep learning</div>
+            <div class="venue">International Conference on Machine Learning, pp. 1050-1059, 2016</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Gamella, J. L., & Heinze-Deml, C.</div>
+            <div class="title">Active invariant causal prediction: Experiment selection through stability</div>
+            <div class="venue">Advances in Neural Information Processing Systems, 2020</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Ganin, Y., Ustinova, E., Ajakan, H., Germain, P., Larochelle, H., Laviolette, F., March, M., & Lempitsky, V.</div>
+            <div class="title">Domain-adversarial training of neural networks</div>
+            <div class="venue">Journal of Machine Learning Research, vol. 17, no. 59, pp. 1-35, 2016</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Geiger, A., Lu, H., Icard, T., & Potts, C.</div>
+            <div class="title">Causal abstractions of neural networks</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 34, pp. 9574-9586, 2021</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Gui, S., Liu, M., Li, X., Luo, Y., & Ji, S.</div>
+            <div class="title">Joint learning of label and environment causal independence for graph out-of-distribution generalization</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 36, 2024</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Heinze-Deml, C., Peters, J., & Meinshausen, N.</div>
+            <div class="title">Invariant causal prediction for nonlinear models</div>
+            <div class="venue">Journal of Causal Inference, vol. 6, no. 2, pp. 20170016, 2018</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Jalaldoust, K., Bellot, A., & Bareinboim, E.</div>
+            <div class="title">Partial transportability for domain generalization</div>
+            <div class="venue">The Thirty-eighth Annual Conference on Neural Information Processing Systems, 2024</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Janzing, D., & Schölkopf, B.</div>
+            <div class="title">Semi-supervised interpolation in an anticausal learning scenario</div>
+            <div class="venue">The Journal of Machine Learning Research, vol. 16, no. 1, pp. 1923-1948, 2015</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Kim, B., Kim, H., Kim, K., Kim, S., & Kim, J.</div>
+            <div class="title">Learning not to learn: Training deep neural networks with biased data</div>
+            <div class="venue">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 9012-9020, 2019</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Klenke, A.</div>
+            <div class="title">Probability Theory: A Comprehensive Course (2nd ed.)</div>
+            <div class="venue">Springer, Universitext, 2014</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Kocaoglu, M., Jaber, A., Shanmugam, K., & Bareinboim, E.</div>
+            <div class="title">Characterization and learning of causal graphs with latent variables from soft interventions</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 32, 2019</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Krueger, D., Caballero, E., Jacobsen, J.-H., Zhang, A., Binas, J., Zhang, D., Le Priol, R., & Courville, A.</div>
+            <div class="title">Out-of-distribution generalization via risk extrapolation (REx)</div>
+            <div class="venue">International Conference on Machine Learning, 2021</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Li, H., Pan, S. J., Wang, S., & Kot, A. C.</div>
+            <div class="title">Domain generalization with adversarial feature learning</div>
+            <div class="venue">Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 5400-5409, 2018</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Liu, C., Sun, X., Wang, J., Tang, H., Li, T., Qin, T., Chen, W., & Liu, T.-Y.</div>
+            <div class="title">Learning causal semantic representation for out-of-distribution prediction</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 34, pp. 6155-6170, 2021</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Lu, C., Wu, Y., Hernández-Lobato, J. M., & Schölkopf, B.</div>
+            <div class="title">Invariant causal representation learning for out-of-distribution generalization</div>
+            <div class="venue">International Conference on Learning Representations, 2021</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Makar, M., & D'Amour, A.</div>
+            <div class="title">Fairness and robustness in anti-causal prediction</div>
+            <div class="venue">arXiv preprint arXiv:2209.09423, 2022</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Mitrovic, J., Sejdinovic, D., & Teh, Y. W.</div>
+            <div class="title">Causal inference via kernel deviance measures</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 31, 2018</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Nam, H., Lee, H., Park, J., Yoon, W., & Yoo, D.</div>
+            <div class="title">Reducing domain gap by reducing style bias</div>
+            <div class="venue">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 8690-8699, 2021</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Noorbakhsh, S. L., Zhang, B., Hong, Y., & Wang, B.</div>
+            <div class="title">Inf2Guard: An information-theoretic framework for learning privacy-preserving representations against inference attacks</div>
+            <div class="venue">USENIX Security Symposium, 2024</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Park, J., Buchholz, S., Schölkopf, B., & Muandet, K.</div>
+            <div class="title">A measure-theoretic axiomatisation of causality</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 36, pp. 28510-28540, 2023</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Pearl, J.</div>
+            <div class="title">Causality</div>
+            <div class="venue">Cambridge University Press, 2009</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Peters, J., Bühlmann, P., & Meinshausen, N.</div>
+            <div class="title">Causal inference by using invariant prediction: Identification and confidence intervals</div>
+            <div class="venue">Journal of the Royal Statistical Society Series B: Statistical Methodology, vol. 78, no. 5, pp. 947-1012, 2016</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Ramé, A., Ahuja, K., Zhang, J., Cord, M., Bottou, L., & Lopez-Paz, D.</div>
+            <div class="title">Model ratatouille: Recycling diverse models for out-of-distribution generalization</div>
+            <div class="venue">International Conference on Machine Learning, pp. 28656-28679, 2023</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Scherrer, N., Bilaniuk, O., Annadani, Y., Goyal, A., Schwab, P., Schölkopf, B., Mozer, M. C., Bengio, Y., Bauer, S., & Ke, N. R.</div>
+            <div class="title">Learning neural causal models with active interventions</div>
+            <div class="venue">arXiv preprint arXiv:2109.02429, 2021</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Schölkopf, B., Janzing, D., Peters, J., Sgouritsa, E., Zhang, K., & Mooij, J.</div>
+            <div class="title">On causal and anticausal learning</div>
+            <div class="venue">arXiv preprint arXiv:1206.6471, 2012</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Schölkopf, B., Locatello, F., Bauer, S., Ke, N. R., Kalchbrenner, N., Goyal, A., & Bengio, Y.</div>
+            <div class="title">Toward causal representation learning</div>
+            <div class="venue">Proceedings of the IEEE, vol. 109, no. 5, pp. 612-634, 2021</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Sriperumbudur, B. K., Fukumizu, K., Gretton, A., Schölkopf, B., & Lanckriet, G. R. G.</div>
+            <div class="title">On integral probability metrics, φ-divergences and binary classification</div>
+            <div class="venue">arXiv preprint arXiv:0901.2698, 2009</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Sui, Y., Wu, Q., Wu, J., Cui, Q., Li, L., Zhou, J., Wang, X., & He, X.</div>
+            <div class="title">Unleashing the power of graph data augmentation on covariate distribution shift</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 36, 2024</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Sun, B., & Saenko, K.</div>
+            <div class="title">Deep CORAL: Correlation alignment for deep domain adaptation</div>
+            <div class="venue">Computer Vision - ECCV 2016 Workshops, 2016</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Tellez, D., Litjens, G., Bándi, P., Bulten, W., Bokhorst, J.-M., Ciompi, F., & Van Der Laak, J.</div>
+            <div class="title">Quantifying the effects of data augmentation and stain color normalization in convolutional neural networks for computational pathology</div>
+            <div class="venue">Medical Image Analysis, vol. 58, pp. 101544, 2019</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">von Kügelgen, J., Besserve, M., Wendong, L., Gresele, L., Kekić, A., Bareinboim, E., Blei, D., & Schölkopf, B.</div>
+            <div class="title">Nonparametric identifiability of causal representations from unknown interventions</div>
+            <div class="venue">Advances in Neural Information Processing Systems, 2023</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Wang, B., Guo, J., Li, A., Chen, Y., & Li, H.</div>
+            <div class="title">Privacy-preserving representation learning on graphs: A mutual information perspective</div>
+            <div class="venue">ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 2021</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Wang, X., Chen, H., Wu, Z., & Zhu, W.</div>
+            <div class="title">Disentangled representation learning</div>
+            <div class="venue">IEEE Transactions on Pattern Analysis and Machine Intelligence, 2024</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Wang, Z., & Veitch, V.</div>
+            <div class="title">A unified causal view of domain invariant representation learning</div>
+            <div class="venue">arXiv preprint arXiv:2208.06987, 2022</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Wendong, L., Kekić, A., von Kügelgen, J., Buchholz, S., Besserve, M., Gresele, L., & Schölkopf, B.</div>
+            <div class="title">Causal component analysis</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 36, pp. 32481-32520, 2023</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Worrall, D. E., Garbin, S. J., Turmukhambetov, D., & Brostow, G. J.</div>
+            <div class="title">Harmonic networks: Deep translation and rotation equivariance</div>
+            <div class="venue">Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 5028-5037, 2017</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Yao, W., Chen, G., & Zhang, K.</div>
+            <div class="title">Learning latent causal dynamics</div>
+            <div class="venue">arXiv preprint arXiv:2202.04828, 2022</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Ye, H., Xie, C., Cai, T., Li, R., Li, Z., & Wang, L.</div>
+            <div class="title">Towards a theoretical framework of out-of-distribution generalization</div>
+            <div class="venue">Advances in Neural Information Processing Systems, vol. 34, pp. 23519-23531, 2021</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Zhang, B., Noorbakhsh, S. L., Dong, Y., Hong, Y., & Wang, B.</div>
+            <div class="title">Learning robust and privacy-preserving representations via information theory</div>
+            <div class="venue">Proceedings of the AAAI Conference on Artificial Intelligence, vol. 39, pp. 22363-22371, 2025</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Zhang, X., Cui, P., Xu, R., Zhou, L., He, Y., & Shen, Z.</div>
+            <div class="title">Deep stable learning for out-of-distribution generalization</div>
+            <div class="venue">Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 5372-5382, 2021</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Zhou, D., Wang, N., Gao, X., Han, B., Wang, X., Zhan, Y., & Liu, T.</div>
+            <div class="title">Improving adversarial robustness via mutual information estimation</div>
+            <div class="venue">International Conference on Machine Learning, 2022</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Zhou, K., Yang, Y., Hospedales, T., & Xiang, T.</div>
+            <div class="title">Learning to generate novel domains for domain generalization</div>
+            <div class="venue">ECCV, pp. 561-578, 2020</div>
+        </div>
+
+        <div class="reference">
+            <div class="authors">Zhu, S., Zhang, X., & Evans, D.</div>
+            <div class="title">Learning adversarially robust representations via worst-case mutual information maximization</div>
+            <div class="venue">International Conference on Machine Learning, 2020</div>
+        </div>
 
     </div>
 </body>
