@@ -351,8 +351,8 @@
             <h2 class="section-header" id="abstract">Abstract</h2>
             <div class="abstract-text">
                 Causal representation learning in the anti-causal setting—labels cause features rather than
-                the reverse—presents unique challenges requiring specialized approaches. We propose **Anti-Causal
-                Invariant Abstractions (ACIA)**, a novel measure-theoretic framework for anti-causal representation learning.
+                the reverse—presents unique challenges requiring specialized approaches. We propose "Anti-Causal
+                Invariant Abstractions (ACIA)", a novel measure-theoretic framework for anti-causal representation learning.
                 ACIA employs a **two-level design**: low-level representations capture how labels generate observations,
                 while high-level representations learn stable causal patterns across environment-specific variations.
                 ACIA addresses key limitations of existing approaches by: (1) accommodating perfect and imperfect
@@ -362,7 +362,6 @@
                 that ACIA consistently outperforms state-of-the-art methods in both accuracy and invariance metrics.
                 Furthermore, our theoretical results establish tight bounds on performance gaps between training and
                 unseen environments, confirming the efficacy of our approach for robust anti-causal learning.
-                Code is available at <a href="https://github.com/ArmanBehnam/ACIA" target="_blank">https://github.com/ArmanBehnam/ACIA</a>.
             </div>
 
 <!--            -&#45;&#45;-->
@@ -370,16 +369,16 @@
             <h2 class="section-header" id="method">ACIA Framework Overview</h2>
             <div class="abstract-text">
                 Our approach introduces a novel measure-theoretic framework for learning in anti-causal domains
-                ($Y \rightarrow X \leftarrow E$). The method consists of three key algorithms: **Causal Dynamics Algorithm**,
-                **Causal Abstraction Algorithm**, and **OOD Optimization Algorithm**. The framework decomposes the problem
+                ($Y \rightarrow X \leftarrow E$). The method consists of three key algorithms: <strong>Causal Dynamics Algorithm</strong>,
+                <strong>Causal Abstraction Algorithm</strong>, and <strong>OOD Optimization Algorithm</strong>. The framework decomposes the problem
                 into two key representation spaces:
                 <ul>
-                    <li>**Low-Level Representation ($\mathcal{Z}_L$):** Captures the causal latent dynamics of
-                        how the label $Y$ generates the features $X$ (as per **Theorem 3** in the paper).</li>
-                    <li>**High-Level Representation ($\mathcal{Z}_H$):** Learns the causal invariant abstraction
-                        (as per **Theorem 4**), ensuring the final prediction is independent of environment factors.</li>
+                    <li><strong>Low-Level Representation ($\mathcal{Z}_L$):</strong> Captures the causal latent dynamics of
+                        how the label $Y$ generates the features $X$ (as per <strong>Theorem 3</strong> in the paper).</li>
+                    <li><strong>High-Level Representation ($\mathcal{Z}_H$):</strong> Learns the causal invariant abstraction
+                        (as per <strong>Theorem 4</strong>), ensuring the final prediction is independent of environment factors.</li>
                 </ul>
-                This two-level approach enables **OOD generalization** by learning from both perfect and imperfect interventions.
+                This two-level approach enables <strong>OOD generalization</strong> by learning from both perfect and imperfect interventions.
             </div>
 
 <!--            -&#45;&#45;-->
@@ -413,7 +412,7 @@
                 </tbody>
             </table>
 
-            ---
+<!--            -&#45;&#45;-->
 
             <h2 class="section-header" id="install">Installation & Usage (ACIA Library)</h2>
             <p>The Anti-Causal Invariant Abstractions (ACIA) framework is available as
@@ -436,7 +435,7 @@ pip install -r requirements.txt</code></pre>
                 <pre><code>python main.py</code></pre>
             </div>
 
-            ---
+<!--            -&#45;&#45;-->
 
             <h2 class="section-header" id="ack">Acknowledgments</h2>
             <div class="abstract-text">
@@ -445,7 +444,7 @@ pip install -r requirements.txt</code></pre>
                     Foundation under Grant Nos. ECCS-2216926, CCF-2331302, CNS-2241713, and CNS-2339686.</p>
             </div>
 
-            ---
+<!--            -&#45;&#45;-->
 
             <h2 class="section-header" id="bibtex">Citation</h2>
             <div class="bibtex-block">
