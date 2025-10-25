@@ -16,69 +16,75 @@
         .right-figure { float: right; width: 45%; margin-left: 20px; margin-bottom: 20px; }
         .clearfix::after { content: ""; clear: both; display: table; }
     </style>
-    <script type="text/javascript" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
     </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <div class="page-container clearfix">
-        <p><a href="#">← Back to Main Page</a></p>
+        <p><a href="index.html">← Back to Main Page</a></p>
 
         <h2>Introduction</h2>
 
-        <p>Causal representation learning discovers causal relationships underlying data rather than statistical associations. At its core, causal representation learning seeks to identify \textit{high-level causal variables} from low-level observations, bridging the gap between statistical pattern recognition and causal reasoning. Learning these causal variables offers transformative potential for artificial intelligence systems that can reason about cause and effect.</p>
+        <p>Causal representation learning discovers causal relationships underlying data rather than statistical associations. At its core, causal representation learning seeks to identify <em>high-level causal variables</em> from low-level observations, bridging the gap between statistical pattern recognition and causal reasoning. Learning these causal variables offers transformative potential for artificial intelligence systems that can reason about cause and effect.</p>
 
         <div class="figure-placeholder right-figure">
-            <div style="text-align: center; margin-bottom: 10px;"></div>
-            <p style="font-weight: bold; text-align: center; font-size: 1em;">Figure 1: Anti-Causal Diagram</p>
-            <p style="font-size: 0.9em;">This diagram illustrates the **Anti-Causal setting**, showing causal (orange), spurious (blue), and confounding (dashed blue) dependencies. The nodes are $X$ (Observable variables), $Y$ (Causal variable/target), $Z$ (Unmeasured intermediary/latent), $U$ (Confounder/latent), and $E$ (Environment variable). Orange arrows represent direct paths to $X$, and blue arrows represent confounding effects. The core anti-causal structure is $Y \rightarrow X \leftarrow E$ mediated by latent factors $Z$ and $U$.</p>
-        </div>
+        <img src="fig/anticausal_diagram.png" alt="Anti-Causal Diagram" style="width: 100%; margin-bottom: 10px;">
+        <p style="font-weight: bold; text-align: center; font-size: 1em;">Figure 1: Anti-Causal Diagram</p>
+        <p style="font-size: 0.9em;">This diagram illustrates the <strong>Anti-Causal setting</strong>, showing causal (orange), spurious (blue), and confounding (dashed blue) dependencies. The nodes are $X$ (Observable variables), $Y$ (Causal variable/target), $Z$ (Unmeasured intermediary/latent), $U$ (Confounder/latent), and $E$ (Environment variable). Orange arrows represent direct paths to $X$, and blue arrows represent confounding effects. The core anti-causal structure is $Y \rightarrow X \leftarrow E$ mediated by latent factors $Z$ and $U$.</p>
+    </div>
 
-        <p>A particularly challenging yet promising domain is learning representations in the \textit{anti-causal} setting, where the causal direction is reversed from traditional prediction tasks. Figure 1 diagrams the anti-causal setting, where $Y$ (target) is the causal variable, $X$ (observation) the observable variables, $E$ (Environment) the environment variable introducing spurious correlations, $U$ is a confounder which affects both $X$ and $Y$, and $Z$ (latent variable) is an unmeasured intermediary. The orange arrows represent direct paths to the observed variables $X$, and blue arrows represent confounding effects.</p>
+        <p>A particularly challenging yet promising domain is learning representations in the <em>anti-causal</em> setting, where the causal direction is reversed from traditional prediction tasks. Figure 1 diagrams the anti-causal setting, where $Y$ (target) is the causal variable, $X$ (observation) the observable variables, $E$ (Environment) the environment variable introducing spurious correlations, $U$ is a confounder which affects both $X$ and $Y$, and $Z$ (latent variable) is an unmeasured intermediary. The orange arrows represent direct paths to the observed variables $X$, and blue arrows represent confounding effects.</p>
 
         <p>Consider a disease diagnosis from chest X-rays across different hospitals. A disease ($Y$) causes observable symptoms and measurements ($X$), with the relationship represented as $Y \rightarrow X$. The confounding factors $U$ (e.g., age and sex) affect both disease and symptoms. Environmental factors $E$ (e.g., hospital-specific protocols) introduce spurious correlations by creating hospital-specific variations, forming the anti-causal structure $Y \rightarrow X \leftarrow E$. The orange arrows therefore depict the true disease-to-symptom mechanism ($Y \rightarrow X$), while the paths involving $E$ and $U$ introduce noise. This anti-causal structure requires specialized methods to disentangle causal mechanisms from environmental artifacts.</p>
 
         <p>Early works formalized anti-causal learning and showed that traditional methods fail in this setting. Follow-up works can be categorized into three main approaches:</p>
         <ol>
-            <li>\textit{Intervention-based causal learning} that models causal effects through interventions;</li>
-            <li>\textit{Structure-based causal methods} explicitly models causal structures through Directed Acyclic Graphs (DAGs), requiring complete knowledge of the underlying Structural Causal Model (SCM);</li>
-            <li>\textit{Invariant learning methods} that seeks representations invariant across distributions.</li>
+            <li><em>Intervention-based causal learning</em> that models causal effects through interventions;</li>
+            <li><em>Structure-based causal methods</em> explicitly models causal structures through Directed Acyclic Graphs (DAGs), requiring complete knowledge of the underlying Structural Causal Model (SCM);</li>
+            <li><em>Invariant learning methods</em> that seeks representations invariant across distributions.</li>
         </ol>
-        <p>See more related work in Appendix.</p>
-
         <h3>Limitations of Existing Methods</h3>
 
         <p>However, existing methods face several critical limitations:</p>
         <ul>
-            <li>First, intervention-based approaches \textit{assume perfect interventions}—where intervened variables are completely disconnected from their causes—a restrictive assumption rarely satisfied in real-world scenarios.</li>
-            <li>Second, structure-based methods' reliance on \textit{explicit structural dependencies} through SCM poses significant hurdles when the underlying SCM is unknown.</li>
-            <li>Third, distribution-invariant approaches' assumptions on \textit{independent and identically distributed data or known test distributions} limit the methods' generalization capabilities.</li>
+            <li>First, intervention-based approaches <em>assume perfect interventions</em>—where intervened variables are completely disconnected from their causes—a restrictive assumption rarely satisfied in real-world scenarios.</li>
+            <li>Second, structure-based methods' reliance on <em>explicit structural dependencies</em> through SCM poses significant hurdles when the underlying SCM is unknown.</li>
+            <li>Third, distribution-invariant approaches' assumptions on <em>independent and identically distributed data or known test distributions</em> limit the methods' generalization capabilities.</li>
         </ul>
         <p>Fundamentally, these limitations arise because the single-level representations learned by these methods cannot simultaneously capture the causal mechanism from $Y$ to $X$ while filtering spurious correlations from $E$ to $X$ in anti-causal structure.</p>
 
         <div class="figure-placeholder" style="text-align: center;">
             <div style="margin-bottom: 10px;"></div>
+            <img src="fig/acia_framework_conceptual_diagram.png" alt="ACIA Framework" style="width: 100%;">
             <p style="font-weight: bold; text-align: center; margin-bottom: 5px;">Figure 2: ACIA: Anti-Causal Invariant Abstraction Framework</p>
             <p style="font-size: 1em; text-align: left;">This framework outlines four steps:</p>
             <ol style="font-size: 1em; text-align: left;">
                 <li><strong>Input (Raw Data):</strong> Illustrates the anti-causal structure $Y \rightarrow X$ and $E \rightarrow X$.</li>
-                <li><strong>Theorem 3 (Causal Dynamics):</strong> Learns a **Low-Level Representation** $\phi_L: \mathcal{X} \rightarrow \mathcal{D}_{\mathcal{Z}_L}$, capturing anti-causal structure and environment variations.</li>
-                <li><strong>Theorem 4 (Causal Abstraction):</strong> Learns a **High-Level Representation** $\phi_H: \mathcal{D}_{\mathcal{Z}_L} \rightarrow \mathcal{D}_{\mathcal{Z}_H}$, distilling environment-invariant causal features.</li>
+                <li><strong>Theorem 3 (Causal Dynamics):</strong> Learns a <strong>Low-Level Representation</strong> $\phi_L: \mathcal{X} \rightarrow \mathcal{D}_{\mathcal{Z}_L}$, capturing anti-causal structure and environment variations.</li>
+                <li><strong>Theorem 4 (Causal Abstraction):</strong> Learns a <strong>High-Level Representation</strong> $\phi_H: \mathcal{D}_{\mathcal{Z}_L} \rightarrow \mathcal{D}_{\mathcal{Z}_H}$, distilling environment-invariant causal features.</li>
                 <li><strong>Output (Two-Level Optimization):</strong> The final function $f=\mathcal{C} \circ \phi_H \circ \phi_L$ is optimized with a min-max objective subject to a loss $\mathcal{L}$ and regularizers $R_1$ (Environment Independence) and $R_2$ (Causal Consistency).</li>
             </ol>
         </div>
 
         <h3>Anti-Causal Invariant Abstraction (ACIA)</h3>
 
-        <p>We develop **Anti-Causal Invariant Abstraction (ACIA)**, a two-level representation learning method (Figure 2), to address above limitations. ACIA is inspired by recent causal representation learning studies and measure-theoretic causality.</p>
+        <p>We develop <strong>Anti-Causal Invariant Abstraction (ACIA)</strong>, a two-level representation learning method (Figure 2), to address above limitations. ACIA is inspired by recent causal representation learning studies and measure-theoretic causality.</p>
 
-        <p>Specifically, to address the first limitation, we introduce a \textit{generalized intervention model that accommodates both perfect and imperfect interventions via the designed interventional kernels}. To address the second limitation, ACIA \textit{learns directly from raw input without requiring explicit SCM specification}. To address the third limitation, we introduce \textit{environment-invariant regularizers} that enable stable identification of invariant causal variables across environments.</p>
+        <p>Specifically, to address the first limitation, we introduce a <em>generalized intervention model that accommodates both perfect and imperfect interventions via the designed interventional kernels</em>. To address the second limitation, ACIA <em>learns directly from raw input without requiring explicit SCM specification</em>. To address the third limitation, we introduce <em>environment-invariant regularizers</em> that enable stable identification of invariant causal variables across environments.</p>
 
         <p>All together, ACIA involves:</p>
         <ul>
-            <li>**Causal Dynamics** to learn \textit{low-level representations} directly from data—without requiring explicit DAGs/SCMs—that capture the anti-causal structure by encoding how labels generate observable features while preserving environment-specific variations. E.g., in medical diagnosis, this reflects how diseases ($Y$) manifest as symptoms and measurements ($X$) in X-ray images, encompassing both disease-related patterns and hospital-specific factors. The learnt low-level representations support reasoning under both perfect and imperfect interventions, enabled by the interventional kernels.</li>
-            <li>**Causal Abstraction** to learn \textit{high-level representations} that distill environment-invariant causal features from the low-level representations. These abstractions generalize across environments by discarding spurious environmental correlations while preserving label-relevant mechanisms. For example, this involves identifying patterns that are consistently associated with specific diseases regardless of the hospital environment.</li>
-            <li>**Theoretical Guarantees** that establish convergence rates, out-of-distribution/domain generalization bounds, and environmental robustness for the learned representations.</li>
+            <li><strong>Causal Dynamics</strong> to learn <em>low-level representations</em> directly from data—without requiring explicit DAGs/SCMs—that capture the anti-causal structure by encoding how labels generate observable features while preserving environment-specific variations. E.g., in medical diagnosis, this reflects how diseases ($Y$) manifest as symptoms and measurements ($X$) in X-ray images, encompassing both disease-related patterns and hospital-specific factors. The learnt low-level representations support reasoning under both perfect and imperfect interventions, enabled by the interventional kernels.</li>
+            <li><strong>Causal Abstraction</strong> to learn <em>high-level representations</em> that distill environment-invariant causal features from the low-level representations. These abstractions generalize across environments by discarding spurious environmental correlations while preserving label-relevant mechanisms. For example, this involves identifying patterns that are consistently associated with specific diseases regardless of the hospital environment.</li>
+            <li><strong>Theoretical Guarantees</strong> that establish convergence rates, out-of-distribution/domain generalization bounds, and environmental robustness for the learned representations.</li>
         </ul>
 
         <p>We extensively evaluate ACIA on multiple synthetic and real-world datasets with perfect and imperfect interventions. For instance, our results demonstrate ACIA achieves almost perfect accuracy (e.g., 99\%) on widely-studied CMNIST and RMNIST synthetic datasets with perfect environment independence and intervention robustness, significantly outperforming SOTA baselines. Most notably, on the real-world Camelyon17 medical dataset, ACIA achieves 84.40\% accuracy—an 19\% improvement over the best baseline (65.5\% by LECI)—while maintaining competitive environment independence and low-level invariance metrics. These results validate our theoretical framework's ability to learn robust anti-causal representations across both synthetic and real-world settings, with particularly strong performance gains in scenarios with complex environmental variations.</p>

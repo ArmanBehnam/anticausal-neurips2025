@@ -7,6 +7,8 @@
     <meta name="description" content="A Measure-Theoretic Framework for Anti-Causal Representation Learning (NeurIPS 2025)">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
         /* Base Styling */
@@ -335,9 +337,10 @@
                 </div>
             </div>
             <div class="action-buttons">
+                <a href="https://drive.google.com/file/d/1wptNY6BlxTtpwiCqco4QIrEKNJpk5buy/view" class="btn btn-blue" target="_blank"><i class="fas fa-download"></i> Install ACIA</a>
                 <a href="https://openreview.net/forum?id=ei20AX8EkP" class="btn btn-blue"><i class="fas fa-file-pdf"></i>Paper</a>
                 <a href="https://github.com/ArmanBehnam/ACIA" class="btn btn-blue" target="_blank"><i class="fab fa-github"></i> Code Repository</a>
-                <a href="https://drive.google.com/file/d/1wptNY6BlxTtpwiCqco4QIrEKNJpk5buy/view" class="btn btn-blue" target="_blank"><i class="fab fa-github"></i> Poster</a>
+                <a href="https://drive.google.com/file/d/1wptNY6BlxTtpwiCqco4QIrEKNJpk5buy/view" class="btn btn-blue" target="_blank"><i class="fas fa-image"></i> Poster</a>
                 <a href="https://arxiv.org/abs/2510.18052" class="btn btn-light"><i class="fas fa-file-alt"></i> arXiv Link</a>
             </div>
 
@@ -351,20 +354,18 @@
             <h2 class="section-header" id="abstract">Abstract</h2>
             <div class="abstract-text">
                 Causal representation learning in the anti-causal setting—labels cause features rather than
-                the reverse—presents unique challenges requiring specialized approaches. We propose "Anti-Causal
-                Invariant Abstractions (ACIA)", a novel measure-theoretic framework for anti-causal representation learning.
-                ACIA employs a **two-level design**: low-level representations capture how labels generate observations,
+                the reverse—presents unique challenges requiring specialized approaches. We propose <strong>Anti-Causal
+                Invariant Abstractions (ACIA)</strong>, a novel measure-theoretic framework for anti-causal representation learning.
+                ACIA employs a <strong>two-level design</strong>: low-level representations capture how labels generate observations,
                 while high-level representations learn stable causal patterns across environment-specific variations.
                 ACIA addresses key limitations of existing approaches by: (1) accommodating perfect and imperfect
-                interventions through **interventional kernels**, (2) eliminating dependency on explicit causal structures,
-                (3) handling high-dimensional data effectively, and (4) providing **theoretical guarantees**
+                interventions through <strong>interventional kernels</strong>, (2) eliminating dependency on explicit causal structures,
+                (3) handling high-dimensional data effectively, and (4) providing <strong>theoretical guarantees</strong>
                 for out-of-distribution generalization. Experiments on synthetic and real-world medical datasets demonstrate
                 that ACIA consistently outperforms state-of-the-art methods in both accuracy and invariance metrics.
                 Furthermore, our theoretical results establish tight bounds on performance gaps between training and
                 unseen environments, confirming the efficacy of our approach for robust anti-causal learning.
             </div>
-
-<!--            -&#45;&#45;-->
 
             <h2 class="section-header" id="method">ACIA Framework Overview</h2>
             <div class="abstract-text">
@@ -381,38 +382,259 @@
                 This two-level approach enables <strong>OOD generalization</strong> by learning from both perfect and imperfect interventions.
             </div>
 
-<!--            -&#45;&#45;-->
-
             <h2 class="section-header" id="results">Results and Performance</h2>
 
-            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Classification Performance</h3>
-            <p>ACIA achieves state-of-the-art performance on CMNIST (97.7% accuracy) with perfect environment independence.</p>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-                <thead>
-                    <tr style="background-color: #ddd;">
-                        <th style="padding: 10px; text-align: left;">Method</th>
-                        <th style="padding: 10px; text-align: left;">Accuracy</th>
-                        <th style="padding: 10px; text-align: left;">ENV-Independence</th>
-                        <th style="padding: 10px; text-align: left;">Low-level Invariance</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">Baseline</td>
-                        <td style="padding: 10px;">85.2%</td>
-                        <td style="padding: 10px;">0.45</td>
-                        <td style="padding: 10px;">0.38</td>
-                    </tr>
-                    <tr style="background-color: #eef; font-weight: 600;">
-                        <td style="padding: 10px;">Ours (ACIA)</td>
-                        <td style="padding: 10px;">92.7%</td>
-                        <td style="padding: 10px;">0.92</td>
-                        <td style="padding: 10px;">0.85</td>
-                    </tr>
-                </tbody>
-            </table>
+<h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Baseline Comparisons Across Datasets</h3>
+<p>ACIA achieves state-of-the-art performance across four benchmark datasets with superior invariance metrics.</p>
 
-<!--            -&#45;&#45;-->
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.85em;">
+    <thead>
+        <tr style="background-color: #ddd;">
+            <th rowspan="2" style="padding: 10px; text-align: left; border: 1px solid #ccc;">Method</th>
+            <th colspan="4" style="padding: 10px; text-align: center; border: 1px solid #ccc;">CMNIST</th>
+            <th colspan="4" style="padding: 10px; text-align: center; border: 1px solid #ccc;">RMNIST</th>
+            <th colspan="4" style="padding: 10px; text-align: center; border: 1px solid #ccc;">Ball Agent</th>
+            <th colspan="4" style="padding: 10px; text-align: center; border: 1px solid #ccc;">Camelyon17</th>
+        </tr>
+        <tr style="background-color: #ddd;">
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">Acc↑</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">EI↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">LLI↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">IR↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">Acc↑</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">EI↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">LLI↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">IR↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">Acc↑</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">EI↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">LLI↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">IR↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">Acc↑</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">EI↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">LLI↓</th>
+            <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">IR↓</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 8px; border: 1px solid #eee;">GDRO</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">92.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.85</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.80</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.91</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">63.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">16.03</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">4.10</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.53</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">66.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.04</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.69</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.75</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">58.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.32</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.87</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.83</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 8px; border: 1px solid #eee;">MMD</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">94.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.22</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.73</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.13</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">92.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">6.88</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">15.62</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.69</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">68.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.13</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.87</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.82</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">60.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">4.43</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">2.16</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.12</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 8px; border: 1px solid #eee;">CORAL</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">89.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.48</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">2.06</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.30</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">91.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">4.02</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">9.56</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.31</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">70.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.23</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.92</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.84</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">41.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.62</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">2.45</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.01</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 8px; border: 1px solid #eee;">DANN</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">45.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.03</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.86</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.20</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">38.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">12.82</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">3.85</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.47</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">61.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.35</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.96</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.89</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">39.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.68</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.40</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.95</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 8px; border: 1px solid #eee;">IRM</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">85.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.43</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.83</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.08</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">85.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">19.03</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">6.64</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">3.17</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">56.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.89</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.67</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.71</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">52.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.95</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.76</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">2.45</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 8px; border: 1px solid #eee;">Rex</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">73.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.69</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.41</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.80</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">80.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.69</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">10.69</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.96</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">54.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.05</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.11</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">7.65</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">39.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.68</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.40</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.95</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 8px; border: 1px solid #eee;">VREx</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">95.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.71</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.09</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.77</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">93.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">2.41</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">2.77</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.03</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">74.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.93</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.78</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.73</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">54.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.98</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.78</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.02</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 8px; border: 1px solid #eee;">ACTIR</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">78.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.64</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.97</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.80</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">72.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.23</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">18.79</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.19</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">69.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.88</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.02</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.58</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">60.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.60</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.63</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.80</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 8px; border: 1px solid #eee;">CausalDA</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">83.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.41</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.85</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">12.23</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">87.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.62</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.91</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">16.44</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">45.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.20</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.85</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.22</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">55.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.55</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">1.60</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">10.55</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 8px; border: 1px solid #eee;">LECI</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">70.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.83</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.40</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.67</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">82.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.29</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">2.91</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.04</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">71.20</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee; font-weight: 600;">0.46</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.39</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.05</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">65.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee; font-weight: 600;">0.23</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.50</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.45</td>
+        </tr>
+        <tr style="background-color: #e3f2fd; font-weight: 600;">
+            <td style="padding: 8px; border: 1px solid #eee;">ACIA (Ours)</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">99.20</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.01</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.02</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">99.10</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.00</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.03</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.01</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">99.98</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee; font-style: italic;">0.52</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.03</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.03</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">84.40</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee; font-style: italic;">0.28</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.42</td>
+            <td style="padding: 8px; text-align: center; border: 1px solid #eee;">0.43</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <p style="font-size: 0.85em; color: #666; margin-top: 10px;">
+            <strong>Metrics:</strong> Acc = Accuracy, EI = Environment Independence, LLI = Low-Level Invariance, IR = Invariance Ratio.
+            ↑ indicates higher is better, ↓ indicates lower is better. Bold indicates best performance, italic indicates second-best.
+        </p>
+
 
             <h2 class="section-header" id="install">Installation & Usage (ACIA Library)</h2>
             <p>The Anti-Causal Invariant Abstractions (ACIA) framework is available as
@@ -423,10 +645,10 @@
             <p>The simplest way to install and set up the environment is via `pip`:</p>
             <div class="code-block">
                 <pre><code># Install the package in editable mode
-pip install -e .
+            pip install -e .
 
-# Install all necessary dependencies
-pip install -r requirements.txt</code></pre>
+            # Install all necessary dependencies
+            pip install -r requirements.txt</code></pre>
             </div>
 
             <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Running Training</h3>
@@ -435,16 +657,12 @@ pip install -r requirements.txt</code></pre>
                 <pre><code>python main.py</code></pre>
             </div>
 
-<!--            -&#45;&#45;-->
-
             <h2 class="section-header" id="ack">Acknowledgments</h2>
             <div class="abstract-text">
                 <p>We thank the anonymous reviewers for their valuable and constructive feedback.
                     This work was supported in part by the Cisco Research Award and by the National Science
                     Foundation under Grant Nos. ECCS-2216926, CCF-2331302, CNS-2241713, and CNS-2339686.</p>
             </div>
-
-<!--            -&#45;&#45;-->
 
             <h2 class="section-header" id="bibtex">Citation</h2>
             <div class="bibtex-block">
