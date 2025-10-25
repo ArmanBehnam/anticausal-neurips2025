@@ -296,10 +296,9 @@
     </style>
 </head>
 <body>
-    <div class="top-nav">
-        <a href="https://armanbehnam.github.io/" target="_blank">Ask AI</a>
-        <a href="https://github.com/ArmanBehnam/anticausal-neurips2025" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-    </div>
+<!--    <div class="top-nav">-->
+<!--        <a href="https://github.com/ArmanBehnam/anticausal-neurips2025" target="_blank"><i class="fab fa-github"></i> GitHub</a>-->
+<!--    </div>-->
 
     <div class="layout">
         <div class="sidebar">
@@ -345,9 +344,9 @@
                 </div>
             </div>
             <div class="action-buttons">
-                <a href="https://drive.google.com/file/d/1wptNY6BlxTtpwiCqco4QIrEKNJpk5buy/view" class="btn btn-blue" target="_blank"><i class="fas fa-download"></i> Install ACIA</a>
+                <a href="https://github.com/ArmanBehnam/ACIA/tree/main" class="btn btn-blue" target="_blank"><i class="fas fa-download"></i> Install ACIA</a>
                 <a href="https://openreview.net/forum?id=ei20AX8EkP" class="btn btn-blue"><i class="fas fa-file-pdf"></i>Paper</a>
-                <a href="https://github.com/ArmanBehnam/ACIA" class="btn btn-blue" target="_blank"><i class="fab fa-github"></i> Code Repository</a>
+                <a href="https://github.com/ArmanBehnam/ACIA/tree/main/acia" class="btn btn-blue" target="_blank"><i class="fab fa-github"></i> Code Repository</a>
                 <a href="https://drive.google.com/file/d/1wptNY6BlxTtpwiCqco4QIrEKNJpk5buy/view" class="btn btn-blue" target="_blank"><i class="fas fa-image"></i> Poster</a>
                 <a href="https://arxiv.org/abs/2510.18052" class="btn btn-light"><i class="fas fa-file-alt"></i> arXiv Link</a>
             </div>
@@ -645,25 +644,47 @@
 
 
             <h2 class="section-header" id="install">Installation & Usage (ACIA Library)</h2>
-            <p>The Anti-Causal Invariant Abstractions (ACIA) framework is available as
-                a Python package authored by Arman Behnam for easy use, requiring Python >=3.7.
-            </p>
+                <p>The Anti-Causal Invariant Abstractions (ACIA) framework is available as
+                    a Python package authored by Arman Behnam, requiring Python >=3.8.
+                </p>
 
-            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Installation</h3>
-            <p>The simplest way to install and set up the environment is via `pip`:</p>
-            <div class="code-block">
-                <pre><code># Install the package in editable mode
-            pip install -e .
+                <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Installation</h3>
+                <p>Install directly from GitHub:</p>
+                <div class="code-block">
+                    <pre><code># Clone the repository
+                git clone https://github.com/ArmanBehnam/ACIA.git
+                cd ACIA
 
-            # Install all necessary dependencies
-            pip install -r requirements.txt</code></pre>
-            </div>
+                # Install the package
+                pip install -e .
 
-            <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Running Training</h3>
-            <p>After installing dependencies, you can run the main training script:</p>
-            <div class="code-block">
-                <pre><code>python main.py</code></pre>
-            </div>
+                # Or install with development dependencies
+                pip install -e ".[dev]"</code></pre>
+                </div>
+
+                <h3 style="font-size: 1.2em; margin-top: 20px; color: #555;">Quick Start</h3>
+                <p>After installation, train on ColoredMNIST:</p>
+                <div class="code-block">
+                    <pre><code>from acia import ColoredMNIST, CausalRepresentationNetwork, CausalOptimizer
+                from torch.utils.data import DataLoader, ConcatDataset
+
+                # Load datasets
+                train_e1 = ColoredMNIST(env='e1', train=True)
+                train_e2 = ColoredMNIST(env='e2', train=True)
+                train_loader = DataLoader(ConcatDataset([train_e1, train_e2]), batch_size=128)
+
+                # Train model
+                model = CausalRepresentationNetwork()
+                optimizer = CausalOptimizer(model, batch_size=128)
+
+                for x, y, e in train_loader:
+                    metrics = optimizer.train_step(x, y, e)</code></pre>
+                </div>
+
+                <p>Or run the complete example:</p>
+                <div class="code-block">
+                    <pre><code>python examples/example_colored_mnist.py</code></pre>
+                </div>
 
             <h2 class="section-header" id="ack">Acknowledgments</h2>
             <div class="abstract-text">
