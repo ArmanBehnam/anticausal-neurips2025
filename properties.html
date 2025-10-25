@@ -3,24 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction | ACIA Framework</title>
+    <title>Properties | ACIA Framework</title>
     <style>
         body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; line-height: 1.6; }
-        .page-container { max-width: 900px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .page-container { max-width: 1000px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         h2 { font-size: 2em; color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
-        h3 { font-size: 1.5em; color: #333; margin-top: 30px; margin-bottom: 15px; }
-        p { margin-bottom: 1.5em; font-size: 1.1em; text-align: justify; }
-        ul, ol { margin-bottom: 1.5em; padding-left: 25px; font-size: 1.1em; }
-        .figure-placeholder { border: 1px solid #ccc; padding: 15px; margin: 20px 0; background-color: #fafafa; border-radius: 5px; }
-        .figure-placeholder img { max-width: 100%; height: auto; display: block; margin: 10px auto; }
-        .right-figure { float: right; width: 45%; margin-left: 20px; margin-bottom: 20px; }
-        .clearfix::after { content: ""; clear: both; display: table; }
+        h3 { font-size: 1.5em; color: #333; margin-top: 35px; margin-bottom: 15px; }
+        p { margin-bottom: 1.5em; font-size: 1.05em; text-align: justify; }
+        ul, ol { margin-bottom: 1.5em; padding-left: 25px; font-size: 1.05em; }
+
+        .proposition-box {
+            margin-bottom: 1.5em;
+            padding: 18px;
+            border-left: 5px solid #9c27b0;
+            background-color: #f3e5f5;
+            border-radius: 4px;
+        }
+        .proposition-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.15em;
+            color: #6a1b9a;
+        }
+
+        .proof-box {
+            margin-bottom: 1.5em;
+            padding: 18px;
+            border-left: 5px solid #607d8b;
+            background-color: #eceff1;
+            border-radius: 4px;
+        }
+        .proof-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #455a64;
+        }
+
+        .remark-box {
+            margin-bottom: 1.5em;
+            padding: 18px;
+            border-left: 5px solid #ff9800;
+            background-color: #fff8e1;
+            border-radius: 4px;
+        }
+        .remark-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.15em;
+            color: #e65100;
+        }
+
+        .equation-box {
+            background-color: #fafafa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
     </style>
     <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
         }
       };
     </script>
@@ -28,66 +74,165 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-    <div class="page-container clearfix">
-        <p><a href="index.html">← Back to Main Page</a> ... <a href="problem.html">Go to Next Page (Problem)</a></p>
+    <div class="page-container">
+        <p><a href="index.html">← Back to Main Page</a> ... <a href="exp_setup.html">Go to Next Page (Experimental Setup)</a></p>
 
-        <h2>Introduction</h2>
+        <h2>Properties</h2>
 
-        <p>Causal representation learning discovers causal relationships underlying data rather than statistical associations. At its core, causal representation learning seeks to identify <em>high-level causal variables</em> from low-level observations, bridging the gap between statistical pattern recognition and causal reasoning. Learning these causal variables offers transformative potential for artificial intelligence systems that can reason about cause and effect.</p>
+        <h3>Properties of Kernel</h3>
 
-        <div class="figure-placeholder right-figure">
-        <img src="fig/anticausal_diagram.png" alt="Anti-Causal Diagram" style="width: 100%; margin-bottom: 10px;">
-        <p style="font-weight: bold; text-align: center; font-size: 1em;">Figure 1: Anti-Causal Diagram</p>
-        <p style="font-size: 0.9em;">This diagram illustrates the <strong>Anti-Causal setting</strong>, showing causal (orange), spurious (blue), and confounding (dashed blue) dependencies. The nodes are $X$ (Observable variables), $Y$ (Causal variable/target), $Z$ (Unmeasured intermediary/latent), $U$ (Confounder/latent), and $E$ (Environment variable). Orange arrows represent direct paths to $X$, and blue arrows represent confounding effects. The core anti-causal structure is $Y \rightarrow X \leftarrow E$ mediated by latent factors $Z$ and $U$.</p>
-    </div>
+        <p>For each $S \in \mathscr{P}(T)$, the kernel $K_S: \Omega \times \mathscr{H} \rightarrow [0,1]$ extends from the component kernels as follows:</p>
 
-        <p>A particularly challenging yet promising domain is learning representations in the <em>anti-causal</em> setting, where the causal direction is reversed from traditional prediction tasks. Figure 1 diagrams the anti-causal setting, where $Y$ (target) is the causal variable, $X$ (observation) the observable variables, $E$ (Environment) the environment variable introducing spurious correlations, $U$ is a confounder which affects both $X$ and $Y$, and $Z$ (latent variable) is an unmeasured intermediary. The orange arrows represent direct paths to the observed variables $X$, and blue arrows represent confounding effects.</p>
-
-        <p>Consider a disease diagnosis from chest X-rays across different hospitals. A disease ($Y$) causes observable symptoms and measurements ($X$), with the relationship represented as $Y \rightarrow X$. The confounding factors $U$ (e.g., age and sex) affect both disease and symptoms. Environmental factors $E$ (e.g., hospital-specific protocols) introduce spurious correlations by creating hospital-specific variations, forming the anti-causal structure $Y \rightarrow X \leftarrow E$. The orange arrows therefore depict the true disease-to-symptom mechanism ($Y \rightarrow X$), while the paths involving $E$ and $U$ introduce noise. This anti-causal structure requires specialized methods to disentangle causal mechanisms from environmental artifacts.</p>
-
-        <p>Early works formalized anti-causal learning and showed that traditional methods fail in this setting. Follow-up works can be categorized into three main approaches:</p>
         <ol>
-            <li><em>Intervention-based causal learning</em> that models causal effects through interventions;</li>
-            <li><em>Structure-based causal methods</em> explicitly models causal structures through Directed Acyclic Graphs (DAGs), requiring complete knowledge of the underlying Structural Causal Model (SCM);</li>
-            <li><em>Invariant learning methods</em> that seeks representations invariant across distributions.</li>
+            <li><strong>For measurable rectangles</strong> $A_i \times A_j$ with $A_i \in \mathscr{H}_{e_i}$ and $A_j \in \mathscr{H}_{e_j}$, and $\omega = (\omega_i, \omega_j) \in \Omega$:
+                <div class="equation-box">
+                    $$K_S(\omega, A_i \times A_j) = K_{e_i}(\omega_i, A_i) \cdot K_{e_j}(\omega_j, A_j)$$
+                </div>
+            </li>
+            <li><strong>For general measurable sets</strong> $A \in \mathscr{H}$, by the Carathéodory extension theorem:
+                <div class="equation-box">
+                    $$K_S(\omega, A) = \mathbb{E}[\mathbf{1}_A \mid \mathscr{H}_S](\omega)$$
+                </div>
+                where $\mathscr{H}_S$ is the sub-$\sigma$-algebra corresponding to indices in $S$.
+            </li>
         </ol>
-        <h3>Limitations of Existing Methods</h3>
 
-        <p>However, existing methods face several critical limitations:</p>
-        <ul>
-            <li>First, intervention-based approaches <em>assume perfect interventions</em>—where intervened variables are completely disconnected from their causes—a restrictive assumption rarely satisfied in real-world scenarios.</li>
-            <li>Second, structure-based methods' reliance on <em>explicit structural dependencies</em> through SCM poses significant hurdles when the underlying SCM is unknown.</li>
-            <li>Third, distribution-invariant approaches' assumptions on <em>independent and identically distributed data or known test distributions</em> limit the methods' generalization capabilities.</li>
-        </ul>
-        <p>Fundamentally, these limitations arise because the single-level representations learned by these methods cannot simultaneously capture the causal mechanism from $Y$ to $X$ while filtering spurious correlations from $E$ to $X$ in anti-causal structure.</p>
+        <h3>Properties of Product Causal Space Sub-$\sigma$-algebra</h3>
 
-        <div class="figure-placeholder" style="text-align: center;">
-            <div style="margin-bottom: 10px;"></div>
-            <img src="fig/acia_framework_conceptual_diagram.png" alt="ACIA Framework" style="width: 100%;">
-            <p style="font-weight: bold; text-align: center; margin-bottom: 5px;">Figure 2: ACIA: Anti-Causal Invariant Abstraction Framework</p>
-            <p style="font-size: 1em; text-align: left;">This framework outlines four steps:</p>
-            <ol style="font-size: 1em; text-align: left;">
-                <li><strong>Input (Raw Data):</strong> Illustrates the anti-causal structure $Y \rightarrow X$ and $E \rightarrow X$.</li>
-                <li><strong>Theorem 3 (Causal Dynamics):</strong> Learns a <strong>Low-Level Representation</strong> $\phi_L: \mathcal{X} \rightarrow \mathcal{D}_{\mathcal{Z}_L}$, capturing anti-causal structure and environment variations.</li>
-                <li><strong>Theorem 4 (Causal Abstraction):</strong> Learns a <strong>High-Level Representation</strong> $\phi_H: \mathcal{D}_{\mathcal{Z}_L} \rightarrow \mathcal{D}_{\mathcal{Z}_H}$, distilling environment-invariant causal features.</li>
-                <li><strong>Output (Two-Level Optimization):</strong> The final function $f=\mathcal{C} \circ \phi_H \circ \phi_L$ is optimized with a min-max objective subject to a loss $\mathcal{L}$ and regularizers $R_1$ (Environment Independence) and $R_2$ (Causal Consistency).</li>
+        <p><strong>Intuition:</strong> Sub-$\sigma$-algebras capture partial information from subsets of environments. These properties ensure our hierarchical structure is well-behaved and consistent across different environment combinations. The following propositions formalize these characteristics.</p>
+
+        <div class="proposition-box">
+            <strong>Proposition (Properties of Sub-$\sigma$-algebras)</strong>
+            <p>Let $(\Omega, \mathscr{H}, \mathbb{P}, \mathbb{K})$ be a product causal space and $\mathscr{H}_S$ be a sub-$\sigma$-algebra for $S \subseteq T$. Then:</p>
+            <ol>
+                <li>$\mathscr{H}_S \subseteq \mathscr{H}$ for all $S \subseteq T$</li>
+                <li>If $S_1 \subseteq S_2 \subseteq T$, then $\mathscr{H}_{S_1} \subseteq \mathscr{H}_{S_2}$</li>
+                <li>$\mathscr{H}_T = \mathscr{H}$</li>
             </ol>
         </div>
 
-        <h3>Anti-Causal Invariant Abstraction (ACIA)</h3>
+        <div class="proof-box">
+            <strong>Proof</strong>
+            <p><strong>(i)</strong> By construction, $\mathscr{H}_S$ is generated by measurable rectangles $A_i \times A_j$ where $A_i \in \mathscr{H}_{e_i}$ and $A_j \in \mathscr{H}_{e_j}$ corresponding to events in the time indices $S$. Since $\mathscr{H} = \mathscr{H}_{e_i} \otimes \mathscr{H}_{e_j}$ is the product $\sigma$-algebra that contains all measurable rectangles, we have $\mathscr{H}_S \subseteq \mathscr{H}$ by definition.</p>
 
-        <p>We develop <strong>Anti-Causal Invariant Abstraction (ACIA)</strong>, a two-level representation learning method (Figure 2), to address above limitations. ACIA is inspired by recent causal representation learning studies and measure-theoretic causality.</p>
+            <p><strong>(ii)</strong> Let $S_1 \subseteq S_2 \subseteq T$. Any measurable rectangle generating $\mathscr{H}_{S_1}$ corresponds to events in time indices from $S_1$. Since $S_1 \subseteq S_2$, these same rectangles are also in the generating set of $\mathscr{H}_{S_2}$. By the minimality property of $\sigma$-algebras, $\mathscr{H}_{S_1} \subseteq \mathscr{H}_{S_2}$.</p>
 
-        <p>Specifically, to address the first limitation, we introduce a <em>generalized intervention model that accommodates both perfect and imperfect interventions via the designed interventional kernels</em>. To address the second limitation, ACIA <em>learns directly from raw input without requiring explicit SCM specification</em>. To address the third limitation, we introduce <em>environment-invariant regularizers</em> that enable stable identification of invariant causal variables across environments.</p>
+            <p><strong>(iii)</strong> When $S = T$, the generating rectangles of $\mathscr{H}_S$ include all possible measurable rectangles from $\mathscr{H}_{e_i}$ and $\mathscr{H}_{e_j}$ that can be formed from the complete set of time indices. These rectangles generate $\mathscr{H} = \mathscr{H}_{e_i} \otimes \mathscr{H}_{e_j}$, so $\mathscr{H}_T = \mathscr{H}$.</p>
+        </div>
 
-        <p>All together, ACIA involves:</p>
-        <ul>
-            <li><strong>Causal Dynamics</strong> to learn <em>low-level representations</em> directly from data—without requiring explicit DAGs/SCMs—that capture the anti-causal structure by encoding how labels generate observable features while preserving environment-specific variations. E.g., in medical diagnosis, this reflects how diseases ($Y$) manifest as symptoms and measurements ($X$) in X-ray images, encompassing both disease-related patterns and hospital-specific factors. The learnt low-level representations support reasoning under both perfect and imperfect interventions, enabled by the interventional kernels.</li>
-            <li><strong>Causal Abstraction</strong> to learn <em>high-level representations</em> that distill environment-invariant causal features from the low-level representations. These abstractions generalize across environments by discarding spurious environmental correlations while preserving label-relevant mechanisms. For example, this involves identifying patterns that are consistently associated with specific diseases regardless of the hospital environment.</li>
-            <li><strong>Theoretical Guarantees</strong> that establish convergence rates, out-of-distribution/domain generalization bounds, and environmental robustness for the learned representations.</li>
-        </ul>
+        <div class="proposition-box">
+            <strong>Proposition (Probability Measure Restriction)</strong>
+            <p>For any $S \subseteq T$, the restriction $\mathbb{P}|_{\mathscr{H}_S}$ of the product probability measure to $\mathscr{H}_S$ is a well-defined probability measure, and for $S_1 \subseteq S_2 \subseteq T$:</p>
+            <div class="equation-box">
+                $$\mathbb{P}|_{\mathscr{H}_{S_2}}(A) = \mathbb{P}|_{\mathscr{H}_{S_1}}(A) \text{ for all } A \in \mathscr{H}_{S_1}$$
+            </div>
+        </div>
 
-        <p>We extensively evaluate ACIA on multiple synthetic and real-world datasets with perfect and imperfect interventions. For instance, our results demonstrate ACIA achieves almost perfect accuracy (e.g., 99\%) on widely-studied CMNIST and RMNIST synthetic datasets with perfect environment independence and intervention robustness, significantly outperforming SOTA baselines. Most notably, on the real-world Camelyon17 medical dataset, ACIA achieves 84.40\% accuracy—an 19\% improvement over the best baseline (65.5\% by LECI)—while maintaining competitive environment independence and low-level invariance metrics. These results validate our theoretical framework's ability to learn robust anti-causal representations across both synthetic and real-world settings, with particularly strong performance gains in scenarios with complex environmental variations.</p>
+        <div class="proof-box">
+            <strong>Proof</strong>
+            <p>First, we establish that $\mathbb{P}|_{\mathscr{H}_S}$ is a well-defined probability measure. $\mathscr{H}_S$ is a $\sigma$-algebra by construction, $\mathbb{P}|_{\mathscr{H}_S}(A) = \mathbb{P}(A)$ for all $A \in \mathscr{H}_S$, $\mathbb{P}|_{\mathscr{H}_S}(\Omega) = \mathbb{P}(\Omega) = 1$, and $\mathbb{P}|_{\mathscr{H}_S}$ inherits countable additivity from $\mathbb{P}$.</p>
+
+            <p>To prove the consistency of the restrictions for $S_1 \subseteq S_2 \subseteq T$, let $A \in \mathscr{H}_{S_1}$. Since $S_1 \subseteq S_2$, by the previous proposition, we have $A \in \mathscr{H}_{S_2}$.</p>
+
+            <p>For any measurable rectangle $A = A_i \times A_j$ where $A_i \in \mathscr{H}_{e_i}$ and $A_j \in \mathscr{H}_{e_j}$ corresponding to events in time indices $S_1$:</p>
+            <div class="equation-box">
+                $$\mathbb{P}|_{\mathscr{H}_{S_1}}(A) = \mathbb{P}(A) = \mathbb{P}_{e_i}(A_i) \cdot \mathbb{P}_{e_j}(A_j) = \mathbb{P}|_{\mathscr{H}_{S_2}}(A)$$
+            </div>
+            <p>by definition of product measure. This equality extends to all sets in $\mathscr{H}_{S_1}$ by the uniqueness of measure extension.</p>
+        </div>
+
+        <div class="proposition-box">
+            <strong>Proposition (Monotonicity of Information)</strong>
+            <p>For $S_1 \subseteq S_2 \subseteq T$ and any $\mathscr{H}$-measurable random variable $X$:</p>
+            <div class="equation-box">
+                $$\mathbb{E}[\mathbb{E}[X|\mathscr{H}_{S_2}]|\mathscr{H}_{S_1}] = \mathbb{E}[X|\mathscr{H}_{S_1}]$$
+            </div>
+        </div>
+
+        <div class="proof-box">
+            <strong>Proof</strong>
+            <p>Let $S_1 \subseteq S_2 \subseteq T$ and let $X$ be any $\mathscr{H}$-measurable random variable. By the previous proposition, we have $\mathscr{H}_{S_1} \subseteq \mathscr{H}_{S_2}$. This nested relationship between the sub-$\sigma$-algebras is crucial for applying the tower property of conditional expectation.</p>
+
+            <p>By the tower property of conditional expectation, for nested $\sigma$-algebras $\mathscr{G}_1 \subseteq \mathscr{G}_2 \subseteq \mathscr{F}$:</p>
+            <div class="equation-box">
+                $$\mathbb{E}[\mathbb{E}[X|\mathscr{G}_2]|\mathscr{G}_1] = \mathbb{E}[X|\mathscr{G}_1]$$
+            </div>
+
+            <p>Applying this to our sub-$\sigma$-algebras $\mathscr{H}_{S_1} \subseteq \mathscr{H}_{S_2} \subseteq \mathscr{H}$ gives the desired result.</p>
+
+            <p><strong>Information-theoretic interpretation:</strong> Conditioning on a larger $\sigma$-algebra ($\mathscr{H}_{S_2}$) provides more refined information than conditioning on a smaller one ($\mathscr{H}_{S_1}$). The tower property shows that the expected value of this refined information, when further conditioned on the smaller $\sigma$-algebra, equals the direct conditioning on the smaller $\sigma$-algebra.</p>
+        </div>
+
+        <h3>Properties of Anti-Causal Kernels</h3>
+
+        <div class="remark-box">
+            <strong>Remark (Characterization of Causal Kernels)</strong>
+            <p>For a causal space $(\Omega, \mathscr{H}, \mathbb{P}, \mathbb{K})$, the relationship between causal kernels and conditional probabilities is characterized as follows:</p>
+            <ol>
+                <li><strong>Kernel-induced conditional probabilities:</strong> For any $S \in \mathscr{P}(T)$:
+                    <div class="equation-box">
+                        $$K_S(\omega, A) = \mathbb{E}[\mathbf{1}_A \mid \mathscr{H}_S](\omega)$$
+                    </div>
+                    where $\mathbf{1}_A$ is the indicator function of set $A$.
+                </li>
+                <li><strong>Regular conditional probabilities:</strong> Versions that are measurable in $\omega$ arise as a special case:
+                    <div class="equation-box">
+                        $$K_S(\omega, A) = \mathbb{P}(A \mid \mathscr{H}_S)(\omega)$$
+                    </div>
+                </li>
+                <li><strong>In anti-causal structures:</strong>
+                    <div class="equation-box">
+                        $$K_S(\omega, A) = \mathbb{P}(A \mid Y=y, E \in S)$$
+                    </div>
+                    where $y$ is the $Y$-component of $\omega$.
+                </li>
+            </ol>
+        </div>
+
+        <h3>Properties of Causal and Anti-Causal Events</h3>
+
+        <div class="proposition-box">
+            <strong>Proposition (Causal and Anti-Causal Event Properties)</strong>
+            <p>For a product causal space with kernel $K_S$ and any measurable event $A \in \mathscr{H}$:</p>
+            <ol>
+                <li><strong>For a causal event $A$:</strong> $K_S(\omega, A) \neq \mathbb{P}(A)$ for some $\omega \in \Omega$</li>
+                <li><strong>For an anti-causal event $A$:</strong> $K_S(\omega, A) = K_{S \setminus U}(\omega, A)$ for all $\omega \in \Omega$</li>
+            </ol>
+            <p>where $U \subseteq S \in \mathscr{P}(T)$.</p>
+            <p><strong>Note:</strong> In our settings, an intervention is a measurable mapping $\mathbb{Q}(\cdot|\cdot): \mathscr{H} \times \Omega \rightarrow [0,1]$. Hard intervention is $\mathbb{Q}(A|\omega') = P(X \in A \mid do(Y=y'))$, and soft intervention is $\mathbb{Q}(A|\omega') = P(X \in A \mid Y=y', E \in S)$ where $y'$ denotes the $Y$-component of $\omega'$.</p>
+        </div>
+
+        <div class="proof-box">
+            <strong>Proof</strong>
+            <p>We establish the distinct properties of causal and anti-causal events through their behavior under the causal kernel.</p>
+
+            <p><strong>Part 1: Causal events</strong></p>
+            <p>Let $A$ be causally dependent on variables in $\mathscr{H}_S$. By definition of causal dependence, there exist $\omega, \omega' \in \Omega$ such that $K_S(\omega, A) \neq K_S(\omega', A)$. Since $\mathbb{P}(A) = \int_{\Omega} K_S(\omega, A) \, d\mathbb{P}(\omega)$ is a fixed constant, we cannot have $K_S(\omega, A) = \mathbb{P}(A)$ for all $\omega \in \Omega$.</p>
+
+            <p>Since $\mathbb{P}(A)$ is a weighted average of $K_S(\omega, A)$ over all $\omega$, if the kernel values vary with $\omega$ (as they do for causal events), then $K_S(\omega, A) \neq \mathbb{P}(A)$ for some $\omega$, which is consistent with the causal structure of $A$.</p>
+
+            <p><strong>Part 2: Anti-causal events</strong></p>
+            <p>Let $A \in \mathscr{H}$ be an anti-causal event, and let $U \subseteq S \in \mathscr{P}(T)$. We need to show that $K_S(\omega, A) = K_{S \setminus U}(\omega, A)$ for all $\omega \in \Omega$.</p>
+
+            <p>By definition, an anti-causal event is one whose probability is invariant to certain interventions. Specifically, removing a subset $U$ from the conditioning information $S$ does not change the kernel's value if $A$ is anti-causal with respect to $U$.</p>
+
+            <p>From the definition of causal kernels:</p>
+            <div class="equation-box">
+                $$K_S(\omega, A) = \mathbb{E}[\mathbf{1}_A \mid \mathscr{H}_S](\omega), \quad K_{S \setminus U}(\omega, A) = \mathbb{E}[\mathbf{1}_A \mid \mathscr{H}_{S \setminus U}](\omega)$$
+            </div>
+
+            <p>For an anti-causal event $A$, the information in $\mathscr{H}_U$ (corresponding to indices in $U$) has no causal influence on $A$ when conditioning on $\mathscr{H}_{S \setminus U}$. Formally, this means:</p>
+            <div class="equation-box">
+                $$A \perp\!\!\!\perp \mathscr{H}_U \mid \mathscr{H}_{S \setminus U}$$
+            </div>
+
+            <p>By the properties of conditional expectation under conditional independence:</p>
+            <div class="equation-box">
+                $$\mathbb{E}[\mathbf{1}_A \mid \mathscr{H}_S] = \mathbb{E}[\mathbf{1}_A \mid \mathscr{H}_{S \setminus U}]$$
+            </div>
+
+            <p>Therefore: $K_S(\omega, A) = K_{S \setminus U}(\omega, A)$ for all $\omega \in \Omega$. This equality demonstrates that anti-causal events exhibit invariance with respect to certain subsets of the conditioning information, reflecting their position in the causal structure.</p>
+        </div>
 
     </div>
 </body>

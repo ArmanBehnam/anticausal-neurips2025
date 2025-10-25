@@ -6,63 +6,145 @@
     <title>Experimental Setup | ACIA Framework</title>
     <style>
         body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; line-height: 1.6; }
-        .page-container { max-width: 900px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .page-container { max-width: 1000px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         h2 { font-size: 2em; color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
-        h3 { font-size: 1.5em; color: #333; margin-top: 30px; margin-bottom: 15px; }
-        p { margin-bottom: 1.5em; font-size: 1.1em; text-align: justify; }
-        ul, ol { margin-bottom: 1.5em; padding-left: 25px; font-size: 1.1em; }
-        .metric-list li { margin-bottom: 10px; }
-        .section-header { margin-top: 40px; padding-top: 10px; border-top: 1px dashed #ccc; }
+        h3 { font-size: 1.5em; color: #333; margin-top: 35px; margin-bottom: 15px; }
+        p { margin-bottom: 1.5em; font-size: 1.05em; text-align: justify; }
+        ul, ol { margin-bottom: 1.5em; padding-left: 25px; font-size: 1.05em; }
+
+        .dataset-box {
+            margin-bottom: 1.5em;
+            padding: 18px;
+            border-left: 5px solid #00bcd4;
+            background-color: #e0f7fa;
+            border-radius: 4px;
+        }
+        .dataset-box strong {
+            font-size: 1.1em;
+            color: #006064;
+        }
+
+        .metric-box {
+            margin-bottom: 1.2em;
+            padding: 15px;
+            border-left: 4px solid #4caf50;
+            background-color: #f1f8f4;
+            border-radius: 4px;
+        }
+        .metric-box strong {
+            color: #2e7d32;
+        }
+
+        .baseline-category {
+            margin-bottom: 1.5em;
+            padding: 18px;
+            border-left: 5px solid #ff9800;
+            background-color: #fff8e1;
+            border-radius: 4px;
+        }
+        .baseline-category strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #e65100;
+        }
     </style>
-    <script type="text/javascript" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
     </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <div class="page-container">
-        <p><a href="index.html">← Back to Main Page</a></p>
+        <p><a href="index.html">← Back to Main Page</a> ... <a href="exp_setup.html">Go to Next Page (Experimental Setup)</a></p>
 
-        <h2>6. Experimental Setup</h2>
+        <h2>Experimental Setup</h2>
 
         <h3>Datasets and Models</h3>
-        <p>We test four datasets in anti-causal settings: <strong>Colored MNIST (CMNIST)</strong>, <strong>Rotated MNIST (RMNIST)</strong>, <strong>Ball Agent</strong>, and <strong>Camelyon17</strong>.</p>
-        <ul>
-            [cite_start]<li>In <strong>CMNIST</strong> and <strong>RMNIST</strong>, digit labels cause specific image features: colors and rotations (environment), respectively[cite: 161].</li>
-            [cite_start]<li><strong>Ball Agent</strong> is a physical simulation environment where ball positions (continuous labels) cause pixel observations, with controlled interventions affecting object dynamics[cite: 162].</li>
-            [cite_start]<li><strong>Camelyon17</strong> is a real medical dataset where tumor presence (label) causes tissue patterns in pathology images, with hospital-specific staining protocols creating environmental variations[cite: 163].</li>
-        </ul>
-        [cite_start]<p>These datasets test various aspects of ACIA: discrete vs. continuous labels and perfect vs. imperfect interventions[cite: 164]. <em>Details of (building) these datasets are in Appendix \(\ref{app:datasets}\). [cite_start]The model architecture and hyperparameter settings of ACIA are in Appendix \(\ref{app:hs}\)</em>[cite: 165].</p>
+
+        <p>We test four datasets in anti-causal settings, each designed to evaluate different aspects of ACIA: discrete vs. continuous labels and perfect vs. imperfect interventions.</p>
+
+        <div class="dataset-box">
+            <strong>Colored MNIST (CMNIST)</strong>
+            <p>Digit labels cause specific image features: colors (environment). This synthetic dataset tests ACIA's ability to separate digit classification from spurious color correlations.</p>
+        </div>
+
+        <div class="dataset-box">
+            <strong>Rotated MNIST (RMNIST)</strong>
+            <p>Digit labels cause specific image features: rotations (environment). This dataset evaluates robustness to rotational transformations as environmental factors.</p>
+        </div>
+
+        <div class="dataset-box">
+            <strong>Ball Agent</strong>
+            <p>A physical simulation environment where ball positions (continuous labels) cause pixel observations, with controlled interventions affecting object dynamics. This dataset tests ACIA with continuous labels and imperfect interventions.</p>
+        </div>
+
+        <div class="dataset-box">
+            <strong>Camelyon17</strong>
+            <p>A real medical dataset where tumor presence (label) causes tissue patterns in pathology images, with hospital-specific staining protocols creating environmental variations. This real-world dataset validates ACIA's practical applicability.</p>
+        </div>
 
         <h3>Evaluation Metrics</h3>
-        [cite_start]<p>We use four metrics to measure predictive performance and causal properties[cite: 166].</p>
-        <ol class="metric-list">
-            <li>
-                [cite_start]<p><strong>Test Accuracy:</strong> Fraction of test samples correctly predicted by our predictor[cite: 167].</p>
-            </li>
-            <li>
-                [cite_start]<p><strong>Environment Independence (EI):</strong> It measures the degree to which high-level representations remain independent of environment-specific information while preserving label-relevant information[cite: 168]. [cite_start]Specifically, we compute mutual information between high-level representations and environment labels, conditioned on class labels[cite: 169]. [cite_start]Lower values indicate better environment independence[cite: 170].</p>
-            </li>
-            <li>
-                [cite_start]<p><strong>Low-level Invariance (LLI or \(R_1\)):</strong> It quantifies stability of low-level representations across environments[cite: 171]. [cite_start]We measure the variance of representations across different environments[cite: 172]. [cite_start]Lower values indicate greater invariance[cite: 173].</p>
-            </li>
-            <li>
-                [cite_start]<p><strong>Intervention Robustness (IR or \(R_2\)):</strong> It evaluates model robustness under interventions by comparing the difference between observational and interventional distributions[cite: 173]. [cite_start]Specifically, we first obtain probability confidence scores for original and intervened samples, and then calculate KL divergence between these distributions[cite: 174]. [cite_start]Lower values indicate higher robustness[cite: 175].</p>
-            </li>
-        </ol>
 
-        <h3>Baselines</h3>
+        <p>We use four metrics to measure predictive performance and causal properties:</p>
+
+        <div class="metric-box">
+            <strong>1. Test Accuracy (Acc ↑)</strong>
+            <p>Fraction of test samples correctly predicted by our predictor. Higher values indicate better performance.</p>
+        </div>
+
+        <div class="metric-box">
+            <strong>2. Environment Independence (EI ↓)</strong>
+            <p>Measures the degree to which high-level representations remain independent of environment-specific information while preserving label-relevant information. Specifically, we compute mutual information between high-level representations and environment labels, conditioned on class labels. We weight them by class frequency and calculate their summation. Lower values indicate better environment independence.</p>
+        </div>
+
+        <div class="metric-box">
+            <strong>3. Low-level Invariance (LLI or $R_1$ ↓)</strong>
+            <p>Quantifies stability of low-level representations across environments. We measure the variance of representations across different environments and calculate their average across feature dimensions. Lower values indicate greater invariance.</p>
+        </div>
+
+        <div class="metric-box">
+            <strong>4. Intervention Robustness (IR or $R_2$ ↓)</strong>
+            <p>Evaluates model robustness under interventions by comparing the difference between observational and interventional distributions. Specifically, we first obtain probability confidence scores for original and intervened samples, and then calculate KL divergence between these distributions. Lower values indicate higher robustness.</p>
+        </div>
+
+        <h3>Baseline Methods</h3>
+
         <p>We compare ACIA against 10 baseline methods spanning three main categories:</p>
-        <ol>
-            <li>
-                [cite_start]<p><strong>Robust optimization methods:</strong> <strong>GDRO</strong> optimizes the worst-group performance under distribution shifts[cite: 175].</p>
-            </li>
-            <li>
-                [cite_start]<p><strong>Distribution/Domain-invariant learning:</strong> <strong>MMD</strong> minimizes distributional distances, <strong>CORAL</strong> aligns feature correlations, <strong>DANN</strong> uses adversarial training, <strong>IRM</strong> enforces invariant predictors, <strong>Rex</strong> and <strong>VREx</strong> use risk extrapolation with different variance penalties[cite: 176].</p>
-            </li>
-            <li>
-                [cite_start]<p><strong>Causal representation learning methods:</strong> <strong>CausalDA</strong> incorporates causal structure discovery for invariant representation learning[cite: 177]. [cite_start]<strong>ACTIR</strong> specifically targets anti-causal settings, and <strong>LECI</strong> learns environment-wise causal independence through graph decomposition[cite: 178].</p>
-            </li>
-        </ol>
+
+        <div class="baseline-category">
+            <strong>1. Robust Optimization Methods</strong>
+            <ul>
+                <li><strong>GDRO:</strong> Group Distributionally Robust Optimization optimizes the worst-group performance under distribution shifts.</li>
+            </ul>
+        </div>
+
+        <div class="baseline-category">
+            <strong>2. Distribution/Domain-Invariant Learning</strong>
+            <ul>
+                <li><strong>MMD:</strong> Maximum Mean Discrepancy minimizes distributional distances.</li>
+                <li><strong>CORAL:</strong> CORrelation ALignment aligns feature correlations.</li>
+                <li><strong>DANN:</strong> Domain-Adversarial Neural Networks uses adversarial training.</li>
+                <li><strong>IRM:</strong> Invariant Risk Minimization enforces invariant predictors.</li>
+                <li><strong>Rex:</strong> Out-of-Distribution generalization via Risk Extrapolation.</li>
+                <li><strong>VREx:</strong> Variance Risk Extrapolation uses risk extrapolation with different variance penalties.</li>
+            </ul>
+        </div>
+
+        <div class="baseline-category">
+            <strong>3. Causal Representation Learning Methods</strong>
+            <ul>
+                <li><strong>CausalDA:</strong> Incorporates causal structure discovery for invariant representation learning.</li>
+                <li><strong>ACTIR:</strong> Specifically targets anti-causal settings.</li>
+                <li><strong>LECI:</strong> Learns environment-wise causal independence through graph decomposition.</li>
+            </ul>
+        </div>
 
     </div>
 </body>
