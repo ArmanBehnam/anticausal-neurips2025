@@ -3,24 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction | ACIA Framework</title>
+    <title>Theoretical Framework | ACIA</title>
     <style>
         body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #f7f7f7; color: #333; line-height: 1.6; }
-        .page-container { max-width: 900px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .page-container { max-width: 1000px; margin: 50px auto; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         h2 { font-size: 2em; color: #1a73e8; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
-        h3 { font-size: 1.5em; color: #333; margin-top: 30px; margin-bottom: 15px; }
-        p { margin-bottom: 1.5em; font-size: 1.1em; text-align: justify; }
-        ul, ol { margin-bottom: 1.5em; padding-left: 25px; font-size: 1.1em; }
-        .figure-placeholder { border: 1px solid #ccc; padding: 15px; margin: 20px 0; background-color: #fafafa; border-radius: 5px; }
-        .figure-placeholder img { max-width: 100%; height: auto; display: block; margin: 10px auto; }
-        .right-figure { float: right; width: 45%; margin-left: 20px; margin-bottom: 20px; }
-        .clearfix::after { content: ""; clear: both; display: table; }
+        h3 { font-size: 1.5em; color: #333; margin-top: 35px; margin-bottom: 15px; }
+        p { margin-bottom: 1.5em; font-size: 1.05em; text-align: justify; }
+        ul, ol { margin-bottom: 1.5em; padding-left: 25px; font-size: 1.05em; }
+
+        .definition-box {
+            margin-bottom: 1.5em;
+            padding: 18px;
+            border-left: 5px solid #1a73e8;
+            background-color: #f0f8ff;
+            border-radius: 4px;
+        }
+        .definition-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.15em;
+            color: #004d99;
+        }
+
+        .theorem-box {
+            margin-bottom: 1.5em;
+            padding: 18px;
+            border-left: 5px solid #4caf50;
+            background-color: #f1f8f4;
+            border-radius: 4px;
+        }
+        .theorem-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.15em;
+            color: #2e7d32;
+        }
+
+        .remark-box {
+            margin-bottom: 1.5em;
+            padding: 18px;
+            border-left: 5px solid #ff9800;
+            background-color: #fff8e1;
+            border-radius: 4px;
+        }
+        .remark-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.15em;
+            color: #e65100;
+        }
+
+        .equation-box {
+            background-color: #fafafa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            background-color: #ffffcc;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
     </style>
     <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
         }
       };
     </script>
@@ -28,66 +80,198 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-    <div class="page-container clearfix">
+    <div class="page-container">
+        <p><a href="index.html">← Back to Main Page</a></p>
         <p><a href="index.html">← Back to Main Page</a> ... <a href="properties.html">Go to Next Page (Properties)</a></p>
 
-        <h2>Introduction</h2>
+        <h2>The Theoretical Framework</h2>
 
-        <p>Causal representation learning discovers causal relationships underlying data rather than statistical associations. At its core, causal representation learning seeks to identify <em>high-level causal variables</em> from low-level observations, bridging the gap between statistical pattern recognition and causal reasoning. Learning these causal variables offers transformative potential for artificial intelligence systems that can reason about cause and effect.</p>
+        <p>Our framework establishes product causal space on measure-theoretic causality to handle anti-causal learning across multiple environments; causal kernel and interventional kernel to characterize anti-causal structures. Building on this foundation, we develop <strong>causal dynamics</strong> to learn low-level representations that extract anti-causal relationships from the raw data. On top of it, we further develop <strong>causal abstractions</strong> to learn environment-invariant high-level representations.</p>
 
-        <div class="figure-placeholder right-figure">
-        <img src="fig/anticausal_diagram.png" alt="Anti-Causal Diagram" style="width: 100%; margin-bottom: 10px;">
-        <p style="font-weight: bold; text-align: center; font-size: 1em;">Figure 1: Anti-Causal Diagram</p>
-        <p style="font-size: 0.9em;">This diagram illustrates the <strong>Anti-Causal setting</strong>, showing causal (orange), spurious (blue), and confounding (dashed blue) dependencies. The nodes are $X$ (Observable variables), $Y$ (Causal variable/target), $Z$ (Unmeasured intermediary/latent), $U$ (Confounder/latent), and $E$ (Environment variable). Orange arrows represent direct paths to $X$, and blue arrows represent confounding effects. The core anti-causal structure is $Y \rightarrow X \leftarrow E$ mediated by latent factors $Z$ and $U$.</p>
-    </div>
+        <h3>Foundation: Product Causal Space</h3>
 
-        <p>A particularly challenging yet promising domain is learning representations in the <em>anti-causal</em> setting, where the causal direction is reversed from traditional prediction tasks. Figure 1 diagrams the anti-causal setting, where $Y$ (target) is the causal variable, $X$ (observation) the observable variables, $E$ (Environment) the environment variable introducing spurious correlations, $U$ is a confounder which affects both $X$ and $Y$, and $Z$ (latent variable) is an unmeasured intermediary. The orange arrows represent direct paths to the observed variables $X$, and blue arrows represent confounding effects.</p>
+        <div class="definition-box">
+            <strong>Definition (Product Causal Space)</strong>
+            <p>Given causal spaces $(\Omega_{e_i}, \mathscr{H}_{e_i}, \mathbb{P}_{e_i}, K_{e_i})$ and $(\Omega_{e_j}, \mathscr{H}_{e_j}, \mathbb{P}_{e_j}, K_{e_j})$ for environments $e_i$ and $e_j$, a product causal space is a tuple $(\Omega, \mathscr{H}, \mathbb{P}, \mathbb{K})$ where:</p>
+            <ul>
+                <li>$\Omega = \Omega_{e_1} \times \Omega_{e_2}$ is the sample space for combined environments $e_i$ and $e_j$</li>
+                <li>$\mathscr{H} = \mathscr{H}_{e_i} \otimes \mathscr{H}_{e_j}$ is the product $\sigma$-algebra</li>
+                <li>$\mathbb{P} = \mathbb{P}_{e_i} \otimes \mathbb{P}_{e_j}$ is the product measure</li>
+                <li>$\mathbb{K}_S = \{K_S : S \in \mathscr{P}(T)\}$ is a family of causal kernels with $\mathscr{P}$ the power set function and $T = T_{e_i} \cup T_{e_j}$ is the union of index sets</li>
+            </ul>
+        </div>
 
-        <p>Consider a disease diagnosis from chest X-rays across different hospitals. A disease ($Y$) causes observable symptoms and measurements ($X$), with the relationship represented as $Y \rightarrow X$. The confounding factors $U$ (e.g., age and sex) affect both disease and symptoms. Environmental factors $E$ (e.g., hospital-specific protocols) introduce spurious correlations by creating hospital-specific variations, forming the anti-causal structure $Y \rightarrow X \leftarrow E$. The orange arrows therefore depict the true disease-to-symptom mechanism ($Y \rightarrow X$), while the paths involving $E$ and $U$ introduce noise. This anti-causal structure requires specialized methods to disentangle causal mechanisms from environmental artifacts.</p>
+        <p>This construction enables joint reasoning across environments while preserving individual causal structures. For analysis of environment subsets, we utilize sub-$\sigma$-algebras:</p>
 
-        <p>Early works formalized anti-causal learning and showed that traditional methods fail in this setting. Follow-up works can be categorized into three main approaches:</p>
-        <ol>
-            <li><em>Intervention-based causal learning</em> that models causal effects through interventions;</li>
-            <li><em>Structure-based causal methods</em> explicitly models causal structures through Directed Acyclic Graphs (DAGs), requiring complete knowledge of the underlying Structural Causal Model (SCM);</li>
-            <li><em>Invariant learning methods</em> that seeks representations invariant across distributions.</li>
-        </ol>
-        <h3>Limitations of Existing Methods</h3>
+        <div class="definition-box">
+            <strong>Definition (Sub-$\sigma$-algebra)</strong>
+            <p>Given a product causal space $(\Omega, \mathscr{H}, \mathbb{P}, \mathbb{K})$, for any subset $S \subseteq T$, the sub-$\sigma$-algebra $\mathscr{H}_S$ is generated by measurable rectangles $A_i \times A_j$ where $A_i \in \mathscr{H}_{e_i}$ and $A_j \in \mathscr{H}_{e_j}$ corresponding to the events in the time indices $S$.</p>
+        </div>
 
-        <p>However, existing methods face several critical limitations:</p>
-        <ul>
-            <li>First, intervention-based approaches <em>assume perfect interventions</em>—where intervened variables are completely disconnected from their causes—a restrictive assumption rarely satisfied in real-world scenarios.</li>
-            <li>Second, structure-based methods' reliance on <em>explicit structural dependencies</em> through SCM poses significant hurdles when the underlying SCM is unknown.</li>
-            <li>Third, distribution-invariant approaches' assumptions on <em>independent and identically distributed data or known test distributions</em> limit the methods' generalization capabilities.</li>
-        </ul>
-        <p>Fundamentally, these limitations arise because the single-level representations learned by these methods cannot simultaneously capture the causal mechanism from $Y$ to $X$ while filtering spurious correlations from $E$ to $X$ in anti-causal structure.</p>
+        <h3>Causal Kernel</h3>
 
-        <div class="figure-placeholder" style="text-align: center;">
-            <div style="margin-bottom: 10px;"></div>
-            <img src="fig/acia_framework_conceptual_diagram.png" alt="ACIA Framework" style="width: 100%;">
-            <p style="font-weight: bold; text-align: center; margin-bottom: 5px;">Figure 2: ACIA: Anti-Causal Invariant Abstraction Framework</p>
-            <p style="font-size: 1em; text-align: left;">This framework outlines four steps:</p>
-            <ol style="font-size: 1em; text-align: left;">
-                <li><strong>Input (Raw Data):</strong> Illustrates the anti-causal structure $Y \rightarrow X$ and $E \rightarrow X$.</li>
-                <li><strong>Theorem 3 (Causal Dynamics):</strong> Learns a <strong>Low-Level Representation</strong> $\phi_L: \mathcal{X} \rightarrow \mathcal{D}_{\mathcal{Z}_L}$, capturing anti-causal structure and environment variations.</li>
-                <li><strong>Theorem 4 (Causal Abstraction):</strong> Learns a <strong>High-Level Representation</strong> $\phi_H: \mathcal{D}_{\mathcal{Z}_L} \rightarrow \mathcal{D}_{\mathcal{Z}_H}$, distilling environment-invariant causal features.</li>
-                <li><strong>Output (Two-Level Optimization):</strong> The final function $f=\mathcal{C} \circ \phi_H \circ \phi_L$ is optimized with a min-max objective subject to a loss $\mathcal{L}$ and regularizers $R_1$ (Environment Independence) and $R_2$ (Causal Consistency).</li>
+        <div class="definition-box">
+            <strong>Definition (Causal Kernel)</strong>
+            <p>A causal kernel $K_S \in \mathbb{K}_S$ for index set $S \in \mathscr{P}(T)$ is a function $K_S: \Omega \times \mathscr{H} \rightarrow [0,1]$. For fixed $\omega \in \Omega$, $K_S(\omega, \cdot)$ is a probability measure on $(\Omega, \mathscr{H})$, and for fixed $A \in \mathscr{H}$, $K_S(\cdot, A)$ is $\mathscr{H}_S$-measurable, where $\mathscr{H}_S$ is sub-$\sigma$-algebra in $S$.</p>
+        </div>
+
+        <p>Intuitively, $K_S(\omega, A)$ is the conditional probability of event $A$ given causal information encoded in $\omega$, restricted to environments indexed by $S$. This enables characterization of anti-causal structures:</p>
+
+        <div class="theorem-box">
+            <strong>Theorem (Anti-Causal Kernel Characterization)</strong>
+            <p>For an anti-causal structure with arbitrary feature space $\mathcal{X}$, label space $\mathcal{Y}$, and environments $\mathcal{E}$, the causal kernel satisfies:</p>
+            <div class="equation-box">
+                $$K_S(\omega, A) = \int_{\mathcal{Y}} P(X \in A \mid Y=y, E \in S) \, d\mu_Y(y)$$
+            </div>
+            <p>where $\mu_Y$ is the marginal measure on $\mathcal{Y}$.</p>
+        </div>
+
+        <p>This characterization captures how labels $Y$ generate observations $X$ across environment subsets $S$, integrating over all possible label values weighted by their marginal probabilities.</p>
+
+        <div class="theorem-box">
+            <strong>Corollary (Independence Property of Anti-Causal Kernel)</strong>
+            <p>In an anti-causal structure, for any $\omega, \omega' \in \Omega$ with identical $Y$-component and for all $A \in \mathscr{H}_{\mathcal{X}}$, $B \in \mathscr{H}_Y$, $S \in \mathscr{P}(T)$:</p>
+            <div class="equation-box">
+                $$K_S(\omega, \{A|B\}) = K_S(\omega', \{A|B\})$$
+            </div>
+            <p>This independence property reveals that conditional kernels depend only on the label $Y$, not on environment-specific information in $\omega$.</p>
+        </div>
+
+        <h3>Interventional Kernel</h3>
+
+        <p>We now characterize how interventions modify causal kernels, enabling unified treatment of both perfect and imperfect interventions.</p>
+
+        <div class="theorem-box">
+            <strong>Theorem (Interventional Kernel)</strong>
+            <p>Let $(\Omega, \mathscr{H}, \mathbb{P}, \mathbb{K})$ be a product causal space. For any subset $S \in \mathscr{P}(T)$ and intervention $\mathbb{Q}: \mathscr{H} \times \Omega \rightarrow [0,1]$, there exists a unique interventional kernel:</p>
+            <div class="equation-box">
+                $$K_S^{do(\mathcal{X}, \mathbb{Q})}(\omega, A) = \int_{\Omega} K_S(\omega, d\omega') \mathbb{Q}(A|\omega')$$
+            </div>
+            <p>provided that the integral is a Lebesgue integral w.r.t. the measure induced by $K_S(\omega, \cdot)$ on $(\Omega, \mathscr{H})$. In addition, $K_S(\omega, \cdot)$ is $\sigma$-finite for each $\omega \in \Omega$, and $\mathbb{Q}(A|\cdot)$ is $\mathscr{H}$-measurable for each $A \in \mathscr{H}$.</p>
+        </div>
+
+        <p class="highlight"><strong>Important:</strong> This construction encapsulates both intervention types: hard interventions where $\mathbb{Q}(A|\omega') = \mathbb{Q}(A)$ is constant across $\omega'$, and soft interventions where $\mathbb{Q}(A|\omega')$ varies with $\omega'$.</p>
+
+        <div class="theorem-box">
+            <strong>Corollary (Interventional Kernel Invariance)</strong>
+            <p>In anti-causal structure, interventional kernels satisfy the following invariance criteria:</p>
+            <ol>
+                <li>$K_S^{do(X)}(\omega, \{Y \in B\}) = K_S(\omega, \{Y \in B\})$ for all measurable sets $B \subseteq \mathcal{Y}$, meaning intervening on $X$ does not change the distribution of $Y$.</li>
+                <li>$K_S^{do(Y)}(\omega, \{X \in A\}) \neq K_S(\omega, \{X \in A\})$ for some measurable sets $A \subseteq \mathcal{X}$, meaning intervening on $Y$ changes the distribution of $X$, which is characteristic of an anti-causal relationship.</li>
             </ol>
         </div>
 
-        <h3>Anti-Causal Invariant Abstraction (ACIA)</h3>
+        <h3>Causal Dynamics (Low-Level Representation)</h3>
 
-        <p>We develop <strong>Anti-Causal Invariant Abstraction (ACIA)</strong>, a two-level representation learning method (Figure 2), to address above limitations. ACIA is inspired by recent causal representation learning studies and measure-theoretic causality.</p>
+        <p>Building on the kernel framework, we now develop our approach to learning low-level representations. We adopt the <em>causal dynamics</em> perspective, which identifies latent causal relationships from observed data under distribution shifts—precisely the setting in anti-causal learning across environments.</p>
 
-        <p>Specifically, to address the first limitation, we introduce a <em>generalized intervention model that accommodates both perfect and imperfect interventions via the designed interventional kernels</em>. To address the second limitation, ACIA <em>learns directly from raw input without requiring explicit SCM specification</em>. To address the third limitation, we introduce <em>environment-invariant regularizers</em> that enable stable identification of invariant causal variables across environments.</p>
+        <p>Our low-level representation mapping $\phi_L$ implements causal dynamics by learning how labels $Y$ generate observations $X$ while preserving environment-specific information. Unlike traditional approaches that immediately pursue invariance, $\phi_L$ intentionally captures both the causal pathway ($Y \rightarrow X$) and environmental influences ($E \rightarrow X$), providing rich features for subsequent abstraction by $\phi_H$.</p>
 
-        <p>All together, ACIA involves:</p>
+        <div class="theorem-box">
+            <strong>Theorem 3 (Causal Dynamics and its Kernel)</strong>
+            <p>Let $\mathcal{X}$ be the input space with $\sigma$-algebra $\mathscr{H}_{\mathcal{X}}$. Given an intervention $\mathbb{Q}$ and measure $\mu$ on the domain $\mathcal{D}_{\mathcal{Z}_L}$, the low-level representation $\mathcal{Z}_L = \langle \mathcal{X}, \mathbb{Q}, \mathbb{K}_L \rangle$ can be constructed with kernel:</p>
+            <div class="equation-box">
+                $$K_S^{\mathcal{Z}_{L}}(\omega, A) = \int_{\mathcal{D}_{\mathcal{Z}_L}} K_S^{do(\mathcal{X}, \mathbb{Q})}(\omega, A) \, d\mu(z)$$
+            </div>
+            <p>The set of low-level causal kernels is: $\mathbb{K}_L = \{K_S^{\mathcal{Z}_{L}}(\omega, A): S \in \mathscr{P}(T), A \in \mathscr{H}_{\mathcal{X}}\}$.</p>
+        </div>
+
+        <p>The low-level representation mapping is defined as $\phi_L: \mathcal{X} \rightarrow \mathcal{Z}_L$ where $\mathcal{Z}_L$ is established in Theorem 3. We denote $\mathbf{V}_L = \{\phi_L(\mathcal{X}(\omega_j))\}$ as the resulting low-level representations for a set of samples.</p>
+
+        <h3>Causal Abstraction (High-Level Representation)</h3>
+
+        <p>Previously, abstraction referred to the process of mapping complex, detailed representations to simpler ones that preserve only the relevant information. In our framework, causal abstraction specifically integrates over the domain of low-level representations to form high-level kernels that capture environment-invariant relationships. This integration serves as an information bottleneck, filtering out environment-specific features while retaining label-relevant causal features.</p>
+
+        <div class="theorem-box">
+            <strong>Theorem 4 (Causal Abstraction and its Kernel)</strong>
+            <p>Let $\mathcal{X}$ be the input space and $\mathscr{H}_{\mathcal{X}}$ be its $\sigma$-algebra. Assume a measure $\mu$ on the domain of low-level representations $\mathcal{D}_{\mathcal{Z}_L}$. Then, the high-level representation $\mathcal{Z}_H = \langle \mathbf{V}_H, \mathbb{K}_H \rangle$ can be constructed with kernel:</p>
+            <div class="equation-box">
+                $$K_S^{\mathcal{Z}_{H}}(\omega, A) = \int_{\mathcal{D}_{\mathcal{Z}_L}} K_S^{\mathcal{Z}_{L}}(\omega, A) \, d\mu(z)$$
+            </div>
+            <p>The set of high-level causal kernels is: $\mathbb{K}_H = \{K_S^{\mathcal{Z}_{H}}(\omega, A): S \in \mathscr{P}(T), A \in \mathscr{H}_{\mathcal{X}}\}$.</p>
+        </div>
+
+        <p>The high-level representation mapping is defined as $\phi_H: \mathcal{Z}_L \rightarrow \mathcal{Z}_H$ with $\mathcal{Z}_H$ established in Theorem 4. We denote $\mathbf{V}_H = \{\phi_H(\phi_L(\mathcal{X}(\omega_j)))\}$ as the resulting high-level representations for a set of samples.</p>
+
+        <h3>Objective Function of ACIA</h3>
+
+        <p>ACIA's objective function bases on the theoretical results above. Specifically, the kernel independence property motivates the environment independence regularizer $R_1$, while the intervention invariance criteria guides the design of the causal structure consistency regularizer $R_2$. The optimization achieves the causal dynamics construction (Theorem 3) for $\phi_L$ and causal abstraction (Theorem 4) for $\phi_H$, ensuring learned representations satisfy the anti-causal structure.</p>
+
+        <p>Let $\mathcal{C}$ be a classifier and $\ell$ be a loss function. Our objective function of ACIA is defined as:</p>
+
+        <div class="equation-box">
+            $$\min_{\mathcal{C},\phi_L,\phi_H} \max_{e_i \in \mathcal{E}} \Big[ \int_{\Omega} \ell((\mathcal{C} \circ \phi_H \circ \phi_L)(\mathcal{X}(\omega)), Y(\omega)) \, d\mathbb{P}_{e_i}(\omega) + \lambda_1 R_1 + \lambda_2 R_2 \Big]$$
+        </div>
+
+        <p>where the regularizers are:</p>
+
+        <div class="equation-box">
+            <p><strong>$R_1$ (Environment Independence):</strong></p>
+            $$R_1 = \sum_{e_i, e_j \in \mathcal{E}, i\neq j} \Big\| \int_{\mathcal{Y}} \int_{\Omega} \phi_H(\phi_L(\mathcal{X}(\omega))) \, d\mathbb{P}_{e_i}(\omega|y) \, d\mu_Y(y) - \int_{\mathcal{Y}} \int_{\Omega} \phi_H(\phi_L(\mathcal{X}(\omega))) \, d{P}_{e_j}(\omega|y) \, d\mu_Y(y) \Big\|_2$$
+        </div>
+
+        <div class="equation-box">
+            <p><strong>$R_2$ (Causal Structure Consistency):</strong></p>
+            $$R_2 = \sum_{e_i \in \mathcal{E}} \Big\| \int_{\mathcal{Y}} y \, d\mathbb{P}_{e_i}(y|\phi_H(\phi_L(\mathcal{X}(\omega)))) - \int_{\mathcal{Y}} y \, dK_{\{e_i\}}^{do(Y)}(\omega, dy) \Big\|_2$$
+        </div>
+
+        <div class="remark-box">
+            <strong>Remark 1: Minmax Formulation</strong>
+            <p>The minmax formulation enforces worst-case robustness across environments. This formulation is supported by our out-of-distribution (OOD) generalization bound. Without it, the learned representations often fail to disentangle environmental factors effectively, as has been validated in prior work on invariant representation learning (IRM, Rex, VRex).</p>
+        </div>
+
+        <div class="remark-box">
+            <strong>Remark 2: Regularizers</strong>
+            <p>Our two regularizers $R_1$ and $R_2$ enforce key invariance properties essential for robust anti-causal representation learning:</p>
+            <ul>
+                <li><strong>$R_1$ enforces environment independence of representations.</strong> It measures the discrepancy between the expected high-level representations across different environments, conditioned on the label $Y$. Minimizing $R_1$ promotes the invariance $\phi_H(\phi_L(\mathcal{X})) \perp E \mid Y$.</li>
+                <li><strong>$R_2$ enforces causal structure consistency.</strong> It compares the expected value of $Y$ given the high-level representation and that of $Y$ under intervention. Minimizing $R_2$ encourages the representation to be aligned with the true causal structure.</li>
+            </ul>
+        </div>
+
+        <h3>Theoretical Performance of ACIA</h3>
+
+        <p>We analyze the theoretical performance of ACIA through convergence property, generalization bound in terms of sample complexity and interventional kernels in the anti-causal setting, and environmental robustness.</p>
+
+        <div class="theorem-box">
+            <strong>Theorem (Convergence of ACIA)</strong>
+            <p>If the loss function $\ell$ is convex and the regularization parameters satisfy $\lambda_1, \lambda_2 = O(1/\sqrt{n})$, where $n$ is the sample size. Then the ACIA optimization problem solved via gradient descent converges with the distance to the optimum bounded by:</p>
+            <div class="equation-box">
+                $$O\left(\frac{1}{\sqrt{T}}\right) + O\left(\frac{1}{\sqrt{n}}\right)$$
+            </div>
+            <p>after $T$ iterations.</p>
+        </div>
+
+        <div class="theorem-box">
+            <strong>Theorem (Anti-Causal OOD Generalization Bound)</strong>
+            <p>For optimal representations $\phi_L^*, \phi_H^*$ in an anti-causal setting, i.e., $\phi_H^*(\phi_L^*(\mathcal{X})) \perp E \mid Y$ in all environments $\mathcal{E}$. With probability at least $1-\delta$, for any testing environment $e_{\text{test}}$ with sample size $n_{test}$, its expected empirical loss $\mathbb{\hat{E}}_{e_{\text{test}}}[\ell(f^*)]$ under the optimal predictor $f^* = \mathcal{C} \circ \phi_H^* \circ \phi_L^*$ is bounded:</p>
+            <div class="equation-box">
+                $$\mathbb{\hat{E}}_{e_{\text{test}}}[\ell(f^*)] \leq \max_{e \in \mathcal{E}} \mathbb{E}_{e}[\ell(f^*)] + O\left(\sqrt{\frac{\log(1/\delta)}{n_{test}}}\right)$$
+            </div>
+            <p>This guarantees that the performance on unseen test environments cannot be arbitrarily worse than the worst-case performance on training environments, with the gap controlled by the sample size.</p>
+        </div>
+
+        <div class="theorem-box">
+            <strong>Theorem (Environmental Robustness)</strong>
+            <p>Denote the learnt two-level representations by ACIA as $\phi_L^*$ and $\phi_H^*$. Then for any new environment $e_{new}$, the distributional distance $d_{\mathcal{H}}(\mathbb{P}_{e_{new}}, \mathbb{P}_{\mathcal{E}})$ between $\mathbb{P}_{e_{new}}$ and $\mathbb{P}_{\mathcal{E}}$ over the function class $\mathcal{H}$ containing all predictors is bounded by:</p>
+            <div class="equation-box">
+                $$d_{\mathcal{H}}(\mathbb{P}_{e_{new}}, \mathbb{P}_{\mathcal{E}}) \leq \delta_1 + \delta_2$$
+            </div>
+            <p>where $\mathbb{P}_{\mathcal{E}} = \frac{1}{|\mathcal{E}|}\sum_{e \in \mathcal{E}} \mathbb{P}_e$ is the mixture distribution of training environments $\mathcal{E}$; $\delta_1$ and $\delta_2$ respectively measure the degree of invariance violation in these conditions:</p>
+            <ol>
+                <li>The high-level representation is environment-independent: $\phi_H(\phi_L^*(\mathcal{X})) \perp E \mid Y$</li>
+                <li>The low-level representation is invariant: $\Pr(\phi_L^*(\mathcal{X}) \mid Y)$ is constant across environments</li>
+            </ol>
+        </div>
+
+        <h3>Computational Complexity</h3>
+
+        <p>The objective function can be iteratively solved using stochastic gradient descent with:</p>
         <ul>
-            <li><strong>Causal Dynamics</strong> to learn <em>low-level representations</em> directly from data—without requiring explicit DAGs/SCMs—that capture the anti-causal structure by encoding how labels generate observable features while preserving environment-specific variations. E.g., in medical diagnosis, this reflects how diseases ($Y$) manifest as symptoms and measurements ($X$) in X-ray images, encompassing both disease-related patterns and hospital-specific factors. The learnt low-level representations support reasoning under both perfect and imperfect interventions, enabled by the interventional kernels.</li>
-            <li><strong>Causal Abstraction</strong> to learn <em>high-level representations</em> that distill environment-invariant causal features from the low-level representations. These abstractions generalize across environments by discarding spurious environmental correlations while preserving label-relevant mechanisms. For example, this involves identifying patterns that are consistently associated with specific diseases regardless of the hospital environment.</li>
-            <li><strong>Theoretical Guarantees</strong> that establish convergence rates, out-of-distribution/domain generalization bounds, and environmental robustness for the learned representations.</li>
+            <li><strong>Time complexity:</strong> $O\left(\frac{nd}{\epsilon^2}\log\left(\frac{1}{\delta}\right)\right)$</li>
+            <li><strong>Space complexity:</strong> $O(|\mathcal{E}|d + d^2)$</li>
         </ul>
-
-        <p>We extensively evaluate ACIA on multiple synthetic and real-world datasets with perfect and imperfect interventions. For instance, our results demonstrate ACIA achieves almost perfect accuracy (e.g., 99\%) on widely-studied CMNIST and RMNIST synthetic datasets with perfect environment independence and intervention robustness, significantly outperforming SOTA baselines. Most notably, on the real-world Camelyon17 medical dataset, ACIA achieves 84.40\% accuracy—an 19\% improvement over the best baseline (65.5\% by LECI)—while maintaining competitive environment independence and low-level invariance metrics. These results validate our theoretical framework's ability to learn robust anti-causal representations across both synthetic and real-world settings, with particularly strong performance gains in scenarios with complex environmental variations.</p>
+        <p>where $\epsilon$ is desired precision, $\delta$ is failure probability, and $d$ is dimension of the representation space.</p>
 
     </div>
 </body>
